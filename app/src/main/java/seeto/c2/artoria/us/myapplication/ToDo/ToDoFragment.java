@@ -17,50 +17,69 @@ import seeto.c2.artoria.us.myapplication.R;
 public class ToDoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_todo,container,false);
+        View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
         RecyclerView todoRecyclerView;
-        LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        ArrayList<TodoList> data = new ArrayList<>();
+        ArrayList<Object> data = new ArrayList<>();
         ListAdapter listAdapter = new ListAdapter(data);
 
         todoRecyclerView = view.findViewById(R.id.TodoList);
         todoRecyclerView.setLayoutManager(layoutManager);
         todoRecyclerView.setAdapter(listAdapter);
 
-        data.add(new TodoList());
-        data.add(new TodoList());
-        data.add(new TodoList());
-        data.add(new TodoList());
-        data.add(new TodoList());
-        data.add(new TodoList());
-
+        data.add(new NoLimitList());
+        data.add(new CommonLimitList());
+        data.add(new HardLimitList());
+        data.add(new NoLimitList());
+        data.add(new CommonLimitList());
+        data.add(new HardLimitList());
 
         return view;
 //        return (ViewGroup) inflater.inflate(R.layout.fragment_todo,container,false);
     }
 
 
-    public static ToDoFragment newInstance(){
+    public static ToDoFragment newInstance() {
         Bundle args = new Bundle();
         ToDoFragment fragment = new ToDoFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    class TodoList {
+
+    class NoLimitList {
         public String header;
 
-        public TodoList() {
+        public NoLimitList() {
             header = "Do Something";
         }
     }
 
+    class CommonLimitList {
+        public String header, listInfo;
+
+        public CommonLimitList() {
+            header = "Do Something";
+            listInfo = "3 days left, 100%";
+        }
+    }
+
+    class HardLimitList {
+        public String header, listInfo;
+
+        public HardLimitList() {
+            header = "Do Something";
+            listInfo = "3 days left, 100%";
+        }
+    }
+
+
     RecyclerView todoRecyclerView;
 
 
-    ArrayList<TodoList> data = new ArrayList<>();
+    ArrayList<NoLimitList> data = new ArrayList<>();
 
 }
