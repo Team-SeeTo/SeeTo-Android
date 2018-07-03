@@ -14,14 +14,13 @@
             android:id="@+id/viewbar"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#E1CFFF"
-            />
+            android:background="#E1CFFF" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/memo_vert"
             android:layout_alignParentRight="true"
-            android:src="@drawable/vert"
             android:layout_margin="5dp"/>
 
         <TextView
@@ -29,9 +28,9 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/viewbar"
             android:layout_margin="10dp"
-            android:text="Love is open door~~~~"
+            android:text="activity_cardviewmemo"
             android:textSize="20dp"
-            android:textColor="#A079E6"/>
+            android:textColor="#A079E6" />
 
     </RelativeLayout>
 

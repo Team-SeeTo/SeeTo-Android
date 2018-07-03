@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_weight="11">
 
         <TextView
             android:layout_margin="20dp"
@@ -27,13 +27,12 @@
 
         <ImageView
             android:layout_margin="20dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/floatingbtn" />
+            android:src="@drawable/memo_floating" />
 
     </RelativeLayout>
-
 
 </LinearLayout>
