@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ViewPagerAdapter;
+package seeto.c2.artoria.us.myapplication.baseline.ViewPagerAdapter;
 
 import android.support.v4.app.Fragment;
 

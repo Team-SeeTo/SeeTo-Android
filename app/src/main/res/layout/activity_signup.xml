@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="Sign Up"
+        android:textColor="#C3A4FA"
+        android:textSize="30dp"
+        android:fontFamily="@font/hoodson_free_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/signup_circle"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/signup_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/signup_plus"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/signup_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/signup_circle"
+        app:layout_constraintEnd_toEndOf="@+id/signup_circle"
+        app:layout_constraintStart_toStartOf="@+id/signup_circle"
+        app:layout_constraintTop_toTopOf="@+id/signup_circle" />
+
+    <EditText
+        android:layout_margin="20dp"
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="email"
+        app:layout_constraintBottom_toTopOf="@+id/editText2" />
+
+    <EditText
+        android:layout_margin="20dp"
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="username"
+        app:layout_constraintBottom_toTopOf="@+id/editText3" />
+
+    <EditText
+        android:layout_margin="20dp"
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Go Ahead!"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/hoodson_free_font"
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        android:background="@drawable/back_square"/>
+
+</android.support.constraint.ConstraintLayout>
