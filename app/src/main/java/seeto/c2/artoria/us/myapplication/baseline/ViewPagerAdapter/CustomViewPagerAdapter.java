@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ViewPagerAdapter;
+package seeto.c2.artoria.us.myapplication.baseline.ViewPagerAdapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CustomViewPagerAdapter extends FragmentPagerAdapter {
 
-    private final List<FragmentInfo> mFragmentInfoList = new ArrayList<FragmentInfo>();
+    private final List<FragmentInfo> mFragmentInfoList = new ArrayList<>();
 
     public CustomViewPagerAdapter(FragmentManager fm) {
         super(fm);

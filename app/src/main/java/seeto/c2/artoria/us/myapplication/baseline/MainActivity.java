@@ -1,28 +1,33 @@
-package seeto.c2.artoria.us.myapplication;
+package seeto.c2.artoria.us.myapplication.baseline;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
+import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
-import seeto.c2.artoria.us.myapplication.ViewPagerAdapter.CustomViewPagerAdapter;
+import seeto.c2.artoria.us.myapplication.baseline.ViewPagerAdapter.CustomViewPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+            implements NavigationView.OnNavigationItemSelectedListener {
 
     boolean flag;
 
@@ -40,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         final FloatingActionButton todo_fab = findViewById(R.id.todo_fab);
 
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        customViewPagerAdapter.addFragment(R.drawable.outline_done_all_black_36dp,new ToDoFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_restore_black_36dp,new TimeLineFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_flash_on_black_36dp,new IdeasFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_format_quote_black_36dp,new QuickMemoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.outline_done_all_black_36dp, new ToDoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.outline_restore_black_36dp, new TimeLineFragment());
+        customViewPagerAdapter.addFragment(R.drawable.outline_flash_on_black_36dp, new IdeasFragment());
+        customViewPagerAdapter.addFragment(R.drawable.outline_format_quote_black_36dp, new QuickMemoFragment());
         viewPager.setAdapter(customViewPagerAdapter);
 
         tabs.setupWithViewPager(viewPager);
 
-        for (int i = 0; i< 4; i++){
+        for (int i = 0; i < 4; i++) {
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
 
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         main_drawer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
@@ -65,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final Animation mainfab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim1);
-        final Animation mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.main_fab_rotate_anim2);
+        final Animation mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim2);
 
-        final Animation memofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.memo_fab_scale_anim1);
-        final Animation memofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.memo_fab_scale_anim2);
+        final Animation memofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim1);
+        final Animation memofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim2);
 
-        final Animation ideasfab_animaition1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.ideas_fab_scale_anim1);
-        final Animation ideasfab_animaition2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.ideas_fab_scale_anim2);
+        final Animation ideasfab_animaition1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim1);
+        final Animation ideasfab_animaition2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim2);
 
-        final Animation todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.todo_fab_scale_anim1);
-        final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.todo_fab_scale_anim2);
+        final Animation todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim1);
+        final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
 
         main_fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,5 +119,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-     }
+
+
+        NavigationView navi_view = findViewById(R.id.navigation_view);
+        navi_view.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navigation_shop_btn:
+                Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                startActivity(intent);
+                finish();
+        }
+        return false;
+    }
 }
