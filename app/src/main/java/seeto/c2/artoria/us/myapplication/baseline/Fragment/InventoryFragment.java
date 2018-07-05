@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline;
+package seeto.c2.artoria.us.myapplication.baseline.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

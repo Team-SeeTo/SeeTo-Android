@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline;
+package seeto.c2.artoria.us.myapplication.baseline.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.baseline.Fragment.InventoryFragment;
+import seeto.c2.artoria.us.myapplication.baseline.Fragment.StoreFragment;
 import seeto.c2.artoria.us.myapplication.baseline.ViewPagerAdapter.CustomViewPagerAdapter;
 
 public class StoreActivity extends AppCompatActivity {

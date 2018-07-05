@@ -14,7 +14,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
         android:textColor="#C3A4FA"
@@ -25,14 +25,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/signup_circle"
+        android:id="@+id/signup_profile_image"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/signup_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,47 +49,69 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/signup_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/signup_circle"
-        app:layout_constraintEnd_toEndOf="@+id/signup_circle"
-        app:layout_constraintStart_toStartOf="@+id/signup_circle"
-        app:layout_constraintTop_toTopOf="@+id/signup_circle" />
+        app:layout_constraintBottom_toBottomOf="@+id/signup_profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/signup_profile_image"
+        app:layout_constraintStart_toStartOf="@+id/signup_profile_image"
+        app:layout_constraintTop_toTopOf="@+id/signup_profile_image" />
 
     <EditText
-        android:layout_margin="20dp"
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
+        android:id="@+id/signup_email_input"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:hint="email"
-        app:layout_constraintBottom_toTopOf="@+id/editText2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_profile_image" />
 
     <EditText
-        android:layout_margin="20dp"
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:id="@+id/signup_username_input"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:hint="username"
-        app:layout_constraintBottom_toTopOf="@+id/editText3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_email_input" />
 
     <EditText
-        android:layout_margin="20dp"
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/signup_password_input"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:hint="password"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="346dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_username_input" />
 
     <Button
-        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:id="@+id/signup_button"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/back_square"
+        android:fontFamily="@font/hoodson_free_font"
         android:text="Go Ahead!"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/hoodson_free_font"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        android:background="@drawable/back_square"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password_input" />
 
 </android.support.constraint.ConstraintLayout>

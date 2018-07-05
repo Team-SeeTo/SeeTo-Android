@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline;
+package seeto.c2.artoria.us.myapplication.baseline.Activity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
