@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".baseline.Activity.MainActivity"/>
-        <activity android:name=".baseline.Activity.StoreActivity"/>
+        <activity android:name=".Main.MainActivity"/>
+        <activity android:name=".Store.StoreActivity"/>
         <activity android:name=".baseline.Activity.SignupActivity"/>
     </application>
 

@@ -13,7 +13,7 @@ import java.sql.Time;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
-public class TimeLineFragment extends Fragment {
+public class TimeLineFragment extends Fragment implements TImeLineContract.View {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return (ViewGroup) inflater.inflate(R.layout.fragment_timeline,container,false);
@@ -25,6 +25,5 @@ public class TimeLineFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
 
 }

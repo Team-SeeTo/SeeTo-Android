@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline.Fragment;
+package seeto.c2.artoria.us.myapplication.Store;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -12,8 +12,7 @@ import android.widget.FrameLayout;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-public class StoreFragment extends Fragment {
-    @Nullable
+public class StoreFragment extends Fragment implements StoreContract.View{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_store,container,false);

@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline.Activity;
+package seeto.c2.artoria.us.myapplication.Main;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -20,11 +20,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
+import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
-import seeto.c2.artoria.us.myapplication.baseline.ViewPagerAdapter.CustomViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener {

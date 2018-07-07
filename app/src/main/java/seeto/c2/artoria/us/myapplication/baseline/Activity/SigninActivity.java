@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import seeto.c2.artoria.us.myapplication.Main.MainActivity;
 import seeto.c2.artoria.us.myapplication.R;
 
 public class SigninActivity extends AppCompatActivity {
