@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity
         final FloatingActionButton todo_fab = findViewById(R.id.todo_fab);
 
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        customViewPagerAdapter.addFragment(R.drawable.outline_done_all_black_36dp, new ToDoFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_restore_black_36dp, new TimeLineFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_flash_on_black_36dp, new IdeasFragment());
-        customViewPagerAdapter.addFragment(R.drawable.outline_format_quote_black_36dp, new QuickMemoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
+        customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
+        customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
         viewPager.setAdapter(customViewPagerAdapter);
 
         tabs.setupWithViewPager(viewPager);

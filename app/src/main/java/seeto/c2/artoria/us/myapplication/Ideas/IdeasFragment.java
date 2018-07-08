@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,14 +24,18 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ideas,container,false);
 
+        View item_view = getLayoutInflater().inflate(R.layout.item_ideas,container,false);
+        TextView rank = item_view.findViewById(R.id.item_ideas_rank_text);
+        RecyclerView ideaslist = rootView.findViewById(R.id.ideas_recycler);
         ArrayList<IdeasModel> listdata = new ArrayList<>();
+        IdeasRecyclerAdapter adapter = new IdeasRecyclerAdapter(listdata,getActivity());
+
+        rank.bringToFront();
 
         for (int i = 0; i<15; i++){
-           listdata.add(new IdeasModel("title","category","rank","1","1"));
+           listdata.add(new IdeasModel("Title here","Category here","#"+i,"23.1K","411"));
         }
 
-        RecyclerView ideaslist = rootView.findViewById(R.id.ideas_recycler);
-        IdeasRecyclerAdapter adapter = new IdeasRecyclerAdapter(listdata,getActivity());
         ideaslist.setAdapter(adapter);
 
         return rootView;
