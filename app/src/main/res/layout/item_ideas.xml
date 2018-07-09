@@ -60,9 +60,9 @@
 
         <ImageView
             android:id="@+id/item_ideas_like_img"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="12dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/ic_favorite"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,9 +81,9 @@
 
         <ImageView
             android:id="@+id/item_ideas_comment_img"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="12dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/ic_message"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -101,8 +101,8 @@
             app:layout_constraintLeft_toRightOf="@id/item_ideas_comment_img" />
 
         <ImageView
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/ic_share"

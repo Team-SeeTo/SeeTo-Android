@@ -39,11 +39,14 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout tabs = findViewById(R.id.main_tab);
         ViewPager viewPager = findViewById(R.id.main_viewpager);
+        final View view = findViewById(R.id.memo_view);
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         final FloatingActionButton main_fab = findViewById(R.id.main_fab);
         final FloatingActionButton memo_fab = findViewById(R.id.memo_fab);
         final FloatingActionButton ideas_fab = findViewById(R.id.ideas_fab);
         final FloatingActionButton todo_fab = findViewById(R.id.todo_fab);
+
+        main_fab.bringToFront();
 
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
         customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
@@ -82,6 +85,8 @@ public class MainActivity extends AppCompatActivity
         final Animation todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim1);
         final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
 
+
+
         main_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,15 +118,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        todo_fab.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "눌리긴 함", Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
+        
         NavigationView navi_view = findViewById(R.id.navigation_view);
         navi_view.setNavigationItemSelectedListener(this);
     }
