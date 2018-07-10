@@ -164,14 +164,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <View
-            android:id="@+id/memo_view"
-            android:layout_width="168dp"
-            android:layout_height="140dp"
-            android:background="@drawable/fab_background_view_shape"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <!--<View-->
+            <!--android:id="@+id/memo_view"-->
+            <!--android:layout_width="168dp"-->
+            <!--android:layout_height="140dp"-->
+            <!--android:background="@drawable/fab_background_view_shape"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
 
 
     </android.support.constraint.ConstraintLayout>
