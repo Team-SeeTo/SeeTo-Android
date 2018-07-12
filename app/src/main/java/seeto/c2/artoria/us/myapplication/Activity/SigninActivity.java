@@ -1,10 +1,9 @@
-package seeto.c2.artoria.us.myapplication.baseline.Activity;
+package seeto.c2.artoria.us.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,22 +17,16 @@ public class SigninActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
 
         Button signin_button = findViewById(R.id.signin_main_button);
-        signin_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SigninActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        signin_button.setOnClickListener(v -> {
+            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         TextView signup_button = findViewById(R.id.signin_signup_button);
-        signup_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SigninActivity.this,SignupActivity.class);
-                startActivity(intent);
-            }
+        signup_button.setOnClickListener(v -> {
+            Intent intent = new Intent(SigninActivity.this,SignupActivity.class);
+            startActivity(intent);
         });
     }
 }

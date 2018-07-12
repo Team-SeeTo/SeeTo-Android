@@ -62,14 +62,11 @@ public class MainActivity extends AppCompatActivity
         }
 
         ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
-        main_drawer_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else {
-                    drawerLayout.openDrawer(GravityCompat.START);
-                }
+        main_drawer_btn.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
 
@@ -86,34 +83,31 @@ public class MainActivity extends AppCompatActivity
         final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
 
 
-        main_fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!flag) {
-                    flag = true;
-                    main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
-                    main_fab.startAnimation(mainfab_animation1);
-                    memo_fab.startAnimation(memofab_animation1);
-                    ideas_fab.startAnimation(ideasfab_animaition1);
-                    todo_fab.startAnimation(todofab_animation1);
+        main_fab.setOnClickListener(v -> {
+            if (!flag) {
+                flag = true;
+                main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
+                main_fab.startAnimation(mainfab_animation1);
+                memo_fab.startAnimation(memofab_animation1);
+                ideas_fab.startAnimation(ideasfab_animaition1);
+                todo_fab.startAnimation(todofab_animation1);
 
-                    main_fab.invalidate();
-                    memo_fab.invalidate();
-                    ideas_fab.invalidate();
-                    todo_fab.invalidate();
-                } else {
-                    flag = false;
-                    main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                    main_fab.startAnimation(mainfab_animation2);
-                    memo_fab.startAnimation(memofab_animation2);
-                    ideas_fab.startAnimation(ideasfab_animaition2);
-                    todo_fab.startAnimation(todofab_animation2);
+                main_fab.invalidate();
+                memo_fab.invalidate();
+                ideas_fab.invalidate();
+                todo_fab.invalidate();
+            } else {
+                flag = false;
+                main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+                main_fab.startAnimation(mainfab_animation2);
+                memo_fab.startAnimation(memofab_animation2);
+                ideas_fab.startAnimation(ideasfab_animaition2);
+                todo_fab.startAnimation(todofab_animation2);
 
-                    main_fab.invalidate();
-                    memo_fab.invalidate();
-                    ideas_fab.invalidate();
-                    todo_fab.invalidate();
-                }
+                main_fab.invalidate();
+                memo_fab.invalidate();
+                ideas_fab.invalidate();
+                todo_fab.invalidate();
             }
         });
 

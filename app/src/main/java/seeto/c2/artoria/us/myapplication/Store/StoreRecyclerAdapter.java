@@ -39,34 +39,23 @@ public class StoreRecyclerAdapter extends RecyclerView.Adapter<StoreRecyclerAdap
         holder.title.setText(items.get(position).getTitle());
         holder.content.setText(items.get(position).getContent());
         holder.price.setText(items.get(position).getPrice());
-        holder.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(context);
-                View view = LayoutInflater.from(context).inflate(R.layout.dialog_store,null);
-                View cancel = view.findViewById(R.id.dialog_store_cancel);
-                View purchase = view.findViewById(R.id.dialog_store_purchase);
-                dialog.setContentView(view);
-                dialog.show();
+        holder.item.setOnClickListener(v -> {
+            final Dialog dialog = new Dialog(context);
+            View view = LayoutInflater.from(context).inflate(R.layout.dialog_store,null);
+            View cancel = view.findViewById(R.id.dialog_store_cancel);
+            View purchase = view.findViewById(R.id.dialog_store_purchase);
+            dialog.setContentView(view);
+            dialog.show();
 
-                cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+            cancel.setOnClickListener(v1 -> dialog.dismiss());
 
-                purchase.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            purchase.setOnClickListener(v1 ->{
 
-                    }
-                });
+            });
 
-                dialog.setCanceledOnTouchOutside(false);
-                Window window = dialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            }
+            dialog.setCanceledOnTouchOutside(false);
+            Window window = dialog.getWindow();
+            window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         });
     }
 
