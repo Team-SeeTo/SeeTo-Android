@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import seeto.c2.artoria.us.myapplication.Model.IdeasModel;
+import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
 
 public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdapter.CustomViewHolder> {
-    private ArrayList<IdeasModel> items;
+    private ArrayList<IdeasItem> items;
     private Context context;
 
-    public IdeasRecyclerAdapter(ArrayList<IdeasModel> items, Context context){
+    public IdeasRecyclerAdapter(ArrayList<IdeasItem> items, Context context){
         this.items = items;
         this.context = context;
     }

@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.baseline.Fragment.InventoryFragment;
+import seeto.c2.artoria.us.myapplication.Inventory.InventoryFragment;
 
 public class StoreActivity extends AppCompatActivity {
     @Override

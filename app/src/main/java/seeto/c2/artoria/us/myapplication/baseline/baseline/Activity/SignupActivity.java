@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.Activity;
+package seeto.c2.artoria.us.myapplication.baseline.baseline.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

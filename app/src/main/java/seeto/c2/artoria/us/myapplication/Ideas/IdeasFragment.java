@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasRecyclerAdapter.IdeasRecyclerAdapter;
-import seeto.c2.artoria.us.myapplication.Model.IdeasModel;
+import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
 public class IdeasFragment extends Fragment implements IdeasContract.View {
     @Override
@@ -27,13 +25,13 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         View item_view = getLayoutInflater().inflate(R.layout.item_ideas,container,false);
         TextView rank = item_view.findViewById(R.id.item_ideas_rank_text);
         RecyclerView ideaslist = rootView.findViewById(R.id.ideas_recycler);
-        ArrayList<IdeasModel> listdata = new ArrayList<>();
+        ArrayList<IdeasItem> listdata = new ArrayList<>();
         IdeasRecyclerAdapter adapter = new IdeasRecyclerAdapter(listdata,getActivity());
 
         rank.bringToFront();
 
         for (int i = 0; i<15; i++){
-           listdata.add(new IdeasModel("Title here","Category here","#"+i,"23.1K","411"));
+           listdata.add(new IdeasItem("Title here","Category here","#"+i,"23.1K","411"));
         }
 
         ideaslist.setAdapter(adapter);

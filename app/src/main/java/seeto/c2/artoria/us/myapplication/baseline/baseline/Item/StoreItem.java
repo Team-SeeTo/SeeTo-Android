@@ -1,11 +1,11 @@
-package seeto.c2.artoria.us.myapplication.Model;
+package seeto.c2.artoria.us.myapplication.baseline.baseline.Item;
 
-public class StoreModel {
+public class StoreItem {
     private String title;
     private String content;
     private String price;
 
-    public StoreModel(String title, String content, String price){
+    public StoreItem(String title, String content, String price){
         this.title = title;
         this.content = content;
         this.price = price;

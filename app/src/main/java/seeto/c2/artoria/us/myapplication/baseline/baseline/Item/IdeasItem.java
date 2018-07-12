@@ -1,15 +1,15 @@
-package seeto.c2.artoria.us.myapplication.Model;
+package seeto.c2.artoria.us.myapplication.baseline.baseline.Item;
 
 import android.content.Context;
 
-public class IdeasModel {
+public class IdeasItem {
     private String title;
     private String category;
     private String rank;
     private String like;
     private String comment;
 
-    public IdeasModel(String title, String category, String rank, String like, String comment){
+    public IdeasItem(String title, String category, String rank, String like, String comment){
         this.title = title;
         this.category = category;
         this.rank = rank;

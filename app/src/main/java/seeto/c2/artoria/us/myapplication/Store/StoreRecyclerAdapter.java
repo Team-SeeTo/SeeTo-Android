@@ -9,20 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
 import android.widget.TextView;
 
 
 import java.util.ArrayList;
 
-import seeto.c2.artoria.us.myapplication.Model.StoreModel;
+import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.StoreItem;
 import seeto.c2.artoria.us.myapplication.R;
 
 public class StoreRecyclerAdapter extends RecyclerView.Adapter<StoreRecyclerAdapter.CustomView>{
-    private ArrayList<StoreModel> items;
+    private ArrayList<StoreItem> items;
     private Context context;
 
-    public StoreRecyclerAdapter(ArrayList<StoreModel> items, Context context){
+    public StoreRecyclerAdapter(ArrayList<StoreItem> items, Context context){
         this.items = items;
         this.context = context;
     }
