@@ -28,7 +28,7 @@ import seeto.c2.artoria.us.myapplication.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
 public class MainActivity extends AppCompatActivity
-            implements NavigationView.OnNavigationItemSelectedListener {
+            implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
     boolean flag;
 
@@ -37,38 +37,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabs = findViewById(R.id.main_tab);
-        ViewPager viewPager = findViewById(R.id.main_viewpager);
-//        final View view = findViewById(R.id.memo_view);
-        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        viewpagerinit();
+
+        navigationinit();
+
+        //        final View view = findViewById(R.id.memo_view);
         final FloatingActionButton main_fab = findViewById(R.id.main_fab);
         final FloatingActionButton memo_fab = findViewById(R.id.memo_fab);
         final FloatingActionButton ideas_fab = findViewById(R.id.ideas_fab);
         final FloatingActionButton todo_fab = findViewById(R.id.todo_fab);
 
         main_fab.bringToFront();
-
-        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
-        customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
-        customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
-        customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
-        viewPager.setAdapter(customViewPagerAdapter);
-
-        tabs.setupWithViewPager(viewPager);
-
-        for (int i = 0; i < 4; i++) {
-            tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
-        }
-
-        ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
-        main_drawer_btn.setOnClickListener(v -> {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-            } else {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
 
         final Animation mainfab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim1);
         final Animation mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim2);
@@ -118,9 +97,7 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        
-        NavigationView navi_view = findViewById(R.id.navigation_view);
-        navi_view.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -132,5 +109,41 @@ public class MainActivity extends AppCompatActivity
                 finish();
         }
         return false;
+    }
+
+    @Override
+    public void viewpagerinit() {
+        TabLayout tabs = findViewById(R.id.main_tab);
+        ViewPager viewPager = findViewById(R.id.main_viewpager);
+
+        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
+        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
+        customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
+        customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
+        viewPager.setAdapter(customViewPagerAdapter);
+
+        tabs.setupWithViewPager(viewPager);
+
+        for (int i = 0; i < 4; i++) {
+            tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
+        }
+    }
+
+    @Override
+    public void navigationinit() {
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+
+        ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
+        main_drawer_btn.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        NavigationView navi_view = findViewById(R.id.navigation_view);
+        navi_view.setNavigationItemSelectedListener(this);
     }
 }
