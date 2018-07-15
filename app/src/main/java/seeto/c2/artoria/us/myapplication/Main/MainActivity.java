@@ -41,6 +41,59 @@ public class MainActivity extends AppCompatActivity
 
         navigationinit();
 
+        fabinit();
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navigation_shop_btn:
+                Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                startActivity(intent);
+                finish();
+        }
+        return false;
+    }
+
+    @Override
+    public void viewpagerinit() {
+        TabLayout tabs = findViewById(R.id.main_tab);
+        ViewPager viewPager = findViewById(R.id.main_viewpager);
+
+        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
+        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
+        customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
+        customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
+        viewPager.setAdapter(customViewPagerAdapter);
+
+        tabs.setupWithViewPager(viewPager);
+
+        for (int i = 0; i < 4; i++) {
+            tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
+        }
+    }
+
+    @Override
+    public void navigationinit() {
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+
+        ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
+        main_drawer_btn.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        NavigationView navi_view = findViewById(R.id.navigation_view);
+        navi_view.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void fabinit() {
         //        final View view = findViewById(R.id.memo_view);
         final FloatingActionButton main_fab = findViewById(R.id.main_fab);
         final FloatingActionButton memo_fab = findViewById(R.id.memo_fab);
@@ -98,52 +151,5 @@ public class MainActivity extends AppCompatActivity
 //        });
 
 
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_shop_btn:
-                Intent intent = new Intent(MainActivity.this, StoreActivity.class);
-                startActivity(intent);
-                finish();
-        }
-        return false;
-    }
-
-    @Override
-    public void viewpagerinit() {
-        TabLayout tabs = findViewById(R.id.main_tab);
-        ViewPager viewPager = findViewById(R.id.main_viewpager);
-
-        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
-        customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
-        customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
-        customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
-        viewPager.setAdapter(customViewPagerAdapter);
-
-        tabs.setupWithViewPager(viewPager);
-
-        for (int i = 0; i < 4; i++) {
-            tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
-        }
-    }
-
-    @Override
-    public void navigationinit() {
-        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-
-        ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
-        main_drawer_btn.setOnClickListener(v -> {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-            } else {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-
-        NavigationView navi_view = findViewById(R.id.navigation_view);
-        navi_view.setNavigationItemSelectedListener(this);
     }
 }
