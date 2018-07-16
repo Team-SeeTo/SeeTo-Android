@@ -21,7 +21,6 @@ public class StoreFragment extends Fragment implements StoreContract.View{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        ViewGroup rootView = (ViewGroup) getLayoutInflater().inflate(R.layout.fragment_store,container,false);
 
-
         RecyclerView store_item_list = rootView.findViewById(R.id.store_recycler);
 
         data.add(new StoreItem("Streak Freeze","You can rest today!","3000xp"));
@@ -32,5 +31,10 @@ public class StoreFragment extends Fragment implements StoreContract.View{
         StoreRecyclerAdapter adapter = new StoreRecyclerAdapter(data,getActivity());
         store_item_list.setAdapter(adapter);
        return rootView;
+    }
+
+    @Override
+    public void listinit() {
+
     }
 }

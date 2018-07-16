@@ -5,9 +5,7 @@ import seeto.c2.artoria.us.myapplication.BaseView;
 public interface MainContract {
     interface View extends BaseView{
         void viewpagerinit();
-
         void navigationinit();
-
         void fabinit();
     }
 

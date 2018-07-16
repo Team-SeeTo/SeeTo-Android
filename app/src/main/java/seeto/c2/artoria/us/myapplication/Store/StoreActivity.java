@@ -10,12 +10,18 @@ import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAd
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.Inventory.InventoryFragment;
 
-public class StoreActivity extends AppCompatActivity {
+public class StoreActivity extends AppCompatActivity implements StoreContract.View{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
+        listinit();
+
+    }
+
+    @Override
+    public void listinit() {
         TabLayout tabLayout = findViewById(R.id.store_tabs);
         ViewPager viewPager = findViewById(R.id.store_viewpager);
 
@@ -31,6 +37,5 @@ public class StoreActivity extends AppCompatActivity {
         for (int i = 0; i< 2; i++){
             tabLayout.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
-
     }
 }
