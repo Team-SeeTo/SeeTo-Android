@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,9 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
@@ -31,11 +35,18 @@ public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
     boolean flag;
+    TextView todo_write_btn;
+    TextView ideas_write_btn;
+    TextView memo_write_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        memo_write_btn = findViewById(R.id.memo_write_btn);
+        ideas_write_btn = findViewById(R.id.ideas_write_btn);
+        todo_write_btn = findViewById(R.id.todo_write_btn);
 
         viewpagerinit();
 
@@ -102,18 +113,74 @@ public class MainActivity extends AppCompatActivity
 
         main_fab.bringToFront();
 
+
+
         final Animation mainfab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim1);
         final Animation mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim2);
 
         final Animation memofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim1);
+
+        memofab_animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                memo_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
         final Animation memofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim2);
 
         final Animation ideasfab_animaition1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim1);
+
+        ideasfab_animaition1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                ideas_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
         final Animation ideasfab_animaition2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim2);
 
         final Animation todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim1);
-        final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
 
+        todofab_animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                todo_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
 
         main_fab.setOnClickListener(v -> {
             if (!flag) {
@@ -136,6 +203,10 @@ public class MainActivity extends AppCompatActivity
                 ideas_fab.startAnimation(ideasfab_animaition2);
                 todo_fab.startAnimation(todofab_animation2);
 
+                memo_write_btn.setVisibility(View.INVISIBLE);
+                ideas_write_btn.setVisibility(View.INVISIBLE);
+                todo_write_btn.setVisibility(View.INVISIBLE);
+
                 main_fab.invalidate();
                 memo_fab.invalidate();
                 ideas_fab.invalidate();
@@ -143,13 +214,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "눌리긴 함", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
+        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌리냐?", Toast.LENGTH_SHORT).show());
+        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌리냐?", Toast.LENGTH_SHORT).show());
+        todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도???", Toast.LENGTH_SHORT).show());
 
     }
 }
