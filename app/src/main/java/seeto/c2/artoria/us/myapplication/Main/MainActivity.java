@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     TextView todo_write_btn;
     TextView ideas_write_btn;
     TextView memo_write_btn;
+    TabLayout tabs;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity
         memo_write_btn = findViewById(R.id.memo_write_btn);
         ideas_write_btn = findViewById(R.id.ideas_write_btn);
         todo_write_btn = findViewById(R.id.todo_write_btn);
+        tabs = findViewById(R.id.main_tab);
+        viewPager = findViewById(R.id.main_viewpager);
 
         viewpagerinit();
 
@@ -69,8 +74,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void viewpagerinit() {
-        TabLayout tabs = findViewById(R.id.main_tab);
-        ViewPager viewPager = findViewById(R.id.main_viewpager);
 
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
         customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
@@ -190,6 +193,10 @@ public class MainActivity extends AppCompatActivity
                 memo_fab.startAnimation(memofab_animation1);
                 ideas_fab.startAnimation(ideasfab_animaition1);
                 todo_fab.startAnimation(todofab_animation1);
+
+                viewPager.setClickable(false);
+                viewPager.setOnTouchListener((view, motionEvent) -> true);
+                viewPager.setEnabled(false);
 
                 main_fab.invalidate();
                 memo_fab.invalidate();
