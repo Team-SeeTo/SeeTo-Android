@@ -214,6 +214,10 @@ public class MainActivity extends AppCompatActivity
                 ideas_write_btn.setVisibility(View.INVISIBLE);
                 todo_write_btn.setVisibility(View.INVISIBLE);
 
+                viewPager.setClickable(true);
+                viewPager.setOnTouchListener((view, motionEvent) -> false);
+                viewPager.setEnabled(true);
+
                 main_fab.invalidate();
                 memo_fab.invalidate();
                 ideas_fab.invalidate();
