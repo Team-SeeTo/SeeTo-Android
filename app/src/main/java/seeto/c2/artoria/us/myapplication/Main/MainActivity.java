@@ -18,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -197,6 +198,8 @@ public class MainActivity extends AppCompatActivity
                 viewPager.setClickable(false);
                 viewPager.setOnTouchListener((view, motionEvent) -> true);
                 viewPager.setEnabled(false);
+
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 main_fab.invalidate();
                 memo_fab.invalidate();
