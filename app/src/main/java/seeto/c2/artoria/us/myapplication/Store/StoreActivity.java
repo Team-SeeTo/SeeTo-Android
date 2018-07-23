@@ -16,12 +16,12 @@ public class StoreActivity extends AppCompatActivity implements StoreContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-        listinit();
+        tabsinit();
 
     }
 
     @Override
-    public void listinit() {
+    public void tabsinit() {
         TabLayout tabLayout = findViewById(R.id.store_tabs);
         ViewPager viewPager = findViewById(R.id.store_viewpager);
 
@@ -37,5 +37,10 @@ public class StoreActivity extends AppCompatActivity implements StoreContract.Vi
         for (int i = 0; i< 2; i++){
             tabLayout.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
+    }
+
+    @Override
+    public void listinit() {
+
     }
 }

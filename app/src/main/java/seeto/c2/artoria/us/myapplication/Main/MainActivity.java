@@ -199,7 +199,6 @@ public class MainActivity extends AppCompatActivity
                 viewPager.setOnTouchListener((view, motionEvent) -> true);
                 viewPager.setEnabled(false);
 
-                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 main_fab.invalidate();
                 memo_fab.invalidate();
