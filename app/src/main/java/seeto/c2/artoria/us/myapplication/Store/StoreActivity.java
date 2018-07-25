@@ -43,4 +43,9 @@ public class StoreActivity extends AppCompatActivity implements StoreContract.Vi
     public void listinit() {
 
     }
+
+    @Override
+    public void showToast() {
+
+    }
 }

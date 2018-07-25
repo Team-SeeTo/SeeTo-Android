@@ -26,4 +26,8 @@ public class TimeLineFragment extends Fragment implements TImeLineContract.View 
         return fragment;
     }
 
+    @Override
+    public void showToast() {
+
+    }
 }

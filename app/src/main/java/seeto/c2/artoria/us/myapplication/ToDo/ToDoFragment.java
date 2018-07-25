@@ -49,6 +49,11 @@ public class ToDoFragment extends Fragment implements TodoContract.View {
         return fragment;
     }
 
+    @Override
+    public void showToast() {
+
+    }
+
 
     class NoLimitList {
         public String header;

@@ -39,4 +39,9 @@ public class InventoryFragment extends Fragment implements InventoryContract.Vie
         inventory_list.setAdapter(adapter);
 
     }
+
+    @Override
+    public void showToast() {
+
+    }
 }

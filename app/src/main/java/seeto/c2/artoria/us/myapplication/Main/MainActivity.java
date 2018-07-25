@@ -232,4 +232,9 @@ public class MainActivity extends AppCompatActivity
         todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도???", Toast.LENGTH_SHORT).show());
 
     }
+
+    @Override
+    public void showToast() {
+
+    }
 }
