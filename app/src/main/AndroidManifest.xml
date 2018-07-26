@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ToDo.ToDoCreateActivity"/>
+        <activity android:name=".ToDo.ToDoCreateActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".baseline.MainActivity"/>
         <activity android:name=".baseline.StoreActivity"/>
     </application>

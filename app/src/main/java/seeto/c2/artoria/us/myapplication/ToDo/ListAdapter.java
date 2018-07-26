@@ -27,7 +27,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         return position % 3;
-        // TODO: 2018-07-03 타입 검사 필요 
+        // TODO: 2018-07-03 서버 연동시 타입 검사
     }
 
     @NonNull
