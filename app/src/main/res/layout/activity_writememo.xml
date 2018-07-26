@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <ImageButton
+        android:id="@+id/xIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
@@ -14,24 +14,26 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/memo_xicon"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:background="@drawable/memo_xicon"
+        app:layout_constraintBottom_toTopOf="@+id/contentEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/contentEditText"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#C3A4FA"
         android:hint="Input text"
+        android:gravity="top"
         android:textColor="#C3A4FA"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button" />
+        app:layout_constraintBottom_toTopOf="@+id/finishButton" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/finishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

@@ -17,11 +17,12 @@
         android:layout_height="0dp"
         android:layout_weight="11">
 
-        <TextView
+        <EditText
             android:id="@+id/viewMemo"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="top"
             android:text="Love is open door~~~~~~"
             android:textColor="#A079E6"
             android:textSize="20dp"/>
@@ -46,5 +47,6 @@
             android:visibility="invisible"/>
 
     </RelativeLayout>
+
 
 </LinearLayout>

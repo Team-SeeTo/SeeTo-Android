@@ -18,14 +18,11 @@ public class QuickMemoFragment extends Fragment {
         return (ViewGroup) inflater.inflate(R.layout.fragment_quickmemo,container,false);
     }
 
-
     public static QuickMemoFragment newInstance(){
         Bundle args = new Bundle();
         QuickMemoFragment fragment = new QuickMemoFragment();
         fragment.setArguments(args);
         return fragment;
     }
-
-
 
 }
