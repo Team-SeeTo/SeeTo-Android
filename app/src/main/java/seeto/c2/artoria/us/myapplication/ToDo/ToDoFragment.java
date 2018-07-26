@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-public class ToDoFragment extends Fragment {
+public class ToDoFragment extends Fragment implements TodoContract.View {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
@@ -59,6 +59,11 @@ public class ToDoFragment extends Fragment {
         ToDoFragment fragment = new ToDoFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void showToast() {
+
     }
 
 

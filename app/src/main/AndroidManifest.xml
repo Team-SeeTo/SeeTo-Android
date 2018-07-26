@@ -9,17 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".baseline.SigninActivity">
+        <activity android:name=".baseline.baseline.Activity.SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".ToDo.ToDoCreateActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".baseline.MainActivity"/>
         <activity android:name=".baseline.StoreActivity"/>
+=======
+        <activity android:name=".Main.MainActivity"/>
+        <activity android:name=".Store.StoreActivity"/>
+        <activity android:name=".baseline.baseline.Activity.SignupActivity"/>
+>>>>>>> master
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@ import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
-public class QuickMemoFragment extends Fragment {
+public class QuickMemoFragment extends Fragment implements QuickMemoContract.View{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return (ViewGroup) inflater.inflate(R.layout.fragment_quickmemo,container,false);
@@ -27,5 +27,8 @@ public class QuickMemoFragment extends Fragment {
     }
 
 
+    @Override
+    public void showToast() {
 
+    }
 }
