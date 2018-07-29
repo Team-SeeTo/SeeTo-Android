@@ -27,7 +27,7 @@ public class TimeLineFragment extends Fragment implements TImeLineContract.View 
     }
 
     @Override
-    public void showToast() {
+    public void showToast(String text) {
 
     }
 }

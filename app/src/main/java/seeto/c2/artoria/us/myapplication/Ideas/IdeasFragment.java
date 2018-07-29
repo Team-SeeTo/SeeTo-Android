@@ -61,7 +61,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     }
 
     @Override
-    public void showToast() {
+    public void showToast(String text) {
 
     }
 }

@@ -48,4 +48,8 @@ public class StoreFragment extends Fragment implements StoreContract.View{
     }
 
 
+    @Override
+    public void showToast(String text) {
+
+    }
 }

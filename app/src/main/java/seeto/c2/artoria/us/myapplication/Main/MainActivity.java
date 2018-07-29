@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void showToast() {
+    public void showToast(String text) {
 
     }
 }
