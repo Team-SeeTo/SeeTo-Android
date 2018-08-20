@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.R;
@@ -42,7 +41,7 @@ public abstract class WriteMemoActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(WriteMemoActivity.this, MainActivity.class);
+                        Intent intent = new Intent(WriteMemoActivity.this, QuickMemoFragment.class);
                         startActivity(intent);
                     }
                 }).setNegativeButton("취소",
