@@ -6,8 +6,7 @@ import seeto.c2.artoria.us.myapplication.BaseView;
 
 public interface TImeLineContract {
     interface View extends BaseView{
-
-        
+        void setData();
     }
 
     interface Presenter {
