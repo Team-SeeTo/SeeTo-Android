@@ -227,9 +227,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌리냐?", Toast.LENGTH_SHORT).show());
-        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌리냐?", Toast.LENGTH_SHORT).show());
-        todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도???", Toast.LENGTH_SHORT).show());
+        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌림", Toast.LENGTH_SHORT).show());
+        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌림", Toast.LENGTH_SHORT).show());
+        todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도", Toast.LENGTH_SHORT).show());
 
     }
 

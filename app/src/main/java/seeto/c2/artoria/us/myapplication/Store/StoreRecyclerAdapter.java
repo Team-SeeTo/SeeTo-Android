@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -49,7 +50,8 @@ public class StoreRecyclerAdapter extends RecyclerView.Adapter<StoreRecyclerAdap
             cancel.setOnClickListener(v1 -> dialog.dismiss());
 
             purchase.setOnClickListener(v1 ->{
-
+                Toast.makeText(context, "purchase button clicked", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             });
 
             dialog.setCanceledOnTouchOutside(false);
