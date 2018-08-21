@@ -3,27 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#EADFFF">
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#E1CFFF"/>
+        android:layout_weight="1" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11">
+        android:layout_weight="12">
 
         <TextView
             android:id="@+id/viewMemo"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="525dp"
             android:text="Love is open door~~~~~~"
-            android:textColor="#A079E6"
+            android:textColor="#2C007B"
             android:textSize="20dp"/>
 
         <android.support.design.widget.FloatingActionButton
@@ -31,19 +29,27 @@
             android:layout_margin="20dp"
             android:layout_width="75dp"
             android:layout_height="75dp"
+            android:layout_centerInParent="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/memo_floating"/>
+            android:src="@drawable/memo_floating"
+            android:backgroundTint="#FFFFFF" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/checkFab"
-            android:layout_margin="20dp"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/memo_check"
-            android:visibility="invisible"/>
+        <FrameLayout
+            android:id="@+id/under_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/viewMemo"
+            android:background="#2C007B">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="#00FF0000"
+                android:layout_gravity="right"
+                />
+
+        </FrameLayout>
 
     </RelativeLayout>
 
