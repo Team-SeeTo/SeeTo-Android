@@ -23,16 +23,16 @@ public class QuickMemoFragment extends Fragment {
 
         ArrayList<Item> item=new ArrayList<>();
 
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
-        item.add(new Item("sdfsdsdfsds"));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
+        item.add(new Item("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
 
         RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.qm_recycler);
         MyAdapter myAdapter = new MyAdapter(item);
