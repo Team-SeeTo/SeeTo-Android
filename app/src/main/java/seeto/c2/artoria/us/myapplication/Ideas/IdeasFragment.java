@@ -1,6 +1,7 @@
 package seeto.c2.artoria.us.myapplication.Ideas;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -33,6 +36,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         View item_view = getLayoutInflater().inflate(R.layout.item_ideas,container,false);
         TextView rank = item_view.findViewById(R.id.item_ideas_rank_text);
 
+
         rank.bringToFront();
 
         recyclerdatainit();
@@ -53,7 +57,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     @Override
     public void recyclerdatainit() {
 
-        for (int i = 0; i<15; i++){
+        for (int i = 1; i<15; i++){
             listdata.add(new IdeasItem("Title here","Category here","#"+i,"23.1K","411"));
         }
 
