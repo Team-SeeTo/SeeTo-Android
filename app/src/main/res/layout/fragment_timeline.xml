@@ -5,16 +5,11 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-<<<<<<< HEAD
         android:id="@+id/timeline_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-=======
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
->>>>>>> See-To-Android-Quick-Memo
 
 
     </android.support.v7.widget.RecyclerView>
