@@ -1,3 +1,4 @@
+
 package seeto.c2.artoria.us.myapplication.ToDo;
 
 import android.support.annotation.NonNull;
@@ -6,11 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
-
-import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -63,17 +60,17 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (position % 3) {
             case 0:
                 NoLimitItemViewHolder item = (NoLimitItemViewHolder) holder;
-                item.header.setText(((ToDoFragment.NoLimitList) todoList).header);
+                item.header.setText(((TodoFragment.NoLimitList) todoList).header);
                 break;
             case 1:
                 CommonLimitItemViewHolder commonItem = (CommonLimitItemViewHolder) holder;
-                commonItem.header.setText(((ToDoFragment.CommonLimitList) todoList).header);
-                commonItem.listInfo.setText(((ToDoFragment.CommonLimitList) todoList).listInfo);
+                commonItem.header.setText(((TodoFragment.CommonLimitList) todoList).header);
+                commonItem.listInfo.setText(((TodoFragment.CommonLimitList) todoList).listInfo);
                 break;
             case 2:
                 HardLimitItemViewHolder hardItem = (HardLimitItemViewHolder) holder;
-                hardItem.header.setText(((ToDoFragment.HardLimitList) todoList).header);
-                hardItem.listInfo.setText(((ToDoFragment.HardLimitList) todoList).listInfo);
+                hardItem.header.setText(((TodoFragment.HardLimitList) todoList).header);
+                hardItem.listInfo.setText(((TodoFragment.HardLimitList) todoList).listInfo);
                 break;
         }
     }

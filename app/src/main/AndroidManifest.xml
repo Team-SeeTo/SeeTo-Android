@@ -26,6 +26,9 @@
         <activity android:name=".QM.ViewMemoActivity" />
         <activity android:name=".QM.WriteMemoActivity"/>
 
+        <activity android:name=".ToDo.TodoCreate.CreateTodoActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
     </application>
 
 </manifest>

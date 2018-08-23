@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,11 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -34,7 +29,8 @@ import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.TimeLine.TimeLineFragment;
-import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
+import seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.CreateTodoActivity;
+import seeto.c2.artoria.us.myapplication.ToDo.TodoFragment;
 
 public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
@@ -46,6 +42,8 @@ public class MainActivity extends AppCompatActivity
     TabLayout tabs;
     ViewPager viewPager;
     ImageView main_option_btn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     public void viewpagerinit() {
 
         CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        customViewPagerAdapter.addFragment(R.drawable.check_square, new ToDoFragment());
+        customViewPagerAdapter.addFragment(R.drawable.check_square, new TodoFragment());
         customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
         customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
         customViewPagerAdapter.addFragment(R.drawable.notebook, new QuickMemoFragment());
@@ -234,6 +232,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+<<<<<<< HEAD
         memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌림", Toast.LENGTH_SHORT).show());
         ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌림", Toast.LENGTH_SHORT).show());
         todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도", Toast.LENGTH_SHORT).show());
@@ -257,6 +256,14 @@ public class MainActivity extends AppCompatActivity
         });
 
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
+=======
+        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌리냐?", Toast.LENGTH_SHORT).show());
+        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌리냐?", Toast.LENGTH_SHORT).show());
+        todo_write_btn.setOnClickListener(v -> {
+            Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
+            startActivity(todoCreateIntent);
+        });
+>>>>>>> SeeTo-Android-ToDoList
 
         Window window = dialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);

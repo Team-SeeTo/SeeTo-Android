@@ -6,4 +6,7 @@ public class BasePresenter implements BaseView {
     public void showToast(String text) {
 
     }
+    public void showToast() {
+
+    }
 }
