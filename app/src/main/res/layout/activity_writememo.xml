@@ -10,9 +10,7 @@
         android:id="@+id/xIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="20dp"
         android:background="@drawable/memo_xicon"
         android:src="@drawable/memo_xicon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="Edit"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -36,12 +32,8 @@
         android:id="@+id/contentEditText"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="20dp"
         android:backgroundTint="#2C007B"
         android:gravity="top"
         android:hint="Input text"
@@ -56,12 +48,9 @@
         android:id="@+id/finishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         android:background="#00FF0000"
         android:text="Finish"
         android:textColor="#2C007B"
@@ -69,11 +58,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentEditText" />
-
-
-
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

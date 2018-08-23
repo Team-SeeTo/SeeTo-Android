@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/viewMemo"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text=""
+        android:textColor="#2C007B"
+        android:textSize="25dp"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="50dp"
+        android:background="#2C007B"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
-            android:id="@+id/viewMemo"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="12"
-            android:text="Love is open door~~~~~~"
-            android:textColor="#2C007B"
-            android:textSize="20dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/viewMemo_editFab"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/memo_floating"
+        android:backgroundTint="#FFFFFF"
+        android:background="@drawable/circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <FrameLayout
-            android:id="@+id/under_bar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_below="@id/viewMemo"
-            android:background="#2C007B">
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle"
+        app:layout_constraintBottom_toBottomOf="@id/viewMemo_editFab"
+        app:layout_constraintTop_toTopOf="@id/viewMemo_editFab"
+        app:layout_constraintRight_toRightOf="@id/viewMemo_editFab"
+        app:layout_constraintLeft_toLeftOf="@id/viewMemo_editFab"/>
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/editFab"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/memo_floating"
-                android:backgroundTint="#FFFFFF" />
+    <ImageButton
+        android:id="@+id/search_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:background="#2C007B"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
-            <ImageView
-                android:id="@+id/editIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/circle"
-                android:layout_marginBottom="10dp"/>
-
-            <ImageButton
-                android:id="@+id/search_btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="#00FF0000"
-                android:layout_gravity="right"/>
-
-        </FrameLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

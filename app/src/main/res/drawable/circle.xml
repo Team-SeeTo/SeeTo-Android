@@ -3,12 +3,16 @@
     android:shape="oval">
 
     <solid
-        android:color="#2C007B"/>
+        android:color="#00FF0000"/>
     <corners
         android:radius="90dp"/>
     <size
-        android:width="75dp"
-        android:height="75dp"
+        android:width="60dp"
+        android:height="60dp"
         />
+
+    <stroke android:width="5dp"
+        android:color="#2C007B"/>
+
 
 </shape>

@@ -46,6 +46,8 @@
             android:src="@drawable/memo_check"
             android:visibility="invisible"/>
 
+
+
     </RelativeLayout>
 
 

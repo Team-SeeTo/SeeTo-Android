@@ -49,4 +49,6 @@ public class QuickMemoFragment extends Fragment {
         return fragment;
     }
 
+
 }
+
