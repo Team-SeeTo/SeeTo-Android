@@ -59,12 +59,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
+<<<<<<< HEAD
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.applandeo:material-calendar-view:1.4.0'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
 
 }
+<<<<<<< HEAD
 
 
+=======
+=======
+}
+>>>>>>> See-To-Android-Quick-Memo
+>>>>>>> parent of d4df4ad... fixed conflicts

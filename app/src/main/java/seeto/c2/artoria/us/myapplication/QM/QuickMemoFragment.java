@@ -51,9 +51,12 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
     }
 
 
+<<<<<<< HEAD
     @Override
     public void showToast(String text) {
 
     }
+=======
+>>>>>>> See-To-Android-Quick-Memo
 }
 
