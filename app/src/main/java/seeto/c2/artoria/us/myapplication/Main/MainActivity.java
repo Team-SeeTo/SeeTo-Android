@@ -1,5 +1,6 @@
 package seeto.c2.artoria.us.myapplication.Main;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -25,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     TextView memo_write_btn;
     TabLayout tabs;
     ViewPager viewPager;
+    ImageView main_option_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity
         todo_write_btn = findViewById(R.id.todo_write_btn);
         tabs = findViewById(R.id.main_tab);
         viewPager = findViewById(R.id.main_viewpager);
+        main_option_btn = findViewById(R.id.main_option_btn);
+
+        main_option_btn.setOnClickListener(v -> showOptionDialog() );
 
         viewpagerinit();
 
@@ -231,6 +238,29 @@ public class MainActivity extends AppCompatActivity
         ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌림", Toast.LENGTH_SHORT).show());
         todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도", Toast.LENGTH_SHORT).show());
 
+    }
+
+    @Override
+    public void showOptionDialog() {
+        Dialog dialog = new Dialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_options,null);
+        dialog.setContentView(R.layout.dialog_options);
+
+        TextView apply_btn = dialog.findViewById(R.id.dialog_options_apply_btn);
+        TextView cancel_btn = dialog.findViewById(R.id.dialog_options_cancel_btn);
+
+        dialog.show();
+
+        apply_btn.setOnClickListener(v -> {
+            Toast.makeText(this, "apply clicked", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        cancel_btn.setOnClickListener(v -> dialog.dismiss());
+
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCanceledOnTouchOutside(false);
     }
 
     @Override

@@ -7,6 +7,7 @@ public interface MainContract {
         void viewpagerinit();
         void navigationinit();
         void fabinit();
+        void showOptionDialog();
     }
 
     interface Presenter{

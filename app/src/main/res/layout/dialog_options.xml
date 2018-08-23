@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <android.support.constraint.ConstraintLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="330dp"
+        android:layout_height="450dp">
+
+        <TextView
+            android:id="@+id/dialog_options_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="23sp"
+            android:text="OPTIONS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/dialog_options_rg_title"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_options_title"
+            android:textSize="20sp"
+            android:text="ORDER BY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <RadioGroup
+            android:id="@+id/dialog_options_radiogroup"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_options_rg_title"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_marginBottom="10dp"
+                android:id="@+id/dialog_options_radio_ascending"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="Ascending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:layout_marginBottom="15dp"
+                android:id="@+id/dialog_options_radio_descending"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="Descending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:layout_marginBottom="15dp"
+                android:id="@+id/dialog_options_radio_lefttime"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="Left time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/dialog_options_radio_type"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="Type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="28dp"
+            android:id="@+id/dialog_options_sct"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/dialog_options_radiogroup"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:text="SHOW COMPLETED TODOS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Switch
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:scaleX="1.5"
+            android:scaleY="1.3"
+            app:layout_constraintTop_toBottomOf="@id/dialog_options_sct"/>
+
+        <TextView
+            android:id="@+id/dialog_options_cancel_btn"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dialog_options_apply_btn"
+            android:text="CANCEL"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/dialog_options_apply_btn"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            android:text="APPLY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
