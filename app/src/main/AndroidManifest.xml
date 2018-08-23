@@ -16,11 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Main.MainActivity"/>
         <activity android:name=".Store.StoreActivity"/>
         <activity android:name=".baseline.baseline.Activity.SignupActivity"/>
         <activity android:name=".Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan"/>
+=======
+        <activity android:name=".QM.ViewMemoActivity" />
+        <activity android:name=".QM.WriteMemoActivity"/>
+
+>>>>>>> See-To-Android-Quick-Memo
     </application>
 
 </manifest>
