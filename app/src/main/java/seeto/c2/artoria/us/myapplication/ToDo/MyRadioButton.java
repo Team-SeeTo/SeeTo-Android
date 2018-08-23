@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RadioGroup;
 
-public class MyRadioButton extends android.support.v7.widget.AppCompatRadioButton {
+public class MyRadioButton extends android.support.v7.widget.AppCompatRadioButton{
 
     public MyRadioButton(Context context) {
         super(context);

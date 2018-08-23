@@ -8,10 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.sql.Time;
-
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
 public class TimeLineFragment extends Fragment implements TImeLineContract.View {
     @Override

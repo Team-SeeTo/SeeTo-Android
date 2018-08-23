@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ToDo;
+package seeto.c2.artoria.us.myapplication.ToDo.TodoCreate;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.TodoItem;
 
 public class CreatedTodoListAdapter extends RecyclerView.Adapter<CreatedTodoListAdapter.CustomViewholder>{
     ArrayList<TodoItem> todoItems;

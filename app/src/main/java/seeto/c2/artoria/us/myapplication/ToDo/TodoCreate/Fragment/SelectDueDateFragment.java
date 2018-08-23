@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ToDo;
+package seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.Fragment;
 
 
 import android.os.Bundle;
@@ -6,12 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-import static seeto.c2.artoria.us.myapplication.ToDo.ToDoCreateActivity.viewPager;
+import static seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.CreateTodoActivity.viewPager;
 
 /**
  * A simple {@link Fragment} subclass.

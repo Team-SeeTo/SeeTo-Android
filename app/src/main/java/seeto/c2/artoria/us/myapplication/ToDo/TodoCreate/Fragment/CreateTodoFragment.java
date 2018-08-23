@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ToDo;
+package seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.Fragment;
 
 
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.CreatedTodoListAdapter;
+import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.TodoItem;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,8 +39,6 @@ public class CreateTodoFragment extends Fragment {
 
         RecyclerView createdTodoRecyclerView;
         createdTodoRecyclerView = view.findViewById(R.id.todo_create_recycler_view);
-//        for (int i = 0; i < 15; i++)
-//            items.add(new TodoItem("Hello world", true));
 
         final CreatedTodoListAdapter todoListAdapter = new CreatedTodoListAdapter(items);
         createdTodoRecyclerView.setAdapter(todoListAdapter);
@@ -60,6 +60,15 @@ public class CreateTodoFragment extends Fragment {
                 }
             }
         });
+
+        TextView finish = view.findViewById(R.id.todo_finish);
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
+
         return view;
     }
 
@@ -74,9 +83,5 @@ public class CreateTodoFragment extends Fragment {
 
     void addMilestone(String text) {
         items.add(new TodoItem(text, false));
-    }
-
-    String getTest(){
-        return inputText.getText().toString()
     }
 }

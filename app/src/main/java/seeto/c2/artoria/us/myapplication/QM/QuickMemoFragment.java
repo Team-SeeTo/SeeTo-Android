@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 
 public class QuickMemoFragment extends Fragment implements QuickMemoContract.View{
     @Override

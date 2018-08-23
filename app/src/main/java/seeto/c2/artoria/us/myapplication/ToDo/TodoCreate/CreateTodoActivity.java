@@ -1,18 +1,14 @@
-package seeto.c2.artoria.us.myapplication.ToDo;
+package seeto.c2.artoria.us.myapplication.ToDo.TodoCreate;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-public class ToDoCreateActivity extends AppCompatActivity {
+public class CreateTodoActivity extends AppCompatActivity {
 
     private MaterialBetterSpinner materialBetterSpinner;
     public static ViewPager viewPager;

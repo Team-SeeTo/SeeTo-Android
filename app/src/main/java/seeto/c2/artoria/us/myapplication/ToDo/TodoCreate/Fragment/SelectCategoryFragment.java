@@ -1,5 +1,4 @@
-package seeto.c2.artoria.us.myapplication.ToDo;
-
+package seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,47 +12,38 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-import static seeto.c2.artoria.us.myapplication.ToDo.ToDoCreateActivity.viewPager;
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class SelectModeFragment extends Fragment {
+import static seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.CreateTodoActivity.viewPager;
 
 
-    public SelectModeFragment() {
-        // Required empty public constructor
-    }
+public class SelectCategoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_select_mode, container, false);
-        String[] modeList = {
-                "Standard", "Hard", "Unlimited"
+        View view = inflater.inflate(R.layout.fragment_select_category, container, false);
+        String[] categoryList = {
+                "IT", "Life", "Food"
         };
 
-        ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.support_simple_spinner_dropdown_item,
-                modeList
+                categoryList
         );
 
         MaterialBetterSpinner materialBetterSpinner;
 
-        materialBetterSpinner = view.findViewById(R.id.mode_spinner);
-        materialBetterSpinner.setAdapter(modeAdapter);
-        materialBetterSpinner.setText(modeAdapter.getItem(0).toString());
+        materialBetterSpinner = view.findViewById(R.id.category_spinner);
+        materialBetterSpinner.setAdapter(categoryAdapter);
+        materialBetterSpinner.setText(categoryAdapter.getItem(0).toString());
 
-        TextView nextText = (TextView) view.findViewById(R.id.mode_next);
+        TextView nextText = (TextView) view.findViewById(R.id.category_next);
         nextText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(getItem(+1));
+                viewPager.setCurrentItem(getItem(1));
             }
         });
-
         return view;
     }
 
@@ -61,11 +51,9 @@ public class SelectModeFragment extends Fragment {
         return viewPager.getCurrentItem() + i;
     }
 
-    public static SelectModeFragment newInstance() {
-
+    public static SelectCategoryFragment newInstance() {
+        SelectCategoryFragment fragment = new SelectCategoryFragment();
         Bundle args = new Bundle();
-
-        SelectModeFragment fragment = new SelectModeFragment();
         fragment.setArguments(args);
         return fragment;
     }
