@@ -35,17 +35,17 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (viewType) {
             case 0:
                 item = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.todo_item, parent, false
+                        R.layout.item_todo, parent, false
                 );
                 return new NoLimitItemViewHolder(item);
             case 1:
                 item = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.todo_common_limit_item, parent, false
+                        R.layout.item_todo_common_limit, parent, false
                 );
                 return new CommonLimitItemViewHolder(item);
             case 2:
                 item = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.todo_hard_list_item, parent, false
+                        R.layout.item_todo_hard_list, parent, false
                 );
                 return new HardLimitItemViewHolder(item);
         }

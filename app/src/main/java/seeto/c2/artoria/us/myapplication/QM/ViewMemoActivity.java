@@ -35,6 +35,7 @@ public class ViewMemoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ViewMemoActivity.this, WriteMemoActivity.class);
                 startActivity(intent);
+                
 //                Intent intent = new Intent(ViewMemoActivity.this, WriteMemoActivity.class);
 //                ViewMemoActivity.this.startActivity(intent);
             }

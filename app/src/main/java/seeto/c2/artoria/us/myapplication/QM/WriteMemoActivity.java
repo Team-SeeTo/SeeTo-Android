@@ -50,8 +50,7 @@ public class WriteMemoActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(WriteMemoActivity.this, ViewMemoActivity.class);
-                                startActivity(intent);
+                                finish();
                             }
                         }).setNegativeButton("취소",
                         new DialogInterface.OnClickListener() {
