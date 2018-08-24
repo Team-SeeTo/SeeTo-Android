@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ import org.w3c.dom.Text;
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
+import seeto.c2.artoria.us.myapplication.QM.WriteMemoActivity;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.TimeLine.TimeLineFragment;
@@ -42,6 +45,20 @@ public class MainActivity extends AppCompatActivity
     TabLayout tabs;
     ViewPager viewPager;
     ImageView main_option_btn;
+    FloatingActionButton main_fab;
+    FloatingActionButton memo_fab;
+    FloatingActionButton ideas_fab;
+    FloatingActionButton todo_fab;
+
+
+    Animation mainfab_animation1;
+    Animation mainfab_animation2;
+    Animation memofab_animation1;
+    Animation memofab_animation2;
+    Animation ideasfab_animaition1;
+    Animation ideasfab_animaition2;
+    Animation todofab_animation1;
+    Animation todofab_animation2;
 
 
 
@@ -56,12 +73,19 @@ public class MainActivity extends AppCompatActivity
         tabs = findViewById(R.id.main_tab);
         viewPager = findViewById(R.id.main_viewpager);
         main_option_btn = findViewById(R.id.main_option_btn);
+        main_fab = findViewById(R.id.main_fab);
+        memo_fab = findViewById(R.id.memo_fab);
+        ideas_fab = findViewById(R.id.ideas_fab);
+        todo_fab = findViewById(R.id.todo_fab);
+
 
         main_option_btn.setOnClickListener(v -> showOptionDialog() );
 
         viewpagerinit();
 
         navigationinit();
+
+        anmationinit();
 
         fabinit();
 
@@ -114,128 +138,25 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void fabinit() {
-        //        final View view = findViewById(R.id.memo_view);
-        final FloatingActionButton main_fab = findViewById(R.id.main_fab);
-        final FloatingActionButton memo_fab = findViewById(R.id.memo_fab);
-        final FloatingActionButton ideas_fab = findViewById(R.id.ideas_fab);
-        final FloatingActionButton todo_fab = findViewById(R.id.todo_fab);
 
         main_fab.bringToFront();
 
-
-
-        final Animation mainfab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim1);
-        final Animation mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim2);
-
-        final Animation memofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim1);
-
-        memofab_animation1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                memo_write_btn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        final Animation memofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim2);
-
-        final Animation ideasfab_animaition1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim1);
-
-        ideasfab_animaition1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-                ideas_write_btn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        final Animation ideasfab_animaition2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim2);
-
-        final Animation todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim1);
-
-        todofab_animation1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                todo_write_btn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        final Animation todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
-
         main_fab.setOnClickListener(v -> {
-            if (!flag) {
-                flag = true;
-                main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
-                main_fab.startAnimation(mainfab_animation1);
-                memo_fab.startAnimation(memofab_animation1);
-                ideas_fab.startAnimation(ideasfab_animaition1);
-                todo_fab.startAnimation(todofab_animation1);
-
-                viewPager.setClickable(false);
-                viewPager.setOnTouchListener((view, motionEvent) -> true);
-                viewPager.setEnabled(false);
-
-
-                main_fab.invalidate();
-                memo_fab.invalidate();
-                ideas_fab.invalidate();
-                todo_fab.invalidate();
-            } else {
-                flag = false;
-                main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                main_fab.startAnimation(mainfab_animation2);
-                memo_fab.startAnimation(memofab_animation2);
-                ideas_fab.startAnimation(ideasfab_animaition2);
-                todo_fab.startAnimation(todofab_animation2);
-
-                memo_write_btn.setVisibility(View.INVISIBLE);
-                ideas_write_btn.setVisibility(View.INVISIBLE);
-                todo_write_btn.setVisibility(View.INVISIBLE);
-
-                viewPager.setClickable(true);
-                viewPager.setOnTouchListener((view, motionEvent) -> false);
-                viewPager.setEnabled(true);
-
-                main_fab.invalidate();
-                memo_fab.invalidate();
-                ideas_fab.invalidate();
-                todo_fab.invalidate();
-            }
+           main_fabclicked();
         });
 
-<<<<<<< HEAD
-        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌림", Toast.LENGTH_SHORT).show());
+        memo_write_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, WriteMemoActivity.class);
+            startActivity(intent);
+            main_fabclicked();
+        });
         ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌림", Toast.LENGTH_SHORT).show());
-        todo_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도", Toast.LENGTH_SHORT).show());
+        todo_write_btn.setOnClickListener(v -> {
+            Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
+            startActivity(todoCreateIntent);
+            main_fabclicked();
+
+        });
 
     }
 
@@ -256,18 +177,120 @@ public class MainActivity extends AppCompatActivity
         });
 
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
-=======
-        memo_write_btn.setOnClickListener(v -> Toast.makeText(this, "눌리냐?", Toast.LENGTH_SHORT).show());
-        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌리냐?", Toast.LENGTH_SHORT).show());
-        todo_write_btn.setOnClickListener(v -> {
-            Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
-            startActivity(todoCreateIntent);
-        });
->>>>>>> SeeTo-Android-ToDoList
+
 
         Window window = dialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCanceledOnTouchOutside(false);
+    }
+
+    @Override
+    public void anmationinit() {
+
+
+        mainfab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim1);
+        mainfab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_fab_rotate_anim2);
+        memofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim1);
+        memofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.memo_fab_scale_anim2);
+        ideasfab_animaition1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim1);
+        ideasfab_animaition2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ideas_fab_scale_anim2);
+        todofab_animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim1);
+        todofab_animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.todo_fab_scale_anim2);
+
+        memofab_animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                memo_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        ideasfab_animaition1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                ideas_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+
+        todofab_animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                todo_write_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+    @Override
+    public void main_fabclicked() {
+        if (!flag) {
+            flag = true;
+            main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
+            main_fab.startAnimation(mainfab_animation1);
+            memo_fab.startAnimation(memofab_animation1);
+            ideas_fab.startAnimation(ideasfab_animaition1);
+            todo_fab.startAnimation(todofab_animation1);
+
+            viewPager.setClickable(false);
+            viewPager.setOnTouchListener((view, motionEvent) -> true);
+            viewPager.setEnabled(false);
+
+
+            main_fab.invalidate();
+            memo_fab.invalidate();
+            ideas_fab.invalidate();
+            todo_fab.invalidate();
+        } else {
+            flag = false;
+            main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+            main_fab.startAnimation(mainfab_animation2);
+            memo_fab.startAnimation(memofab_animation2);
+            ideas_fab.startAnimation(ideasfab_animaition2);
+            todo_fab.startAnimation(todofab_animation2);
+
+            memo_write_btn.setVisibility(View.INVISIBLE);
+            ideas_write_btn.setVisibility(View.INVISIBLE);
+            todo_write_btn.setVisibility(View.INVISIBLE);
+
+            viewPager.setClickable(true);
+            viewPager.setOnTouchListener((view, motionEvent) -> false);
+            viewPager.setEnabled(true);
+
+            main_fab.invalidate();
+            memo_fab.invalidate();
+            ideas_fab.invalidate();
+            todo_fab.invalidate();
+        }
     }
 
     @Override

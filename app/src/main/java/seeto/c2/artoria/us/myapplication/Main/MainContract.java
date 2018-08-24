@@ -8,6 +8,8 @@ public interface MainContract {
         void navigationinit();
         void fabinit();
         void showOptionDialog();
+        void anmationinit();
+        void main_fabclicked();
     }
 
     interface Presenter{

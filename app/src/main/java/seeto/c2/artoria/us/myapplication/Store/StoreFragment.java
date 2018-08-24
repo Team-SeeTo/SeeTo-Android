@@ -49,11 +49,11 @@ public class StoreFragment extends Fragment implements StoreContract.View{
 
 
     @Override
-<<<<<<< HEAD
     public void showToast(String text) {
-=======
+
+    }
+
     public void showToast() {
->>>>>>> SeeTo-Android-ToDoList
 
     }
 }

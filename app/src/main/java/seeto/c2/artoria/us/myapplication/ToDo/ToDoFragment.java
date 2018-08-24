@@ -37,10 +37,6 @@ public class TodoFragment extends Fragment implements TodoContract.View {
     }
 
     @Override
-    public void showToast() {
-    }
-
-    @Override
     public void todolistinit() {
         ArrayList<Object> data = new ArrayList<>();
         ListAdapter listAdapter = new ListAdapter(data);

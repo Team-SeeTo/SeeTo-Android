@@ -9,16 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-<<<<<<< HEAD
 import java.sql.Time;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.ToDo.ToDoFragment;
 import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.TimeLineItem;
-=======
 import seeto.c2.artoria.us.myapplication.R;
->>>>>>> SeeTo-Android-ToDoList
 
 public class TimeLineFragment extends Fragment implements TImeLineContract.View {
 
