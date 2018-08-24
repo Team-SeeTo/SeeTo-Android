@@ -44,12 +44,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item items = item.get(position);
         holder.previewText.setText(items.getPreviewText());
-        holder.container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ViewMemoActivity.class);
-                v.getContext().startActivity(intent);
-            }
+        holder.container.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ViewMemoActivity.class);
+            v.getContext().startActivity(intent);
         });
     }
 

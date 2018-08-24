@@ -23,6 +23,10 @@
         <activity android:name=".Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name=".Ideas.IdeasSelectCategoryActivity"/>
+
+        <activity android:name=".Ideas.IdeasWriteActivity"/>
+
         <activity android:name=".QM.ViewMemoActivity" />
         <activity android:name=".QM.WriteMemoActivity"/>
 

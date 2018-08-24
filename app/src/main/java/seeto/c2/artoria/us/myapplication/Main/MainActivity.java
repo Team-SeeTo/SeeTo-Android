@@ -26,6 +26,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
+import seeto.c2.artoria.us.myapplication.Ideas.IdeasSelectCategoryActivity;
 import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.QM.WriteMemoActivity;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity
         tabs = findViewById(R.id.main_tab);
         viewPager = findViewById(R.id.main_viewpager);
         main_option_btn = findViewById(R.id.main_option_btn);
+
         main_fab = findViewById(R.id.main_fab);
         memo_fab = findViewById(R.id.memo_fab);
         ideas_fab = findViewById(R.id.ideas_fab);
@@ -150,7 +152,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             main_fabclicked();
         });
-        ideas_write_btn.setOnClickListener(v -> Toast.makeText(this, "이것도 눌림", Toast.LENGTH_SHORT).show());
+
+        ideas_write_btn.setOnClickListener(v -> {
+            Intent ideasWriteIntent = new Intent(MainActivity.this, IdeasSelectCategoryActivity.class);
+            startActivity(ideasWriteIntent);
+            main_fabclicked();
+        });
+
         todo_write_btn.setOnClickListener(v -> {
             Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
             startActivity(todoCreateIntent);

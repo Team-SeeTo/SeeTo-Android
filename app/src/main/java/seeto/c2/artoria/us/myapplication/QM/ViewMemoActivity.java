@@ -30,15 +30,12 @@ public class ViewMemoActivity extends AppCompatActivity {
 
         editfab.bringToFront();
 
-        editfab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewMemoActivity.this, WriteMemoActivity.class);
-                startActivity(intent);
-                
+        editfab.setOnClickListener(v -> {
+            Intent intent = new Intent(ViewMemoActivity.this, WriteMemoActivity.class);
+            startActivity(intent);
+
 //                Intent intent = new Intent(ViewMemoActivity.this, WriteMemoActivity.class);
 //                ViewMemoActivity.this.startActivity(intent);
-            }
         });
     }
 }

@@ -29,40 +29,34 @@ public class WriteMemoActivity extends AppCompatActivity {
         Button btn_finish = (Button)findViewById(R.id.finishButton);
         ImageButton btn_cancel = (ImageButton)findViewById(R.id.xIcon);
 
-        btn_finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btn_finish.setOnClickListener(v -> {
 
-                if(contentEditText.getText().toString().isEmpty()){
-                    Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_LONG).show();
-                    finish();
-                }
+            if(contentEditText.getText().toString().isEmpty()){
+                Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(WriteMemoActivity.this);
-                alert_confirm.setMessage("작성을 취소하시겠습니까?").setCancelable(false).setPositiveButton("확인",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        }).setNegativeButton("취소",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // 'No'
-                                return;
-                            }
-                        });
-                AlertDialog alert = alert_confirm.create();
-                alert.show();
-            }
+        btn_cancel.setOnClickListener(v -> {
+            AlertDialog.Builder alert_confirm = new AlertDialog.Builder(WriteMemoActivity.this);
+            alert_confirm.setMessage("작성을 취소하시겠습니까?").setCancelable(false).setPositiveButton("확인",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("취소",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // 'No'
+                            return;
+                        }
+                    });
+            AlertDialog alert = alert_confirm.create();
+            alert.show();
         });
 
     }
