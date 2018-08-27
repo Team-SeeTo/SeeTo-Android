@@ -10,6 +10,7 @@ public interface MainContract {
         void showOptionDialog();
         void anmationinit();
         void main_fabclicked();
+        void showSearchDialog();
     }
 
     interface Presenter{

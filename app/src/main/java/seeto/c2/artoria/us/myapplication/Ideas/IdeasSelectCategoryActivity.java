@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -12,7 +12,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import seeto.c2.artoria.us.myapplication.R;
 
-import static seeto.c2.artoria.us.myapplication.ToDo.TodoCreate.CreateTodoActivity.viewPager;
+
 
 public class IdeasSelectCategoryActivity extends AppCompatActivity {
 
@@ -46,6 +46,7 @@ public class IdeasSelectCategoryActivity extends AppCompatActivity {
         materialBetterSpinner = findViewById(R.id.category_spinner);
         materialBetterSpinner.setAdapter(categoryAdapter);
         materialBetterSpinner.setText(categoryAdapter.getItem(0).toString());
+        materialBetterSpinner.setTextSize(20);
 
         TextView nextText = (TextView) findViewById(R.id.category_next);
 

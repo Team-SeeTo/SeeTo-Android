@@ -13,15 +13,21 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.w3c.dom.Text;
 
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity
     TabLayout tabs;
     ViewPager viewPager;
     ImageView main_option_btn;
+    ImageView main_search_btn;
     FloatingActionButton main_fab;
     FloatingActionButton memo_fab;
     FloatingActionButton ideas_fab;
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity
         tabs = findViewById(R.id.main_tab);
         viewPager = findViewById(R.id.main_viewpager);
         main_option_btn = findViewById(R.id.main_option_btn);
+        main_search_btn = findViewById(R.id.main_search_btn);
 
         main_fab = findViewById(R.id.main_fab);
         memo_fab = findViewById(R.id.memo_fab);
@@ -82,6 +90,8 @@ public class MainActivity extends AppCompatActivity
 
 
         main_option_btn.setOnClickListener(v -> showOptionDialog() );
+
+        main_search_btn.setOnClickListener(v -> showSearchDialog() );
 
         viewpagerinit();
 
@@ -99,7 +109,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_shop_btn:
                 Intent intent = new Intent(MainActivity.this, StoreActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
         }
         return false;
     }
@@ -299,6 +309,22 @@ public class MainActivity extends AppCompatActivity
             ideas_fab.invalidate();
             todo_fab.invalidate();
         }
+    }
+
+    @Override
+    public void showSearchDialog() {
+        DialogPlus dialogPlus = DialogPlus.newDialog(this)
+                .setGravity(Gravity.TOP)
+                .setContentHolder(new ViewHolder(R.layout.dialog_search))
+                .setCancelable(true)
+                .create();
+
+        EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
+        search_et.setFocusableInTouchMode(true);
+        search_et.requestFocus();
+
+
+        dialogPlus.show();
     }
 
     @Override
