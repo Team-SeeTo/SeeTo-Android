@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp">
 
-    <seeto.c2.artoria.us.myapplication.ToDo.MyRadioButton
+    <seeto.c2.artoria.us.myapplication.ui.ToDo.MyRadioButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

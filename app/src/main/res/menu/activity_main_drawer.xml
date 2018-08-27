@@ -4,19 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
+        <QMItem
             android:id="@+id/navigation_shop_btn"
             android:icon="@drawable/baseline_shopping_cart_black_24dp"
             android:title="Items" />
-        <item
+        <QMItem
             android:id="@+id/navigation_leaderboard_btn"
             android:icon="@drawable/baseline_whatshot_white_24dp"
             android:title="Leaderboard" />
-        <item
+        <QMItem
             android:id="@+id/navigation_mirror_btn"
             android:icon="@drawable/baseline_insert_chart_outlined_white_24dp"
             android:title="Mirror" />
-        <item
+        <QMItem
             android:id="@+id/navigation_settings_btn"
             android:icon="@drawable/baseline_settings_white_24dp"
             android:title="Settings" />

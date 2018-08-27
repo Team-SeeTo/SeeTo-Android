@@ -4,9 +4,9 @@
     <!--TODO 아이템에 이미지 넣기-->
 
     <!--체크 상태 아이템-->
-    <item android:drawable="@drawable/clicked_check_icon" android:state_checked="true"/>
+    <QMItem android:drawable="@drawable/clicked_check_icon" android:state_checked="true"/>
     <!--체크 해제 상태 아이템-->
-    <item android:drawable="@drawable/unclicked_check_icon" android:state_checked="false"/>
+    <QMItem android:drawable="@drawable/unclicked_check_icon" android:state_checked="false"/>
     <!--default 상태-->
-    <item android:drawable="@drawable/unclicked_check_icon"/>
+    <QMItem android:drawable="@drawable/unclicked_check_icon"/>
 </selector>
