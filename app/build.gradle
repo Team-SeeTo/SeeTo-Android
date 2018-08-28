@@ -61,4 +61,7 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
     implementation 'com.orhanobut:dialogplus:1.11@aar'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }
