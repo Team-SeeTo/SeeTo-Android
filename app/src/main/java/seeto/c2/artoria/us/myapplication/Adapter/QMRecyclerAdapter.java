@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.Item.QMItem;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.ui.QM.ViewMemoActivity;
+import seeto.c2.artoria.us.myapplication.UI.QM.ViewMemoActivity;
 
 import static android.media.CamcorderProfile.get;
 

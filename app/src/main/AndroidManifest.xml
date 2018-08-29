@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Signin_Signup.SigninActivity">
+        <activity android:name=".UI.Signin_Signup.SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,20 +17,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.Main.MainActivity"/>
-        <activity android:name=".ui.Store.StoreActivity"/>
-        <activity android:name=".ui.Signin_Signup.SignupActivity"/>
-        <activity android:name=".ui.Ideas.IdeasViewDetailActivity"
+        <activity android:name=".UI.Main.MainActivity"/>
+        <activity android:name=".UI.Store.StoreActivity"/>
+        <activity android:name=".UI.Signin_Signup.SignupActivity"/>
+        <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name=".ui.Ideas.IdeasSelectCategoryActivity"/>
+        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity"/>
 
-        <activity android:name=".ui.Ideas.IdeasWriteActivity"/>
+        <activity android:name=".UI.Ideas.IdeasWriteActivity"/>
 
-        <activity android:name=".ui.QM.ViewMemoActivity" />
-        <activity android:name=".ui.QM.WriteMemoActivity"/>
+        <activity android:name=".UI.QM.ViewMemoActivity" />
+        <activity android:name=".UI.QM.WriteMemoActivity"/>
 
-        <activity android:name=".ui.ToDo.TodoCreate.CreateTodoActivity"
+        <activity android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
             android:windowSoftInputMode="adjustPan"/>
 
     </application>

@@ -29,7 +29,7 @@
             <View
                 android:layout_width="150dp"
                 android:layout_height="35dp"
-                android:background="#BF9BFF"
+                android:background="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ECEDEF"
-        app:layout_constraintBottom_toTopOf="@id/store_tabs"
+        app:layout_constraintBottom_toTopOf="@+id/store_tabs"
         app:layout_constraintTop_toBottomOf="@id/store_toolbar"/>
 
 

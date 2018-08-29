@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import seeto.c2.artoria.us.myapplication.ui.Ideas.IdeasViewDetailActivity;
+import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasViewDetailActivity;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
 

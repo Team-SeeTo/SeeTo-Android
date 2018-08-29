@@ -3,9 +3,9 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <QMItem name="colorPrimary">@color/colorPrimary</QMItem>
-        <QMItem name="colorPrimaryDark">@color/colorPrimaryDark</QMItem>
-        <QMItem name="colorAccent">@color/colorAccent</QMItem>
-        <QMItem name="android:statusBarColor">@color/colorPrimary</QMItem>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 </resources>

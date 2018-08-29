@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <QMItem android:drawable="@color/colorAccent"/>
+    <item android:drawable="@color/colorAccent"/>
 
-    <QMItem android:top="200dp"
+    <item android:top="200dp"
         android:bottom="-300dp"
         android:left="0dp"
         android:right="-300dp">
@@ -18,5 +18,5 @@
                     tools:targetApi="lollipop" />
             </shape>
         </rotate>
-    </QMItem>
+    </item>
 </layer-list>
