@@ -29,6 +29,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
+import seeto.c2.artoria.us.myapplication.LeaderBoard.LeaderBoardActivity;
 import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.R;
@@ -71,9 +72,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.navigation_shop_btn:
-                Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                intent = new Intent(MainActivity.this, StoreActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.navigation_leaderboard_btn:
+                intent = new Intent(MainActivity.this, LeaderBoardActivity.class);
                 startActivity(intent);
                 finish();
         }
