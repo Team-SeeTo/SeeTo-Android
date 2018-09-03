@@ -175,6 +175,8 @@ public class MainActivity extends AppCompatActivity
 
         });
 
+        fab_background.setOnClickListener(v -> main_fabclicked());
+
     }
 
     @Override
@@ -279,7 +281,7 @@ public class MainActivity extends AppCompatActivity
             todo_fab.startAnimation(todofab_animation1);
 
             fab_background.setVisibility(View.VISIBLE);
-            
+
             main_fab.invalidate();
             memo_fab.invalidate();
             ideas_fab.invalidate();
@@ -304,6 +306,7 @@ public class MainActivity extends AppCompatActivity
             todo_fab.invalidate();
         }
     }
+    
 
     @Override
     public void showSearchDialog() {
