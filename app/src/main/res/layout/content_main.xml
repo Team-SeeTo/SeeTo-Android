@@ -100,6 +100,13 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <View
+            android:id="@+id/fab_background"
+            android:background="#44000000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/todo_fab"
             android:layout_width="wrap_content"
