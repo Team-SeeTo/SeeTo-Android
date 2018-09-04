@@ -35,3 +35,5 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
     }
 
 }
+
+

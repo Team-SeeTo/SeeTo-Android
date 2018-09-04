@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity
             todo_fab.invalidate();
         }
     }
-    
+
 
     @Override
     public void showSearchDialog() {

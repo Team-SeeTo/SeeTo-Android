@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate;
+package seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

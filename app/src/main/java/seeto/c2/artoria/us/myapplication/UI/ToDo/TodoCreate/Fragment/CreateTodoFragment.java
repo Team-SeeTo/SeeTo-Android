@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreatedTodoListAdapter;
+import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.CreatedTodoListAdapter;
 import seeto.c2.artoria.us.myapplication.Item.TodoItem;
 
 /**

@@ -1,5 +1,4 @@
-
-package seeto.c2.artoria.us.myapplication.UI.ToDo;
+package seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +11,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.ToDo.MyRadioButton;
+import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
 
 public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ArrayList<Object> data;
 
-    TodoRecyclerAdapter(ArrayList<Object> data) {
+    public TodoRecyclerAdapter(ArrayList<Object> data) {
         this.data = data;
     }
 
@@ -81,7 +82,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
-    class NoLimitItemViewHolder extends RecyclerView.ViewHolder {
+    public class NoLimitItemViewHolder extends RecyclerView.ViewHolder {
         TextView header;
         public MyRadioButton radioButton;
         boolean flag;
@@ -95,7 +96,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
-    class CommonLimitItemViewHolder extends RecyclerView.ViewHolder {
+    public class CommonLimitItemViewHolder extends RecyclerView.ViewHolder {
         TextView header, listInfo;
 
         CommonLimitItemViewHolder(View itemView) {
@@ -105,7 +106,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    class HardLimitItemViewHolder extends RecyclerView.ViewHolder {
+    public class HardLimitItemViewHolder extends RecyclerView.ViewHolder {
         TextView header, listInfo;
 
         HardLimitItemViewHolder(View itemView) {
@@ -116,3 +117,6 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 }
+
+
+
