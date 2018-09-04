@@ -115,7 +115,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/dialog_options_apply_btn"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_options_apply_btn"
             android:text="CANCEL"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"

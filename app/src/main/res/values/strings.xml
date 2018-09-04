@@ -1,6 +1,14 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">My Application</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">SeeTo</string>
+
+>>>>>>> master
 </resources>

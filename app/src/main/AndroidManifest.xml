@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".baseline.baseline.Activity.SigninActivity">
+        <activity android:name=".UI.Signin_Signup.SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".Store.StoreActivity" />
         <activity android:name=".baseline.baseline.Activity.SignupActivity" />
@@ -23,6 +24,25 @@
             android:name=".Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LeaderBoard.LeaderBoardActivity"></activity>
+=======
+
+        <activity android:name=".UI.Main.MainActivity"/>
+        <activity android:name=".UI.Store.StoreActivity"/>
+        <activity android:name=".UI.Signin_Signup.SignupActivity"/>
+        <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity"/>
+
+        <activity android:name=".UI.Ideas.IdeasWriteActivity"/>
+
+        <activity android:name=".UI.QM.ViewMemoActivity" />
+        <activity android:name=".UI.QM.WriteMemoActivity"/>
+
+        <activity android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
+>>>>>>> master
     </application>
 
 </manifest>
