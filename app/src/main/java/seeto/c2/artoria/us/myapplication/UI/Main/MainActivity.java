@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,21 +26,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
-<<<<<<< HEAD:app/src/main/java/seeto/c2/artoria/us/myapplication/Main/MainActivity.java
-import seeto.c2.artoria.us.myapplication.Ideas.IdeasFragment;
-import seeto.c2.artoria.us.myapplication.LeaderBoard.LeaderBoardActivity;
-import seeto.c2.artoria.us.myapplication.Main.ViewPagerAdapter.CustomViewPagerAdapter;
-import seeto.c2.artoria.us.myapplication.QM.QuickMemoFragment;
-=======
+import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
+
+
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasSelectCategoryActivity;
 import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.UI.QM.WriteMemoActivity;
->>>>>>> master:app/src/main/java/seeto/c2/artoria/us/myapplication/UI/Main/MainActivity.java
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;

@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.LeaderBoard;
+package seeto.c2.artoria.us.myapplication.UI.LeaderBoard;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
