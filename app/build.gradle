@@ -15,6 +15,7 @@ repositories {
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -64,4 +65,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.apollographql.apollo:apollo-runtime:0.4.1'
+    implementation 'com.apollographql.apollo:apollo-android-support:0.4.1'
+    implementation 'com.ramkishorevs.graphqlretrofitconverter:graphqlconverter:1.0.0'
 }

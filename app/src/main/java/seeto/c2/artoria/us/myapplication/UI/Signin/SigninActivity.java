@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.UI.Signin_Signup;
+package seeto.c2.artoria.us.myapplication.UI.Signin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import android.widget.TextView;
 
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.Signup.SignupActivity;
 
-public class SigninActivity extends AppCompatActivity {
+public class SigninActivity extends AppCompatActivity implements SigninContract.View {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +29,10 @@ public class SigninActivity extends AppCompatActivity {
             Intent intent = new Intent(SigninActivity.this,SignupActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void showToast(String text) {
+
     }
 }
