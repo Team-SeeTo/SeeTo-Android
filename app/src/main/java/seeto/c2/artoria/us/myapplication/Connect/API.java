@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import seeto.c2.artoria.us.myapplication.Model.TokenModel;
 
 public interface API {
 
@@ -18,5 +19,8 @@ public interface API {
     @GraphQuery("register")
     Call<Void> Register(@Body QueryContainerBuilder queryContainerBuilder);
 
+    @POST("/graphql")
+    @GraphQuery("login")
+    Call<TokenModel> Signin(@Body QueryContainerBuilder queryContainerBuilder);
 
 }

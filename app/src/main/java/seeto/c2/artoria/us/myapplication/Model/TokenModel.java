@@ -20,4 +20,8 @@ public class TokenModel {
     public String getRefreshToken() {
         return refreshToken;
     }
+
+    public JsonObject getAuth() {
+        return auth;
+    }
 }

@@ -8,6 +8,6 @@ public interface SigninContract {
     }
 
     interface Presenter{
-
+         void SigninRequest(String email, String password);
     }
 }
