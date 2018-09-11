@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="170dp">
+
+        <EditText
+            android:id="@+id/dialog_search_et"
+            android:backgroundTint="#fff"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:hint=" Search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginRight="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_search_white"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>
