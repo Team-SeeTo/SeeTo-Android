@@ -13,6 +13,7 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'me.tatarka.retrolambda'
 
 
@@ -68,4 +69,5 @@ dependencies {
     implementation 'com.apollographql.apollo:apollo-runtime:0.4.1'
     implementation 'com.apollographql.apollo:apollo-android-support:0.4.1'
     implementation 'com.ramkishorevs.graphqlretrofitconverter:graphqlconverter:1.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

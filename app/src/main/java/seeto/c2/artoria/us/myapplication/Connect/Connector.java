@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Connector{
     private Retrofit retrofit;
     private API api;
-    private String url = "https://seeto.herokuapp.com/";
+    private String url = "http://seeto.herokuapp.com/";
     private Context context;
 
     public Connector(Context context) {

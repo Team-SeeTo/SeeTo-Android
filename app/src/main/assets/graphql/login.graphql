@@ -1,7 +1,7 @@
 mutation Auth($email : String, $password : String){
-  auth(email : $email, password : $password){
-    accessToken
-    refreshToken
-    message
-  }
-}
+   auth(email : $email, password : $password){
+     accessToken
+     refreshToken
+     message
+   }
+ }
