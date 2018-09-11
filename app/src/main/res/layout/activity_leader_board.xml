@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/leader_board_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/leader_board_collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="pin">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/leader-board-ranker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:id="@+id/second_grade_profile"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/user_profile"
+                            app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"/>
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/leader_board_rank"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@id/second_grade_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/second_grade_profile" />
+
+                        <View
+                            android:id="@+id/third_grade_profile"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/user_profile"
+                            app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/leader_board_rank"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@id/third_grade_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/third_grade_profile" />
+
+                        <View
+                            android:id="@+id/first_grade_profile"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
+                            android:background="@drawable/user_profile"
+                            app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"/>
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/leader_board_rank"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@id/first_grade_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/first_grade_profile" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/ranker_guideline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="96dp" />
+
+                        <TextView
+                            android:id="@+id/second_grade_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lewis"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@+id/second_grade_profile"
+                            app:layout_constraintLeft_toLeftOf="@+id/second_grade_profile"
+                            app:layout_constraintRight_toRightOf="@id/second_grade_profile" />
+
+                        <TextView
+                            android:id="@+id/first_grade_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lewis"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@+id/first_grade_profile"
+                            app:layout_constraintLeft_toLeftOf="@+id/first_grade_profile"
+                            app:layout_constraintRight_toRightOf="@id/first_grade_profile"/>
+
+                        <TextView
+                            android:id="@+id/third_grade_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lewis"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@+id/third_grade_profile"
+                            app:layout_constraintLeft_toLeftOf="@+id/third_grade_profile"
+                            app:layout_constraintRight_toRightOf="@id/third_grade_profile"/>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/my_rank_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MyRank"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintTop_toBottomOf="@+id/leader-board-ranker"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/my_rank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:paddingBottom="15dp"
+                        app:layout_constraintTop_toBottomOf="@+id/my_rank_title">
+
+                        <TextView
+                            android:id="@+id/my_rank_rank_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:text="Rank"
+                            app:layout_constraintLeft_toLeftOf="@+id/my_rank_num"/>
+
+                        <TextView
+                            android:id="@+id/my_rank_total_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:text="Total"
+                            app:layout_constraintLeft_toLeftOf="@+id/my_rank_total_num"/>
+
+                        <TextView
+                            android:id="@+id/my_rank_top_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:text="Top"
+                            app:layout_constraintLeft_toLeftOf="@+id/my_rank_top_percent"/>
+
+                        <TextView
+                            android:id="@+id/my_rank_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="50dp"
+                            android:text="#23"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_rank_rank_title"/>
+
+                        <TextView
+                            android:id="@+id/my_rank_total_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="50dp"
+                            android:text="1260p"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_rank_total_title"/>
+
+                        <TextView
+                            android:id="@+id/my_rank_top_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="50dp"
+                            android:text="8%"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_rank_top_title"/>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/leader_board_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    app:layout_collapseMode="pin">
+                    <TextView
+                        android:id="@+id/leader-board-title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LeaderBoards"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/leader_board_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+</android.support.design.widget.CoordinatorLayout>

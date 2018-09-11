@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +26,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
+
+import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
+
 
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasSelectCategoryActivity;
@@ -104,9 +109,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.navigation_shop_btn:
-                Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                intent = new Intent(MainActivity.this, StoreActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.navigation_leaderboard_btn:
+                intent = new Intent(MainActivity.this, LeaderBoardActivity.class);
                 startActivity(intent);
 //                finish();
         }

@@ -118,5 +118,3 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 }
 
-
-

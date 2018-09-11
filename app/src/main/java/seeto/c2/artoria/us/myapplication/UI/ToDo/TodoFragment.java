@@ -1,4 +1,3 @@
-
 package seeto.c2.artoria.us.myapplication.UI.ToDo;
 
 import android.os.Bundle;
@@ -12,9 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-
 import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.TodoRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoContract;
 
 public class TodoFragment extends Fragment implements TodoContract.View {
 
