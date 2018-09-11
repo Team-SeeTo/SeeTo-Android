@@ -48,7 +48,5 @@ public class QuickMemoFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-
 }
 

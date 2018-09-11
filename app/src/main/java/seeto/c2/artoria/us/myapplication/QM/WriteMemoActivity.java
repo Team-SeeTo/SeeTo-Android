@@ -32,11 +32,10 @@ public class WriteMemoActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(contentEditText.getText().toString().isEmpty()){
-                    Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_LONG).show();
+                    Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
