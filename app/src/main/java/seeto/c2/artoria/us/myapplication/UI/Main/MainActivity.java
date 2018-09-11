@@ -274,7 +274,6 @@ public class MainActivity extends AppCompatActivity
     public void main_fabclicked() {
         if (!flag) {
             flag = true;
-            main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
             main_fab.startAnimation(mainfab_animation1);
             memo_fab.startAnimation(memofab_animation1);
             ideas_fab.startAnimation(ideasfab_animaition1);
@@ -288,7 +287,6 @@ public class MainActivity extends AppCompatActivity
             todo_fab.invalidate();
         } else {
             flag = false;
-            main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
             main_fab.startAnimation(mainfab_animation2);
             memo_fab.startAnimation(memofab_animation2);
             ideas_fab.startAnimation(ideasfab_animaition2);

@@ -1,27 +1,42 @@
 package seeto.c2.artoria.us.myapplication.Model;
 
-
-import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
 
 public class TokenModel {
-    String accessToken;
-    String refreshToken;
-    JsonObject data;
-    JsonObject auth;
+    @SerializedName("data")
+    Data data;
 
-    public JsonObject getData() {
+    public Data getData() {
         return data;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public static class Data {
+        @SerializedName("auth")
+        Auth auth;
+
+        public Auth getAuth() {
+            return auth;
+        }
     }
 
-    public String getRefreshToken() {
-        return refreshToken;
-    }
+    public static class Auth {
+        @SerializedName("accessToken")
+        String accessToken;
+        @SerializedName("refreshToken")
+        String refreshToken;
+        @SerializedName("message")
+        String message;
 
-    public JsonObject getAuth() {
-        return auth;
+        public String getAccessToken() {
+            return accessToken;
+        }
+
+        public String getRefreshToken() {
+            return refreshToken;
+        }
+
+        public String getMessage() {
+            return message;
+        }
     }
 }

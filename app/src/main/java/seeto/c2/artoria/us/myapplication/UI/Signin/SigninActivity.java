@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Operation;
+import com.apollographql.apollo.api.Query;
+
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.Signup.SignupActivity;
@@ -29,13 +33,14 @@ public class SigninActivity extends AppCompatActivity implements SigninContract.
         Button signin_button = findViewById(R.id.signin_main_button);
         signin_button.setOnClickListener(v -> {
 
-//            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
+            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
 
-            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
+//            startActivity(intent);
+//            finish();
         });
 
+        
         TextView signup_button = findViewById(R.id.signin_signup_button);
         signup_button.setOnClickListener(v -> {
             Intent intent = new Intent(SigninActivity.this,SignupActivity.class);
