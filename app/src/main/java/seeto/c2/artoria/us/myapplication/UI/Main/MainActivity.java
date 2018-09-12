@@ -128,6 +128,11 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < 4; i++) {
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
+
+        Intent intent = new Intent();
+        if(intent.getBooleanExtra("Memo",false)){
+            customViewPagerAdapter.getFragmentInfo(3);
+        }
     }
 
     @Override
