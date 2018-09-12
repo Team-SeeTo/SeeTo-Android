@@ -1,5 +1,5 @@
 query ideasMain($token:String, $search:String, $filter:String, $page:Int){
-  ideas(token:$token, searchString:$search, filterBy:$filter, startRank: $page){
+  ideas(token:$token, filterBy:$filter, startRank: $page){
     title
     category
     rank

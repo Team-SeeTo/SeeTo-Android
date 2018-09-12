@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
 
 
@@ -49,29 +50,16 @@ public class MainActivity extends AppCompatActivity
 
     boolean flag;
     View fab_background;
-    TextView todo_write_btn;
-    TextView ideas_write_btn;
-    TextView memo_write_btn;
+    TextView todo_write_btn, ideas_write_btn, memo_write_btn;
     TabLayout tabs;
     ViewPager viewPager;
-    ImageView main_option_btn;
-    ImageView main_search_btn;
-    FloatingActionButton main_fab;
-    FloatingActionButton memo_fab;
-    FloatingActionButton ideas_fab;
-    FloatingActionButton todo_fab;
+    ImageView main_option_btn, main_search_btn;
+    FloatingActionButton main_fab, memo_fab, ideas_fab, todo_fab;
 
+    Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
+            , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
 
-    Animation mainfab_animation1;
-    Animation mainfab_animation2;
-    Animation memofab_animation1;
-    Animation memofab_animation2;
-    Animation ideasfab_animaition1;
-    Animation ideasfab_animaition2;
-    Animation todofab_animation1;
-    Animation todofab_animation2;
-
-
+    MainPresenter mainPresenter = new MainPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +88,8 @@ public class MainActivity extends AppCompatActivity
         viewpagerinit();
 
         navigationinit();
+
+       // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
 
         anmationinit();
 
