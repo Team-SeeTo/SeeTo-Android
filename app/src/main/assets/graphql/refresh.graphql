@@ -1,0 +1,6 @@
+mutation Refresh($token : String){
+  refresh(token : $token){
+    accessToken
+    message
+  }
+}

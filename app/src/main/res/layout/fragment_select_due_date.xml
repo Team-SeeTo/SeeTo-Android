@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToDo.TodoCreate.Fragment.SelectDueDateFragment">
+    tools:context=".UI.ToDo.TodoCreate.Fragment.SelectDueDateFragment">
 
     <TextView
         android:id="@+id/date_text"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Select Due Date"
-        android:textColor="#C3A4FA"
+        android:textColor="@color/colorPrimary"
         android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@+id/due_calendar"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
         app:headerLabelColor="#000"
         app:previousButtonSrc="@drawable/baseline_keyboard_arrow_left_24"
         app:forwardButtonSrc="@drawable/baseline_keyboard_arrow_right_24"
-        app:selectionColor="#C3A4FA"
+        app:selectionColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date_text"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:text="Next"
-        android:textColor="#C3A4FA"
+        android:textColor="@color/colorPrimary"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

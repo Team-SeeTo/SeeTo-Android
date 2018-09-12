@@ -17,7 +17,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
             android:text="Purchase"
-            android:textColor="#A079E6"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,8 +38,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/dialog_store_purchase"
-            android:textColor="#A079E6"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_store_purchase"
+            android:textColor="@color/colorPrimary"
             android:text="CANCEL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -51,7 +51,7 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="#A079E6"
+            android:textColor="@color/colorPrimary"
             android:text="PURCHASE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
