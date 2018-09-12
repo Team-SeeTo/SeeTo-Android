@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Signin_Signup.SigninActivity">
+        <activity android:name=".UI.Signin.SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
 
         <activity android:name=".UI.Main.MainActivity"/>
         <activity android:name=".UI.Store.StoreActivity"/>
-        <activity android:name=".UI.Signin_Signup.SignupActivity"/>
+        <activity android:name=".UI.Signup.SignupActivity"/>
         <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan"/>
 
@@ -39,5 +39,7 @@
 
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

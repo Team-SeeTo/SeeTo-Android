@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate;
+package seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -1,4 +1,3 @@
-
 package seeto.c2.artoria.us.myapplication.UI.ToDo;
 
 import android.os.Bundle;
@@ -12,7 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.TodoRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoContract;
 
 public class TodoFragment extends Fragment implements TodoContract.View {
 
@@ -56,7 +57,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
     }
 
     //TODO: 서버 통신시 생성자 구현
-    class NoLimitList {
+    public class NoLimitList {
         public String header;
 
         public NoLimitList() {
@@ -64,7 +65,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
         }
     }
 
-    class CommonLimitList {
+    public class CommonLimitList {
         public String header, listInfo;
 
         public CommonLimitList() {
@@ -73,7 +74,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
         }
     }
 
-    class HardLimitList {
+    public class HardLimitList {
         public String header, listInfo;
 
         public HardLimitList() {

@@ -1,0 +1,8 @@
+query simpleProfile($token: String){
+  profile(token: $token){
+   	imgPath
+    username
+    rank
+    point
+  }
+}

@@ -100,6 +100,13 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <View
+            android:id="@+id/fab_background"
+            android:background="#44000000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/todo_fab"
             android:layout_width="wrap_content"
@@ -110,7 +117,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_add_24"
-            app:backgroundTint="#C4A2FF"
+            app:backgroundTint="#7058DA"
             app:elevation="0dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -141,7 +148,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_add_24"
-            app:backgroundTint="#B68EFD"
+            app:backgroundTint="#614DB8"
             app:elevation="0dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -171,7 +178,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_add_24"
-            app:backgroundTint="#AD82FA"
+            app:backgroundTint="#5643A9"
             app:elevation="0dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"

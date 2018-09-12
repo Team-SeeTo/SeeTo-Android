@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
     boolean flag;
+    View fab_background;
     TextView todo_write_btn;
     TextView ideas_write_btn;
     TextView memo_write_btn;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity
         viewPager = findViewById(R.id.main_viewpager);
         main_option_btn = findViewById(R.id.main_option_btn);
         main_search_btn = findViewById(R.id.main_search_btn);
+        fab_background = findViewById(R.id.fab_background);
 
         main_fab = findViewById(R.id.main_fab);
         memo_fab = findViewById(R.id.memo_fab);
@@ -184,6 +186,8 @@ public class MainActivity extends AppCompatActivity
 
         });
 
+        fab_background.setOnClickListener(v -> main_fabclicked());
+
     }
 
     @Override
@@ -281,16 +285,12 @@ public class MainActivity extends AppCompatActivity
     public void main_fabclicked() {
         if (!flag) {
             flag = true;
-            main_fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A079E6")));
             main_fab.startAnimation(mainfab_animation1);
             memo_fab.startAnimation(memofab_animation1);
             ideas_fab.startAnimation(ideasfab_animaition1);
             todo_fab.startAnimation(todofab_animation1);
 
-            viewPager.setClickable(false);
-            viewPager.setOnTouchListener((view, motionEvent) -> true);
-            viewPager.setEnabled(false);
-
+            fab_background.setVisibility(View.VISIBLE);
 
             main_fab.invalidate();
             memo_fab.invalidate();
@@ -298,7 +298,6 @@ public class MainActivity extends AppCompatActivity
             todo_fab.invalidate();
         } else {
             flag = false;
-            main_fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
             main_fab.startAnimation(mainfab_animation2);
             memo_fab.startAnimation(memofab_animation2);
             ideas_fab.startAnimation(ideasfab_animaition2);
@@ -308,9 +307,7 @@ public class MainActivity extends AppCompatActivity
             ideas_write_btn.setVisibility(View.INVISIBLE);
             todo_write_btn.setVisibility(View.INVISIBLE);
 
-            viewPager.setClickable(true);
-            viewPager.setOnTouchListener((view, motionEvent) -> false);
-            viewPager.setEnabled(true);
+            fab_background.setVisibility(View.GONE);
 
             main_fab.invalidate();
             memo_fab.invalidate();
@@ -318,6 +315,7 @@ public class MainActivity extends AppCompatActivity
             todo_fab.invalidate();
         }
     }
+
 
     @Override
     public void showSearchDialog() {

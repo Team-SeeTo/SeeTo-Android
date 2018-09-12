@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.UI.LeaderBoard;
+package seeto.c2.artoria.us.myapplication.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.LeaderBoardItem;
+import seeto.c2.artoria.us.myapplication.Item.LeaderBoardItem;
 
 public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.CustomViewHolder>{
 

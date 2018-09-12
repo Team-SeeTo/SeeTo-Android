@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.TodoViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.R;
 
 public class CreateTodoActivity extends AppCompatActivity {
