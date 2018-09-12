@@ -1,0 +1,9 @@
+query ideasSearch($token:String, $filter:String, $page:Int){
+  ideas(token:$token, filterBy:$filter, startRank: $page){
+    title
+    category
+    rank
+    upvoter
+    comments
+  }
+}

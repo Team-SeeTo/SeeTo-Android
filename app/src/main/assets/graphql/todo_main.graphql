@@ -1,5 +1,5 @@
-query ToDoMain($token: String, $order: String, $search:String){
-  todo(token:$token, orderBy: $order, searchString: $search){
+query ToDoMain($token: String, $order: String){
+  todo(token:$token, orderBy: $order){
     title
     type
     expiration

@@ -1,4 +1,4 @@
-package seeto.c2.artoria.us.myapplication.baseline.baseline.Item;
+package seeto.c2.artoria.us.myapplication.Item;
 
 public class LeaderBoardItem {
     private int rank;

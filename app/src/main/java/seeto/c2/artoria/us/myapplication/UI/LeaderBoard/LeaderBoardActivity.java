@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.Adapter.LeaderBoardAdapter;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.LeaderBoardItem;
+import seeto.c2.artoria.us.myapplication.Item.LeaderBoardItem;
 
 public class LeaderBoardActivity extends AppCompatActivity {
     ArrayList<LeaderBoardItem> data = new ArrayList<>();
