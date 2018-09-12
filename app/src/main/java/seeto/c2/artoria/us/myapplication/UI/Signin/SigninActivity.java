@@ -33,11 +33,11 @@ public class SigninActivity extends AppCompatActivity implements SigninContract.
         Button signin_button = findViewById(R.id.signin_main_button);
         signin_button.setOnClickListener(v -> {
 
-            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
+//            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
 
-//            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
-//            startActivity(intent);
-//            finish();
+            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         

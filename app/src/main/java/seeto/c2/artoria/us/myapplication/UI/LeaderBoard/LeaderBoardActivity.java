@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
+import seeto.c2.artoria.us.myapplication.Adapter.LeaderBoardAdapter;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.baseline.baseline.Item.LeaderBoardItem;
 

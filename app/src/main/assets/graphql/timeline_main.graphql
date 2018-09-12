@@ -1,0 +1,17 @@
+query timelineMain($token:String, $date:DateTime){
+  timeline(token:$token, date:$date){
+    ideas {
+      newVote
+      newComment
+      newCreate
+      totalPoint
+    }
+    todo {
+      newCreate
+      milestoneComplete
+      todoComplete
+      totalPoint
+    }
+    totalPoint
+  }
+}
