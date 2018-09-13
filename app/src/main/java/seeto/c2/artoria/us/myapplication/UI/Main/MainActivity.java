@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -109,14 +110,17 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
 //                finish();
                 break;
+
             case R.id.navigation_leaderboard_btn:
                 intent = new Intent(MainActivity.this, LeaderBoardActivity.class);
                 startActivity(intent);
+                break;
 //                finish();
 
             case R.id.navigation_settings_btn:
                 intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
+                break;
         }
         return false;
     }
@@ -322,6 +326,12 @@ public class MainActivity extends AppCompatActivity
                 .create();
 
         EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
+        ImageView search_btn = (ImageView) dialogPlus.findViewById(R.id.dialog_search_btn);
+
+        search_btn.setOnClickListener(v -> {
+            viewPager.getCurrentItem();
+
+        });
 
         dialogPlus.show();
 

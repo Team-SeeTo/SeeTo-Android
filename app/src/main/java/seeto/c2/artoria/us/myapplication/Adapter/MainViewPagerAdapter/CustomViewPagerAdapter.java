@@ -35,10 +35,7 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
         return mFragmentInfoList.size();
     }
 
-    @Override
-    public int getItemPosition(@NonNull Object object) {
-        return mFragmentInfoList.lastIndexOf(object);
-    }
+
 }
 
 
