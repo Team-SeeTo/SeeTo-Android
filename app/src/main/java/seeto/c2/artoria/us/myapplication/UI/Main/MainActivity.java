@@ -2,9 +2,6 @@ package seeto.c2.artoria.us.myapplication.UI.Main;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,10 +27,10 @@ import android.widget.Toast;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
-import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
 
 
+import seeto.c2.artoria.us.myapplication.UI.Mirror.MirrorActivity;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasSelectCategoryActivity;
 import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomViewPagerAdapter;
@@ -46,6 +42,7 @@ import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoActivity;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
+
 
 public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
@@ -121,6 +118,11 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.navigation_mirror_btn :
+                Intent intent1 = new Intent(MainActivity.this, MirrorActivity.class);
+                startActivity(intent1);
+                break;
         }
         return false;
     }
@@ -138,6 +140,11 @@ public class MainActivity extends AppCompatActivity
 
         for (int i = 0; i < 4; i++) {
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
+        }
+
+        Intent intent = new Intent();
+        if(intent.getBooleanExtra("Memo",false)){
+            customViewPagerAdapter.getFragmentInfo(3);
         }
     }
 

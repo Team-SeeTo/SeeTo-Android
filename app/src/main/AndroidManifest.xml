@@ -20,9 +20,9 @@
 
         <activity android:name=".UI.LeaderBoard.LeaderBoardActivity"></activity>
 
-
         <activity android:name=".UI.Main.MainActivity"/>
         <activity android:name=".UI.Store.StoreActivity"/>
+        <activity android:name=".UI.Mirror.MirrorActivity"/>
         <activity android:name=".UI.Signup.SignupActivity"/>
         <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
             android:windowSoftInputMode="adjustPan"/>

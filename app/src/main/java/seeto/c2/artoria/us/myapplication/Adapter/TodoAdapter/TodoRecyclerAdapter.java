@@ -14,6 +14,7 @@ import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.MyRadioButton;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
 
+
 public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ArrayList<Object> data;
