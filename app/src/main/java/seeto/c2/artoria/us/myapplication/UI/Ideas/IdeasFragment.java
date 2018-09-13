@@ -10,18 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import seeto.c2.artoria.us.myapplication.Adapter.IdeasListAdapter;
 import seeto.c2.artoria.us.myapplication.Adapter.IdeasRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 
 public class IdeasFragment extends Fragment implements IdeasContract.View {
 
+    boolean startflag = true;
+    int startrank = 1;
     RecyclerView ideaslist;
     IdeasRecyclerAdapter adapter;
     ArrayList<IdeasItem> listdata = new ArrayList<>();
+    IdeasPresenter ideasPresenter = new IdeasPresenter(getActivity());
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -35,9 +41,28 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
         rank.bringToFront();
 
-        recyclerdatainit();
-        adapter = new IdeasRecyclerAdapter(listdata,getActivity());
-        ideaslist.setAdapter(adapter);
+        int startrank = 0;
+
+        if(startflag) {
+//            startflag = false;
+            recyclerdatainit();
+
+            adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+            ideaslist.setAdapter(adapter);
+        }
+
+        ideaslist.setOnScrollChangeListener((view, i, i1, i2, i3) -> {
+            if (!ideaslist.canScrollVertically(1)){
+
+                Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
+
+                loadMore();
+//
+//                adapter = new IdeasRecyclerAdapter(listdata,getActivity());
+//                ideaslist.setAdapter(adapter);
+            }
+        });
+
 
         return rootView;
     }
@@ -52,6 +77,19 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     @Override
     public void recyclerdatainit() {
+
+//        ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(getActivity(),true),"filterBy", String.valueOf(startrank));
+
+        for (int i = 1; i<15; i++){
+            listdata.add(new IdeasItem("Title here","Category here","#"+i,"23.1K","411"));
+        }
+
+
+    }
+
+    @Override
+    public void loadMore() {
+//         ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(getActivity(),true),"filterBy", String.valueOf(startrank + 20));
 
         for (int i = 1; i<15; i++){
             listdata.add(new IdeasItem("Title here","Category here","#"+i,"23.1K","411"));

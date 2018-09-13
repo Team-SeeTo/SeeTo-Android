@@ -40,6 +40,7 @@ import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomView
 import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.UI.QM.WriteMemoActivity;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.Setting.SettingActivity;
 import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoActivity;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity
             , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
 
     MainPresenter mainPresenter = new MainPresenter(this);
+
+    CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +107,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_shop_btn:
                 intent = new Intent(MainActivity.this, StoreActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
                 break;
             case R.id.navigation_leaderboard_btn:
                 intent = new Intent(MainActivity.this, LeaderBoardActivity.class);
                 startActivity(intent);
 //                finish();
+
+            case R.id.navigation_settings_btn:
+                intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
         }
         return false;
     }
@@ -117,7 +124,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void viewpagerinit() {
 
-        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
         customViewPagerAdapter.addFragment(R.drawable.check_square, new TodoFragment());
         customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
         customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
@@ -316,11 +322,13 @@ public class MainActivity extends AppCompatActivity
                 .create();
 
         EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
+
+        dialogPlus.show();
+
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
 
 
-        dialogPlus.show();
     }
 
     @Override

@@ -31,6 +31,8 @@
 
         <activity android:name=".UI.Ideas.IdeasWriteActivity"/>
 
+        <activity android:name=".UI.Setting.SettingActivity"/>
+
         <activity android:name=".UI.QM.ViewMemoActivity" />
         <activity android:name=".UI.QM.WriteMemoActivity"/>
 
