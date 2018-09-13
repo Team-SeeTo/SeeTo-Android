@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
+import seeto.c2.artoria.us.myapplication.Mirror.MirrorActivity;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasSelectCategoryActivity;
 import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomViewPagerAdapter;
@@ -109,6 +110,10 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = new Intent(MainActivity.this, StoreActivity.class);
                 startActivity(intent);
 //                finish();
+
+            case R.id.navigation_mirror_btn :
+                Intent intent1 = new Intent(MainActivity.this, MirrorActivity.class);
+                startActivity(intent1);
         }
         return false;
     }
