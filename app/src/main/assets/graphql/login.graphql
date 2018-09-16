@@ -4,4 +4,4 @@ mutation Auth($email : String, $password : String){
      refreshToken
      message
    }
- }
+}

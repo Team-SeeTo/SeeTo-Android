@@ -38,6 +38,7 @@ public class SigninPresenter implements SigninContract.Presenter {
 
                                 SharedPreferenceKt.saveToken(context,data.getData().getAuth().getAccessToken(),true);
                                 SharedPreferenceKt.saveToken(context,data.getData().getAuth().getRefreshToken(),false);
+
                                 Log.d("DEBUG", "success");
                                 Log.d("DEBUG", String.valueOf(response.code()));
                                 Log.d("DEBUG",SharedPreferenceKt.getToken(context,true));
@@ -45,6 +46,8 @@ public class SigninPresenter implements SigninContract.Presenter {
                                 Intent intent = new Intent(context, MainActivity.class);
                                 context.startActivity(intent);
                             } else {
+                                Log.d("DEBUG", String.valueOf(response.code()));
+                                Log.d("DEBUG",response.message());
                                 Log.d("DEBUG","token_null");
                             }
                         } else {

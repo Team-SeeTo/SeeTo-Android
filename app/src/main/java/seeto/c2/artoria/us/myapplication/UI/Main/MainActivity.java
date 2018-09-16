@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -88,6 +89,36 @@ public class MainActivity extends AppCompatActivity
 
         viewpagerinit();
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            int current;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                current = position;
+                Log.d("POSITION", String.valueOf(current));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        switch (viewPager.getCurrentItem()){
+            case 1 :
+                main_search_btn.setVisibility(View.INVISIBLE);
+                break;
+
+            case 3 :
+                main_search_btn.setVisibility(View.INVISIBLE);
+                break;
+        }
+
         navigationinit();
 
        // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
@@ -141,6 +172,7 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < 4; i++) {
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
+
 
         Intent intent = new Intent();
         if(intent.getBooleanExtra("Memo",false)){
@@ -332,15 +364,14 @@ public class MainActivity extends AppCompatActivity
                 .setCancelable(true)
                 .create();
 
-        EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
-        ImageView search_btn = (ImageView) dialogPlus.findViewById(R.id.dialog_search_btn);
-
-        search_btn.setOnClickListener(v -> {
-            viewPager.getCurrentItem();
-
-        });
-
         dialogPlus.show();
+
+        View search_et = dialogPlus.findViewById(R.id.dialog_search_et);
+        View search_btn = dialogPlus.findViewById(R.id.dialog_search_btn);
+
+
+//        search_btn.setOnClickListener(v -> Toast.makeText(this,viewPager.getCurrentItem(),Toast.LENGTH_SHORT).show());
+
 
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();

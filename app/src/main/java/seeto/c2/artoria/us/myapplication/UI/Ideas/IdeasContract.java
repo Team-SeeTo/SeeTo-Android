@@ -10,6 +10,6 @@ public interface IdeasContract {
     }
 
     interface Presenter{
-        void getListDataRequest(String token, String filterBy, String startRank);
+        void getListDataRequest(String token, String filterBy, int startRank);
     }
 }

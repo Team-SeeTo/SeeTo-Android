@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasViewDetailActivity;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
@@ -65,6 +67,12 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
     public int getItemCount() {
         return items.size();
     }
+
+    public void addItemMore(ArrayList<IdeasItem> lst){
+        notifyItemRangeChanged(0 ,items.size());
+    }
+
+
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
