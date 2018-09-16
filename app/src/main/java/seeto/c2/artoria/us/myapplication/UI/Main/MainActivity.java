@@ -101,6 +101,18 @@ public class MainActivity extends AppCompatActivity
             public void onPageSelected(int position) {
                 current = position;
                 Log.d("POSITION", String.valueOf(current));
+                switch (current){
+                    case 1 :
+                        main_search_btn.setVisibility(View.GONE);
+                        break;
+
+                    case 3 :
+                        main_search_btn.setVisibility(View.GONE);
+                        break;
+
+                    default:
+                        main_search_btn.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -109,15 +121,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        switch (viewPager.getCurrentItem()){
-            case 1 :
-                main_search_btn.setVisibility(View.INVISIBLE);
-                break;
-
-            case 3 :
-                main_search_btn.setVisibility(View.INVISIBLE);
-                break;
-        }
 
         navigationinit();
 
@@ -370,12 +373,10 @@ public class MainActivity extends AppCompatActivity
         View search_btn = dialogPlus.findViewById(R.id.dialog_search_btn);
 
 
-//        search_btn.setOnClickListener(v -> Toast.makeText(this,viewPager.getCurrentItem(),Toast.LENGTH_SHORT).show());
-
+        search_btn.setOnClickListener(v -> dialogPlus.dismiss());
 
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
-
 
     }
 
