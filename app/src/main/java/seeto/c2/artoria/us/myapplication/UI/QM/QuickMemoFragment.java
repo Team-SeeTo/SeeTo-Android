@@ -45,9 +45,6 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
     }
 
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }
 

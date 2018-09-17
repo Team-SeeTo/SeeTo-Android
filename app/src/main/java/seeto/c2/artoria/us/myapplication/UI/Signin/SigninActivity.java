@@ -47,8 +47,5 @@ public class SigninActivity extends AppCompatActivity implements SigninContract.
         });
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

@@ -54,10 +54,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
         }
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 
     //TODO: 서버 통신시 생성자 구현
     public class NoLimitList {

@@ -14,8 +14,5 @@ public class SettingActivity extends AppCompatActivity implements SettingContrac
 
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

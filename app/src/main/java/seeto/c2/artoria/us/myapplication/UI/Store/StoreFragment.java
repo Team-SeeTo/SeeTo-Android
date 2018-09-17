@@ -47,14 +47,4 @@ public class StoreFragment extends Fragment implements StoreContract.View{
         adapter = new StoreRecyclerAdapter(data,getActivity());
         store_item_list.setAdapter(adapter);
     }
-
-
-    @Override
-    public void showToast(String text) {
-
-    }
-
-    public void showToast() {
-
-    }
 }

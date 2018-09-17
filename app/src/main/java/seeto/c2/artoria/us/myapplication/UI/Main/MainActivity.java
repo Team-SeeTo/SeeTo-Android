@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +55,8 @@ public class MainActivity extends AppCompatActivity
     ImageView main_option_btn, main_search_btn;
     FloatingActionButton main_fab, memo_fab, ideas_fab, todo_fab;
 
+    String current_context;
+
     Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
             , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            int current;
+            int vp_current;
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -99,9 +100,9 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onPageSelected(int position) {
-                current = position;
-                Log.d("POSITION", String.valueOf(current));
-                switch (current){
+                vp_current = position;
+                Log.d("POSITION", String.valueOf(vp_current));
+                switch (vp_current){
                     case 1 :
                         main_search_btn.setVisibility(View.GONE);
                         break;
@@ -244,7 +245,21 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
 
         apply_btn.setOnClickListener(v -> {
-            Toast.makeText(this, "apply clicked", Toast.LENGTH_SHORT).show();
+            switch (viewPager.getCurrentItem()){
+                case 0 :
+                    current_context = "Todo";
+                    //Todo todo 서버 연결 코드 필요 (정렬)
+                    break;
+
+                case 2 :
+                    current_context = "Ideas";
+                    //Todo Ideas 서벼 연결 코드 필요 (정렬)
+                    break;
+
+                default:
+                    current_context = "default";
+            }
+            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
 
@@ -373,15 +388,27 @@ public class MainActivity extends AppCompatActivity
         View search_btn = dialogPlus.findViewById(R.id.dialog_search_btn);
 
 
-        search_btn.setOnClickListener(v -> dialogPlus.dismiss());
+        search_btn.setOnClickListener(v -> {
+            switch (viewPager.getCurrentItem()){
+                case 0 :
+                    current_context = "Todo";
+                    //Todo todo 서버 연결 코드 필요 (검색)
+                    break;
+
+                case 2 :
+                    current_context = "Ideas";
+                    //Todo ideas 서버 연결 코드 필요 (검색)
+                    break;
+
+                default:
+                    current_context = "default";
+            }
+        });
 
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
 
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }
