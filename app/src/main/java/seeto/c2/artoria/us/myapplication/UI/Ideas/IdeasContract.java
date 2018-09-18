@@ -6,10 +6,11 @@ public interface IdeasContract {
     interface View extends BaseView{
         void recyclerdatainit();
         void loadMore();
-
+        void IdeasSearchRequest(String search_string);
     }
 
     interface Presenter{
         void getListDataRequest(String token, String filterBy, int startRank);
+        void SearchRequest(String token, String search_string, String filterBy, int startRank);
     }
 }

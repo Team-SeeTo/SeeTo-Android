@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -109,10 +110,12 @@ public class MainActivity extends AppCompatActivity
 
                     case 3 :
                         main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
                         break;
 
                     default:
                         main_search_btn.setVisibility(View.VISIBLE);
+                        main_option_btn.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -384,8 +387,8 @@ public class MainActivity extends AppCompatActivity
 
         dialogPlus.show();
 
-        View search_et = dialogPlus.findViewById(R.id.dialog_search_et);
-        View search_btn = dialogPlus.findViewById(R.id.dialog_search_btn);
+        EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
+        ImageView search_btn = (ImageView) dialogPlus.findViewById(R.id.dialog_search_btn);
 
 
         search_btn.setOnClickListener(v -> {
@@ -397,7 +400,9 @@ public class MainActivity extends AppCompatActivity
 
                 case 2 :
                     current_context = "Ideas";
-                    //Todo ideas 서버 연결 코드 필요 (검색)
+//                    IdeasFragment ideasFragment = new IdeasFragment();
+//                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
+                    ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
                     break;
 
                 default:

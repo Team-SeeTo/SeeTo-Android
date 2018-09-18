@@ -1,6 +1,7 @@
 package seeto.c2.artoria.us.myapplication.UI.Ideas;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 
 public class IdeasFragment extends Fragment implements IdeasContract.View {
 
+    static boolean search;
     boolean startflag = true;
     int startrank , end;
     RecyclerView ideaslist;
@@ -35,22 +38,25 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     ArrayList<IdeasItem> listdata = new ArrayList<>();
     IdeasPresenter ideasPresenter;
     ViewPager viewPager;
+    MainActivity context;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ideas,container,false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ideas, container, false);
 
+        context = new MainActivity();
         ideaslist = rootView.findViewById(R.id.ideas_recycler);
         ideasPresenter = new IdeasPresenter(getActivity());
         viewPager = getActivity().findViewById(R.id.main_viewpager);
 
-        View item_view = getLayoutInflater().inflate(R.layout.item_ideas,container,false);
+        View item_view = getLayoutInflater().inflate(R.layout.item_ideas, container, false);
         TextView rank = item_view.findViewById(R.id.item_ideas_rank_text);
 
 
         rank.bringToFront();
 
-        if(startflag) {
+        if (startflag) {
 //            startflag = false;
             recyclerdatainit();
 
@@ -62,7 +68,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         }
 
         ideaslist.setOnScrollChangeListener((view, i, i1, i2, i3) -> {
-            if (!ideaslist.canScrollVertically(1)){
+            if (!ideaslist.canScrollVertically(1)) {
 
                 Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
 
@@ -76,19 +82,11 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         return rootView;
     }
 
-    public static IdeasFragment newInstance(){
-        Bundle args = new Bundle();
-        IdeasFragment fragment = new IdeasFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-
     @Override
     public void recyclerdatainit() {
 
         if (viewPager.getCurrentItem() == 2) {
-            ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()), true), "filterBy", startrank);
+            ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), "filterBy", startrank);
 
             listdata.clear();
 
@@ -111,7 +109,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
             end = startrank + 30;
 
             for (int i = startrank + 1; i <= end; i++){
-                listdata.add(new IdeasItem("Title here","Category here","#"+i,"23.1K","411"));
+                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411"));
             }
 
             adapter.addItemMore(listdata);
@@ -121,5 +119,10 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     }
 
+    @Override
+    public void IdeasSearchRequest(String search_string) {
+        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string," ",1);
+
+    }
 
 }
