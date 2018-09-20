@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="seeto.c2.artoria.us.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,30 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".UI.LeaderBoard.LeaderBoardActivity"></activity>
-
-
-        <activity android:name=".UI.Main.MainActivity"/>
-        <activity android:name=".UI.Store.StoreActivity"/>
-        <activity android:name=".UI.Signup.SignupActivity"/>
-        <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
-            android:windowSoftInputMode="adjustPan"/>
-
-        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity"/>
-
-        <activity android:name=".UI.Ideas.IdeasWriteActivity"/>
-
+        <activity android:name=".UI.LeaderBoard.LeaderBoardActivity" />
+        <activity android:name=".UI.Main.MainActivity" />
+        <activity android:name=".UI.Store.StoreActivity" />
+        <activity android:name=".UI.Signup.SignupActivity" />
+        <activity
+            android:name=".UI.Ideas.IdeasViewDetailActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity" />
+        <activity android:name=".UI.Ideas.IdeasWriteActivity" />
         <activity android:name=".UI.QM.ViewMemoActivity" />
-        <activity android:name=".UI.QM.WriteMemoActivity"/>
-
-        <activity android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
-            android:windowSoftInputMode="adjustPan"/>
-
-
+        <activity android:name=".UI.QM.WriteMemoActivity" />
+        <activity
+            android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".UI.ToDo.TodoDetailActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

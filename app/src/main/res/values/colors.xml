@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#2C007B</color>
     <color name="colorAccent">#2C007B</color>
     <color name="colorMain">#C3A4FA</color>
+    <color name="stdComplete">#008178</color>
+    <color name="hardComplete">#880056</color>
+    <color name="todoNormal">#2C007B</color>
 </resources>

@@ -6,30 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingBottom="8dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <CheckBox
-        android:id="@+id/todo_check_box"
+        android:id="@+id/todo_created_normal_check_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_todo_check_box"
+        android:background="@drawable/normal_todo_check_box"
         android:button="@null"
         android:layout_marginLeft="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/todo_text"
+        android:id="@+id/todo_created_normal_text"
+        android:inputType="textNoSuggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="something to do"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/todo_check_box"
-        app:layout_constraintBaseline_toBaselineOf="@+id/todo_check_box"/>
+        app:layout_constraintLeft_toRightOf="@+id/todo_created_normal_check_box"
+        app:layout_constraintBaseline_toBaselineOf="@+id/todo_created_normal_check_box"/>
 
     <ImageView
-        android:id="@+id/deleteTodo"
+        android:id="@+id/todo_created_normal_delete_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_clear_24"

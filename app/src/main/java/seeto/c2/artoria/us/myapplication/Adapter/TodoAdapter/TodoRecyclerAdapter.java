@@ -1,8 +1,9 @@
 package seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import seeto.c2.artoria.us.myapplication.Item.TodoItem;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.MyRadioButton;
+import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoDetailActivity;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
 
 public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -32,11 +35,10 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item;
-        Log.e("xxx", viewType + "");
         switch (viewType) {
             case 0:
                 item = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_todo, parent, false
+                        R.layout.item_todo_hard_limit, parent, false
                 );
                 return new NoLimitItemViewHolder(item);
             case 1:
@@ -56,24 +58,35 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Object todoList = data.get(position);
-
-
+        ArrayList<TodoItem> milestoneTemp;
+        //TODO: 텍스트 색깔 받아와서 적용
         switch (position % 3) {
             case 0:
                 NoLimitItemViewHolder item = (NoLimitItemViewHolder) holder;
                 item.header.setText(((TodoFragment.NoLimitList) todoList).header);
+                item.milestones = milestoneTemp = ((TodoFragment.NoLimitList) todoList).milestones;
                 break;
             case 1:
                 CommonLimitItemViewHolder commonItem = (CommonLimitItemViewHolder) holder;
                 commonItem.header.setText(((TodoFragment.CommonLimitList) todoList).header);
                 commonItem.listInfo.setText(((TodoFragment.CommonLimitList) todoList).listInfo);
+                commonItem.milestones = milestoneTemp =((TodoFragment.CommonLimitList) todoList).milestones;
                 break;
-            case 2:
+            default:
                 HardLimitItemViewHolder hardItem = (HardLimitItemViewHolder) holder;
                 hardItem.header.setText(((TodoFragment.HardLimitList) todoList).header);
                 hardItem.listInfo.setText(((TodoFragment.HardLimitList) todoList).listInfo);
-                break;
+                hardItem.milestones = milestoneTemp =((TodoFragment.HardLimitList) todoList).milestones;
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, TodoDetailActivity.class);
+                intent.putParcelableArrayListExtra("milestones", milestoneTemp);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -86,6 +99,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         TextView header;
         public MyRadioButton radioButton;
         boolean flag;
+        ArrayList<TodoItem> milestones;
 
         NoLimitItemViewHolder(View itemView) {
             super(itemView);
@@ -98,6 +112,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public class CommonLimitItemViewHolder extends RecyclerView.ViewHolder {
         TextView header, listInfo;
+        ArrayList<TodoItem> milestones;
 
         CommonLimitItemViewHolder(View itemView) {
             super(itemView);
@@ -108,6 +123,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public class HardLimitItemViewHolder extends RecyclerView.ViewHolder {
         TextView header, listInfo;
+        ArrayList<TodoItem> milestones;
 
         HardLimitItemViewHolder(View itemView) {
             super(itemView);

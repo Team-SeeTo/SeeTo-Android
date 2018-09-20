@@ -26,6 +26,7 @@ public class CreateTodoFragment extends Fragment {
     View view;
 
     ArrayList<TodoItem> items = new ArrayList<>();
+    String type;
 
     public CreateTodoFragment() {
         // Required empty public constructor
@@ -36,11 +37,13 @@ public class CreateTodoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_create_todo, container, false);
+        //TODO: type 받기
+        type = "normal";
 
         RecyclerView createdTodoRecyclerView;
         createdTodoRecyclerView = view.findViewById(R.id.todo_create_recycler_view);
 
-        final CreatedTodoListAdapter todoListAdapter = new CreatedTodoListAdapter(items);
+        final CreatedTodoListAdapter todoListAdapter = new CreatedTodoListAdapter(items, type);
         createdTodoRecyclerView.setAdapter(todoListAdapter);
 
         final EditText inputText = (EditText) CreateTodoFragment.this.view.findViewById(R.id.new_text);
@@ -50,11 +53,10 @@ public class CreateTodoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String newText = inputText.getText().toString();
-                Log.e("clicked", "newText: " + newText);
                 if (!newText.isEmpty()) {
                     addMilestone(newText);
                     inputText.setText("");
-                    todoListAdapter.notifyDataSetChanged();
+                    todoListAdapter.notifyItemInserted(todoListAdapter.getItemCount());
                 } else {
                     Toast.makeText(view.getContext(), "내용을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }

@@ -18,7 +18,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "seeto.c2.artoria.us.myapplication"
         minSdkVersion 24
@@ -43,6 +43,7 @@ android {
     }
     productFlavors {
     }
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {
@@ -66,7 +67,4 @@ dependencies {
     implementation 'com.apollographql.apollo:apollo-android-support:0.4.1'
     implementation 'com.ramkishorevs.graphqlretrofitconverter:graphqlconverter:1.0.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-
-
 }

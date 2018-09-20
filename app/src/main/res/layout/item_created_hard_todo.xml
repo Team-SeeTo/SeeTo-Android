@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <CheckBox
+        android:id="@+id/todo_created_hard_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/hard_todo_check_box"
+        android:button="@null"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/todo_created_hard_text"
+        android:inputType="textNoSuggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="something to do"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/todo_created_hard_check_box"
+        app:layout_constraintBaseline_toBaselineOf="@+id/todo_created_hard_check_box"/>
+
+    <ImageView
+        android:id="@+id/todo_created_hard_delete_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_clear_24"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"/>
+
+</android.support.constraint.ConstraintLayout>
