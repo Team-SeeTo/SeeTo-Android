@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Connector{
     private Retrofit retrofit;
     private API api;
-    private String url = "http:/52.78.238.49:5000/";
+    private String url = "http://seeto.services:5000/";
     private Context context;
 
     public Connector(Context context) {
