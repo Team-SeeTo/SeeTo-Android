@@ -59,7 +59,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Object todoList = data.get(position);
         ArrayList<TodoItem> milestoneTemp;
-        //TODO: 텍스트 색깔 받아와서 적용
+        //TODO: 통신시 datetime check하고 텍스트뷰 색깔 변경
         switch (position % 3) {
             case 0:
                 NoLimitItemViewHolder item = (NoLimitItemViewHolder) holder;

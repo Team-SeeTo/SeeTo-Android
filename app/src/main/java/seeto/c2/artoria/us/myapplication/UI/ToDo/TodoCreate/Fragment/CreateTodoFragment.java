@@ -29,7 +29,6 @@ public class CreateTodoFragment extends Fragment {
     String type;
 
     public CreateTodoFragment() {
-        // Required empty public constructor
     }
 
 
@@ -67,7 +66,11 @@ public class CreateTodoFragment extends Fragment {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+                if(todoListAdapter.getItemCount()<1) {
+                    Toast.makeText(view.getContext(), "마일스톤을 추가해주세요", Toast.LENGTH_SHORT).show();
+                }else {
+                    getActivity().finish();
+                }
             }
         });
 
