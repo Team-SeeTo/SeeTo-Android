@@ -12,5 +12,6 @@ public interface IdeasContract {
     interface Presenter{
         void getListDataRequest(String token, String filterBy, int startRank);
         void SearchRequest(String token, String search_string, String filterBy, int startRank);
+        void NewIdeaRequest(String category,String token, String title, String body);
     }
 }

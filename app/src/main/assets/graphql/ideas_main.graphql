@@ -4,6 +4,8 @@ query ideasMain($token:String, $filter:String, $page:Int){
       author
       title
       body
+      createdAt
+      category
       comments{
         author
         body
