@@ -1,8 +1,11 @@
 package seeto.c2.artoria.us.myapplication.UI.Mirror;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -77,6 +80,12 @@ public class MirrorActivity extends AppCompatActivity {
         addData("LastYear","85%");
         addData("LastYear","Total activity increase");
         addData("LastYear","102%");
+
+//        for(int i = 0; i<deptList.size(); i++){
+//           if(deptList.indexOf(i) % 2 == 0){
+//
+//           }
+//        }
     }
 
     private int addData(String department, String increase){
@@ -99,7 +108,6 @@ public class MirrorActivity extends AppCompatActivity {
 
         ChildInfo DetailInfo = new ChildInfo();
         DetailInfo.setTitle(increase);
-//        DetailInfo.setSequence(String.valueOf(listsize));
         increaseList.add(DetailInfo);
         headerInfo.setTitle("Last week");
 

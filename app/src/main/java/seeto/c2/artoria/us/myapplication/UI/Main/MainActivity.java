@@ -45,7 +45,7 @@ import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
 
 
 public class MainActivity extends AppCompatActivity
-            implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
+        implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
     boolean flag;
     View fab_background;
