@@ -34,8 +34,4 @@ public class SignupActivity extends AppCompatActivity implements SignupContract.
         });
     }
 
-    @Override
-    public void showToast(String text) {
-
-    }
 }

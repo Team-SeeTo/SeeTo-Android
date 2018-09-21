@@ -5,17 +5,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <TextView
+    <EditText
         android:id="@+id/viewMemo"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:text=""
+        android:text="aaaaaaa"
         android:textColor="#2C007B"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:focusableInTouchMode="false"
+        android:background="@null"/>
 
     <View
         android:layout_width="match_parent"

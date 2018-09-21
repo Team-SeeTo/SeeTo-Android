@@ -41,8 +41,5 @@ public class InventoryFragment extends Fragment implements InventoryContract.Vie
 
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

@@ -20,6 +20,15 @@ public class TokenModel {
     }
 
     public static class Auth {
+        @SerializedName("result")
+        Result result;
+
+        public Result getResult() {
+            return result;
+        }
+    }
+
+    public static class Result {
         @SerializedName("accessToken")
         String accessToken;
         @SerializedName("refreshToken")

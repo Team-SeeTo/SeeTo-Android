@@ -3,4 +3,4 @@ mutation Register($email: String, $username: String, $password: String){
        isSuccess
        message
      }
-   }
+}

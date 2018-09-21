@@ -2,8 +2,6 @@ package seeto.c2.artoria.us.myapplication.UI.Main;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,7 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,20 +28,22 @@ import android.widget.Toast;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
-import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
 
 
+import seeto.c2.artoria.us.myapplication.UI.Mirror.MirrorActivity;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasFragment;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasSelectCategoryActivity;
 import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.UI.QM.WriteMemoActivity;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.Setting.SettingActivity;
 import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoActivity;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoFragment;
+
 
 public class MainActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
@@ -56,10 +56,14 @@ public class MainActivity extends AppCompatActivity
     ImageView main_option_btn, main_search_btn;
     FloatingActionButton main_fab, memo_fab, ideas_fab, todo_fab;
 
+    String current_context;
+
     Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
             , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
 
     MainPresenter mainPresenter = new MainPresenter(this);
+
+    CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,41 @@ public class MainActivity extends AppCompatActivity
 
         viewpagerinit();
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            int vp_current;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                vp_current = position;
+                Log.d("POSITION", String.valueOf(vp_current));
+                switch (vp_current){
+                    case 1 :
+                        main_search_btn.setVisibility(View.GONE);
+                        break;
+
+                    case 3 :
+                        main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
+                        break;
+
+                    default:
+                        main_search_btn.setVisibility(View.VISIBLE);
+                        main_option_btn.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
         navigationinit();
 
        // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
@@ -104,12 +143,24 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_shop_btn:
                 intent = new Intent(MainActivity.this, StoreActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
                 break;
+
             case R.id.navigation_leaderboard_btn:
                 intent = new Intent(MainActivity.this, LeaderBoardActivity.class);
                 startActivity(intent);
+                break;
 //                finish();
+
+            case R.id.navigation_settings_btn:
+                intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.navigation_mirror_btn :
+                Intent intent1 = new Intent(MainActivity.this, MirrorActivity.class);
+                startActivity(intent1);
+                break;
         }
         return false;
     }
@@ -117,7 +168,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void viewpagerinit() {
 
-        CustomViewPagerAdapter customViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
         customViewPagerAdapter.addFragment(R.drawable.check_square, new TodoFragment());
         customViewPagerAdapter.addFragment(R.drawable.time_left, new TimeLineFragment());
         customViewPagerAdapter.addFragment(R.drawable.light_bulb, new IdeasFragment());
@@ -128,6 +178,12 @@ public class MainActivity extends AppCompatActivity
 
         for (int i = 0; i < 4; i++) {
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
+        }
+
+
+        Intent intent = new Intent();
+        if(intent.getBooleanExtra("Memo",false)){
+            customViewPagerAdapter.getFragmentInfo(3);
         }
     }
 
@@ -192,7 +248,21 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
 
         apply_btn.setOnClickListener(v -> {
-            Toast.makeText(this, "apply clicked", Toast.LENGTH_SHORT).show();
+            switch (viewPager.getCurrentItem()){
+                case 0 :
+                    current_context = "Todo";
+                    //Todo todo 서버 연결 코드 필요 (정렬)
+                    break;
+
+                case 2 :
+                    current_context = "Ideas";
+                    //Todo Ideas 서벼 연결 코드 필요 (정렬)
+                    break;
+
+                default:
+                    current_context = "default";
+            }
+            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
 
@@ -315,16 +385,35 @@ public class MainActivity extends AppCompatActivity
                 .setCancelable(true)
                 .create();
 
+        dialogPlus.show();
+
         EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
+        ImageView search_btn = (ImageView) dialogPlus.findViewById(R.id.dialog_search_btn);
+
+
+        search_btn.setOnClickListener(v -> {
+            switch (viewPager.getCurrentItem()){
+                case 0 :
+                    current_context = "Todo";
+                    //Todo todo 서버 연결 코드 필요 (검색)
+                    break;
+
+                case 2 :
+                    current_context = "Ideas";
+//                    IdeasFragment ideasFragment = new IdeasFragment();
+//                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
+                    ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
+                    break;
+
+                default:
+                    current_context = "default";
+            }
+        });
+
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
 
-
-        dialogPlus.show();
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

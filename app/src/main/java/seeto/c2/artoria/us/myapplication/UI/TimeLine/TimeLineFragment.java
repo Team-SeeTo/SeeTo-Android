@@ -41,12 +41,6 @@ public class TimeLineFragment extends Fragment implements TImeLineContract.View 
         return fragment;
     }
 
-
-    @Override
-    public void showToast(String text) {
-
-    }
-
     @Override
     public void setData() {
         datas.add(new TimeLineItem("Todo","12","7","2","milestones completed",

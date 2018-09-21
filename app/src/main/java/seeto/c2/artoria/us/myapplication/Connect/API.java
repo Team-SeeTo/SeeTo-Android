@@ -52,4 +52,8 @@ public interface API {
     @GraphQuery("timeline_main")
     Call<TimeLineModel> TimelineMain(@Body QueryContainerBuilder queryContainerBuilder);
 
+    @POST("/graphql")
+    @GraphQuery("new_idea")
+    Call<Void> NewIdea(@Body QueryContainerBuilder queryContainerBuilder);
+
 }

@@ -18,15 +18,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.LeaderBoard.LeaderBoardActivity" />
-        <activity android:name=".UI.Main.MainActivity" />
-        <activity android:name=".UI.Store.StoreActivity" />
-        <activity android:name=".UI.Signup.SignupActivity" />
-        <activity
-            android:name=".UI.Ideas.IdeasViewDetailActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity" />
-        <activity android:name=".UI.Ideas.IdeasWriteActivity" />
+
+
+        <activity android:name=".UI.LeaderBoard.LeaderBoardActivity"></activity>
+
+        <activity android:name=".UI.Main.MainActivity"/>
+        <activity android:name=".UI.Store.StoreActivity"/>
+        <activity android:name=".UI.Mirror.MirrorActivity"/>
+        <activity android:name=".UI.Signup.SignupActivity"/>
+        <activity android:name=".UI.Ideas.IdeasViewDetailActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".UI.Ideas.IdeasSelectCategoryActivity"/>
+
+        <activity android:name=".UI.Ideas.IdeasWriteActivity"/>
+
+        <activity android:name=".UI.Setting.SettingActivity"/>
+
         <activity android:name=".UI.QM.ViewMemoActivity" />
         <activity android:name=".UI.QM.WriteMemoActivity" />
         <activity

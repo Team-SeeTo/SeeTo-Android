@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Operation;
@@ -33,11 +35,8 @@ public class SigninActivity extends AppCompatActivity implements SigninContract.
         Button signin_button = findViewById(R.id.signin_main_button);
         signin_button.setOnClickListener(v -> {
 
-//            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
+            signinPresenter.SigninRequest(id_et.getText().toString(),password_et.getText().toString());
 
-            Intent intent = new Intent(SigninActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
         });
 
         
@@ -48,8 +47,5 @@ public class SigninActivity extends AppCompatActivity implements SigninContract.
         });
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

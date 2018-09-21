@@ -1,5 +1,6 @@
 package seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -34,6 +35,9 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
         return mFragmentInfoList.size();
     }
 
+    public List<FragmentInfo> getmFragmentInfoList() {
+        return mFragmentInfoList;
+    }
 }
 
 

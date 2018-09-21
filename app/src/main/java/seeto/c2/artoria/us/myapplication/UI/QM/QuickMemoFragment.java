@@ -30,7 +30,7 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
         }
 
         RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.qm_recycler);
-        QMRecyclerAdapter QMRecyclerAdapter = new QMRecyclerAdapter(QMItem);
+        QMRecyclerAdapter QMRecyclerAdapter = new QMRecyclerAdapter(QMItem, getActivity().getApplicationContext());
         myrv.setLayoutManager(new LinearLayoutManager(getActivity()));
         myrv.setAdapter(QMRecyclerAdapter);
 
@@ -45,9 +45,6 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
     }
 
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }
 

@@ -44,8 +44,4 @@ public class StoreActivity extends AppCompatActivity implements StoreContract.Vi
 
     }
 
-    @Override
-    public void showToast(String text) {
-
-    }
 }
