@@ -1,6 +1,12 @@
 mutation Refresh($token : String){
-  refresh(token : $token){
-    accessToken
-    message
+  refresh(refreshToken : $token){
+   ...on RefreshMutation{
+    result{
+    	...on RefreshField{
+        accessToken
+        message
+      	}
+    	}
+  	}
   }
 }
