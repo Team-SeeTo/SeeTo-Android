@@ -6,13 +6,15 @@ public class IdeasItem {
     private String rank;
     private String like;
     private String comment;
+    private String id;
 
-    public IdeasItem(String title, String category, String rank, String like, String comment){
+    public IdeasItem(String title, String category, String rank, String like, String comment,String id){
         this.title = title;
         this.category = category;
         this.rank = rank;
         this.like = like;
         this.comment = comment;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -33,5 +35,9 @@ public class IdeasItem {
 
     public String getComment() {
         return comment;
+    }
+
+    public String getId() {
+        return id;
     }
 }

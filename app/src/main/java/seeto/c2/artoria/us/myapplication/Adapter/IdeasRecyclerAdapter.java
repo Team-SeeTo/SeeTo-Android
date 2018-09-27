@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,10 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
         holder.like_text.setText(items.get(position).getLike());
         holder.comment.setText(items.get(position).getComment());
         holder.item.setOnClickListener(v -> {
+            String id = items.get(position).getId();
+            Log.d("ID",id);
             Intent intent = new Intent(context, IdeasViewDetailActivity.class);
+            intent.putExtra("id",id);
             context.startActivity(intent);
         });
         holder.like_btn.setOnClickListener(v -> {
@@ -53,11 +57,13 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
                     like_flag = true;
                     holder.like_btn.setImageResource(R.drawable.ic_fill_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#ff0000"));
+                    holder.like_text.setText("1");
                     Toast.makeText(context, "이 게시물에 좋아요를 표시했습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     like_flag = false;
                     holder.like_btn.setImageResource(R.drawable.ic_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#757575"));
+                    holder.like_text.setText("0");
                     Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
                 }
         });

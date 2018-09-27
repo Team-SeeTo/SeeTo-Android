@@ -18,12 +18,19 @@ import android.view.ViewParent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import seeto.c2.artoria.us.myapplication.Adapter.IdeasRecyclerAdapter;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
+import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
@@ -58,10 +65,12 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
         if (startflag) {
 //            startflag = false;
-            recyclerdatainit();
+//            recyclerdatainit();
 
-            adapter = new IdeasRecyclerAdapter(listdata, getActivity());
-            ideaslist.setAdapter(adapter);
+            getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank);
+
+
+
         } else {
 //            adapter = new IdeasRecyclerAdapter(listdata, getActivity());
 //            ideaslist.setAdapter(adapter);
@@ -70,11 +79,13 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         ideaslist.setOnScrollChangeListener((view, i, i1, i2, i3) -> {
             if (!ideaslist.canScrollVertically(1)) {
 
-                Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
+                if(adapter.getItemCount() == 30) {
 
-                loadMore();
+                    Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
 
+                    loadMore();
 
+                }
             }
         });
 
@@ -86,13 +97,8 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     public void recyclerdatainit() {
 
         if (viewPager.getCurrentItem() == 2) {
-            ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), "filterBy", startrank);
 
-            listdata.clear();
-
-            for (int i = 1; i <= 30; i++) {
-                listdata.add(new IdeasItem("Title", "Body", "#" + i, "23.1K", "411"));
-            }
+            getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank);
 
         }
 
@@ -101,7 +107,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     @Override
     public void loadMore() {
 
-        ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true),"filterBy", startrank + 30);
+        getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank + 30);
 
         new Handler().postDelayed(() -> {
 
@@ -109,7 +115,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
             end = startrank + 30;
 
             for (int i = startrank + 1; i <= end; i++){
-                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411"));
+                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411","id"));
             }
 
             adapter.addItemMore(listdata);
@@ -122,6 +128,52 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     @Override
     public void IdeasSearchRequest(String search_string) {
         ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string," ",1);
+
+    }
+
+    @Override
+    public void getListDataRequest(String token, int startRank) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                Log.d("DEBUG", data.getData().getIdeas().get(i).getAuthor());
+                                Log.d("DEBUG", data.getData().getIdeas().get(i).getTitle());
+                                Log.d("DEBUG", data.getData().getIdeas().get(i).getBody());
+                                Log.d("DEBUG", String.valueOf(data.getData().getIdeas().get(i).getUpvoter()));
+                                Log.d("DEBUG", data.getData().getIdeas().get(i).getCategory());
+                                Log.d("DEBUG",data.getData().getIdeas().get(i).getCreatedAt());
+                                Log.d("DEBUG",data.getData().getIdeas().get(i).getId());
+
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        data.getData().getIdeas().get(i).getId()));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
 
     }
 

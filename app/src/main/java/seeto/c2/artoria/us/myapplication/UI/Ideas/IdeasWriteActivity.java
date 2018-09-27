@@ -29,8 +29,7 @@ public class IdeasWriteActivity extends AppCompatActivity{
         ideas_write_finish_btn = findViewById(R.id.ideas_write_fin_btn);
         ideasPresenter = new IdeasPresenter(this);
 
-        Intent intent = new Intent();
-        category = intent.getStringExtra("category");
+        category = getIntent().getStringExtra("category");
 
         ideas_write_finish_btn.setOnClickListener(view -> {
             if(ideas_write_title_et.getText().toString().isEmpty() || ideas_write_content_et.getText().toString().isEmpty()){

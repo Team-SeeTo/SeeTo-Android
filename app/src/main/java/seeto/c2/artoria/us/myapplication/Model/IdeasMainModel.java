@@ -40,6 +40,15 @@ public class IdeasMainModel {
         @SerializedName("upvoter")
         private int upvoter;
 
+        @SerializedName("category")
+        private String category;
+
+        @SerializedName("createdAt")
+        private String createdAt;
+
+        @SerializedName("id")
+        private String id;
+
         public String getAuthor() {
             return author;
         }
@@ -58,6 +67,18 @@ public class IdeasMainModel {
 
         public int getUpvoter() {
             return upvoter;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public String getId() {
+            return id;
         }
     }
 

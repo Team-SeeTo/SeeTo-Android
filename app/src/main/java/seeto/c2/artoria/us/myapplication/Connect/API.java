@@ -5,12 +5,16 @@ import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
 import javax.annotation.PostConstruct;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import seeto.c2.artoria.us.myapplication.Adapter.QMRecyclerAdapter;
+import seeto.c2.artoria.us.myapplication.Model.IdeasDetailModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasSearchModel;
+import seeto.c2.artoria.us.myapplication.Model.NewCommentModel;
+import seeto.c2.artoria.us.myapplication.Model.NewIdeasModel;
 import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
 import seeto.c2.artoria.us.myapplication.Model.TimeLineModel;
 import seeto.c2.artoria.us.myapplication.Model.TodoMainModel;
@@ -54,6 +58,14 @@ public interface API {
 
     @POST("/graphql")
     @GraphQuery("new_idea")
-    Call<Void> NewIdea(@Body QueryContainerBuilder queryContainerBuilder);
+    Call<NewIdeasModel> NewIdea(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("ideas_view_detail")
+    Call<IdeasDetailModel> IdeasDetail(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("new_comment")
+    Call<NewCommentModel> NewComment(@Body QueryContainerBuilder queryContainerBuilder);
 
 }
