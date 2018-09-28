@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.widget.ScrollingTabContainerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,7 +24,6 @@ import seeto.c2.artoria.us.myapplication.R;
 public class IdeasSelectCategoryActivity extends AppCompatActivity {
 
     TextView next_btn;
-    String current_category;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -50,24 +50,9 @@ public class IdeasSelectCategoryActivity extends AppCompatActivity {
         materialBetterSpinner.setText(categoryAdapter.getItem(0).toString());
         materialBetterSpinner.setTextSize(20);
 
-        
-
-        materialBetterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                current_category = (String) adapterView.getItemAtPosition(position);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
         next_btn.setOnClickListener(v -> {
-            Toast.makeText(this, current_category, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(IdeasSelectCategoryActivity.this, IdeasWriteActivity.class);
+            intent.putExtra("category",materialBetterSpinner.getText().toString());
             startActivity(intent);
             finish();
         });

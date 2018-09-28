@@ -38,7 +38,7 @@ public class IdeasMainModel {
         private List<CommentItem> comments;
 
         @SerializedName("upvoter")
-        private List<String> upvoter;
+        private int upvoter;
 
         public String getAuthor() {
             return author;
@@ -56,7 +56,7 @@ public class IdeasMainModel {
             return comments;
         }
 
-        public List<String> getUpvoter() {
+        public int getUpvoter() {
             return upvoter;
         }
     }
