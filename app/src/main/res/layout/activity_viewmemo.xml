@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="aaaaaaa"
+        android:text="Hello, my name is minjicha. What's your name?"
+        android:inputType="textNoSuggestions|textMultiLine"
         android:textColor="#2C007B"
         android:textSize="25dp"
         android:focusableInTouchMode="false"
-        android:background="@null"/>
+        android:background="@null" />
 
     <View
         android:layout_width="match_parent"
