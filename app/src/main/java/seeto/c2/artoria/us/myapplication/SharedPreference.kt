@@ -18,6 +18,17 @@ fun removeToken(context: Context, isAccess: Boolean = true){
     val editor = getPref(context).edit()
     editor.remove(getKey(isAccess))
     editor.apply()
+
+}
+
+fun saveQM(context: Context,text : String){
+    val editor = getPref(context).edit()
+    editor.putString("QM",text)
+    editor.apply()
+}
+
+fun getQM(context: Context) : String{
+    return getPref(context).getString("QM","")
 }
 
 fun getToken(context: Context, isAccess: Boolean = true): String{

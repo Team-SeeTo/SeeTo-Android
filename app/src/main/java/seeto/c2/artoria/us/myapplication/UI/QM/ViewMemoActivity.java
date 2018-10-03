@@ -104,6 +104,7 @@ public class ViewMemoActivity extends AppCompatActivity {
                     Toast.makeText(ViewMemoActivity.this, "해당 단어를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
         memo_search_et.setFocusableInTouchMode(true);
         memo_search_et.requestFocus();

@@ -1,5 +1,6 @@
 package seeto.c2.artoria.us.myapplication.UI.QM;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,21 +17,20 @@ import java.util.ArrayList;
 import seeto.c2.artoria.us.myapplication.Adapter.QMRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.Item.QMItem;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 
 public class QuickMemoFragment extends Fragment implements QuickMemoContract.View{
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) getLayoutInflater().inflate(R.layout.fragment_quickmemo,null);
 
-        ArrayList<QMItem> QMItem =new ArrayList<>();
+        ArrayList<QMItem> qmItem =new ArrayList<>();
 
-
-        for(int i = 0; i<10; i++){
-            QMItem.add(new QMItem("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "));
-        }
+        qmItem.add(new QMItem(SharedPreferenceKt.getQM(getActivity())));
 
         RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.qm_recycler);
-        QMRecyclerAdapter QMRecyclerAdapter = new QMRecyclerAdapter(QMItem, getActivity().getApplicationContext());
+        QMRecyclerAdapter QMRecyclerAdapter = new QMRecyclerAdapter(qmItem, getActivity().getApplicationContext());
         myrv.setLayoutManager(new LinearLayoutManager(getActivity()));
         myrv.setAdapter(QMRecyclerAdapter);
 
@@ -44,10 +44,8 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
         return fragment;
     }
 
-
     @Override
     public void showToast(String text) {
 
     }
 }
-

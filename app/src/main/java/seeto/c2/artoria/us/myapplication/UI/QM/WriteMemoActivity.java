@@ -4,6 +4,7 @@ import java.lang.*;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 
 public class WriteMemoActivity extends AppCompatActivity {
 
@@ -35,6 +37,9 @@ public class WriteMemoActivity extends AppCompatActivity {
                     Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_SHORT).show();
+
+                    SharedPreferenceKt.saveQM(WriteMemoActivity.this,"NEW QM");
+
                     finish();
                 }
             }

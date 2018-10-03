@@ -86,6 +86,4 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
             container = itemView.findViewById(R.id.cardViewMemo_container);
         }
     }
-
-
 }
