@@ -1,7 +1,6 @@
 package seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.Fragment;
 
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,26 +17,26 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.CreateNewTodoListAdapter;
-import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.CreatedTodoListAdapter;
 import seeto.c2.artoria.us.myapplication.Item.TodoItem;
+import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.SibalLom;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CreateTodoFragment extends Fragment {
+public class ModifyTodoFragment extends Fragment {
+
 
     View view;
     SibalLom sibalLom;
     String type;
     String todoType;
-    ArrayList<String> items = new ArrayList<>();
-    CreateNewTodoListAdapter todoListAdapter;
+    ArrayList<TodoItem> items = new ArrayList<>();
+    CreatedTodoListAdapter todoListAdapter;
     RecyclerView createdTodoRecyclerView;
 
-    public CreateTodoFragment() {
+    public ModifyTodoFragment() {
     }
 
     @Override
@@ -49,7 +48,7 @@ public class CreateTodoFragment extends Fragment {
             type = "normal";
         }
         Log.d("TODO type", type);
-        todoListAdapter = new CreateNewTodoListAdapter(items, type);
+        todoListAdapter = new CreatedTodoListAdapter(items, type);
         createdTodoRecyclerView.setAdapter(todoListAdapter);
     }
 
@@ -60,13 +59,13 @@ public class CreateTodoFragment extends Fragment {
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
         todoType = getArguments().getString("todoType");
 
-        createdTodoRecyclerView = view.findViewById(R.id.todo_create_recycler_view);
+        createdTodoRecyclerView = view.findViewById(R.id.todo_modify_recycler_view);
 
 
 
-        final EditText inputText = (EditText) CreateTodoFragment.this.view.findViewById(R.id.new_text);
+        final EditText inputText = (EditText) ModifyTodoFragment.this.view.findViewById(R.id.modify_text);
 
-        final TextView addMileStone = view.findViewById(R.id.add_milestone);
+        final TextView addMileStone = view.findViewById(R.id.modify_add_milestone);
         addMileStone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +80,7 @@ public class CreateTodoFragment extends Fragment {
             }
         });
 
-        TextView finish = view.findViewById(R.id.todo_finish);
+        TextView finish = view.findViewById(R.id.modify_finish);
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +106,7 @@ public class CreateTodoFragment extends Fragment {
     }
 
     void addMilestone(String text) {
-        items.add(text);
+        items.add(new TodoItem(text, false));
     }
+
 }

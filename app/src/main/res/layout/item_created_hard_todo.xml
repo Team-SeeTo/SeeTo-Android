@@ -28,6 +28,7 @@
         android:background="@null"
         android:text="something to do"
         android:textColor="@color/colorPrimary"
+        android:textSize="16dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toRightOf="@+id/todo_created_hard_check_box"
         app:layout_constraintBaseline_toBaselineOf="@+id/todo_created_hard_check_box"/>

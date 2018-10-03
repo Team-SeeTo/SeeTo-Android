@@ -8,7 +8,6 @@ import java.util.Date;
 public class TodoItem implements Parcelable{
     private String text;
     private Boolean isChecked;
-    private Date date;
 
     public TodoItem(String text, Boolean isChecked){
         this.text = text;

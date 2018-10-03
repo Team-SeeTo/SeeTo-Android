@@ -18,7 +18,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
     defaultConfig {
         applicationId "seeto.c2.artoria.us.myapplication"
         minSdkVersion 24
@@ -68,5 +68,8 @@ dependencies {
     implementation 'com.ramkishorevs.graphqlretrofitconverter:graphqlconverter:1.0.0'
     def paging_version = "1.0.0"
     implementation "android.arch.paging:runtime:$paging_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:livedata:1.1.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

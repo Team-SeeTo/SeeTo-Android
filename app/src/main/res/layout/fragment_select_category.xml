@@ -11,24 +11,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Category"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000"
+        android:textStyle="bold"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/category_spinner"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp" />
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
         android:id="@+id/category_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
         android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/category_next"
-        app:layout_constraintTop_toBottomOf="@+id/category_header" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/category_next"

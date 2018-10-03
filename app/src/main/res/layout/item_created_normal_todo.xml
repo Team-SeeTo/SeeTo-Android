@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="something to do"
+        android:textSize="16dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toRightOf="@+id/todo_created_normal_check_box"
         app:layout_constraintBaseline_toBaselineOf="@+id/todo_created_normal_check_box"/>

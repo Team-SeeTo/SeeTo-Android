@@ -1,0 +1,13 @@
+mutation NewTodo($title : String, $token : String, $milestones : [String],
+	$type : Type, $expiration : Date)
+  {
+    newTodo(title : $title, token : $token, milestones : $milestones, type : $type
+    ,expiration : $expiration){
+      result{
+        ...on ResponseMessageField{
+          isSuccess
+          message
+        }
+      }
+    }
+  }

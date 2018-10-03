@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.ToDo.TodoCreate.Fragment.CreateTodoFragment">
+    tools:context=".UI.ToDo.TodoCreate.Fragment.ModifyTodoFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         />
 
     <EditText
-        android:id="@+id/new_text"
+        android:id="@+id/modify_text"
         android:inputType="textNoSuggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,30 +34,30 @@
         android:layout_marginBottom="100dp"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/todo_create_recycler_view"
+        android:id="@+id/todo_modify_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/new_text"
+        app:layout_constraintTop_toBottomOf="@+id/modify_text"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
     <TextView
-        android:id="@+id/add_milestone"
+        android:id="@+id/modify_add_milestone"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:drawableLeft="@drawable/baseline_add_black_24"
         android:text="Add Milestone"
         android:textSize="16dp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/todo_create_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/todo_modify_recycler_view"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"/>
 
     <TextView
-        android:id="@+id/todo_finish"
+        android:id="@+id/modify_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Finish"
@@ -68,4 +68,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>
