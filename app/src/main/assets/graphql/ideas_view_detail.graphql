@@ -8,8 +8,11 @@ query ideasMain($token:String, $view : String){
       createdAt
       category
       comments{
+        commentCount
+        comments{
         author
         body
+        }
       }
       upvoter
     }

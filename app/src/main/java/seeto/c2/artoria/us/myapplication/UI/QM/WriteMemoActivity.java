@@ -45,19 +45,14 @@ public class WriteMemoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(WriteMemoActivity.this);
                 alert_confirm.setMessage("작성을 취소하시겠습니까?").setCancelable(false).setPositiveButton("확인",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(WriteMemoActivity.this, ViewMemoActivity.class);
-                                startActivity(intent);
-                            }
+                        (dialog, which) -> {
+                    finish();
+//                                Intent intent = new Intent(WriteMemoActivity.this, ViewMemoActivity.class);
+//                                startActivity(intent);
                         }).setNegativeButton("취소",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // 'No'
-                                return;
-                            }
+                        (dialog, which) -> {
+                            // 'No'
+                            return;
                         });
                 AlertDialog alert = alert_confirm.create();
                 alert.show();

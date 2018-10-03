@@ -29,11 +29,10 @@ public class IdeasPresenter implements IdeasContract.Presenter {
     }
 
     @Override
-    public void SearchRequest(String token, String search_string, String filterBy, int startRank) {
+    public void SearchRequest(String token, String search_string, int startRank) {
                 queryContainerBuilder
                 .putVariable("token",token)
                 .putVariable("searchString",search_string)
-                .putVariable("filterBy",filterBy)
                 .putVariable("startRank",startRank);
 
         new Connector(context).getClient().IdeasSearch(queryContainerBuilder)
@@ -46,12 +45,6 @@ public class IdeasPresenter implements IdeasContract.Presenter {
                             ArrayList<IdeasItem> listdata = new ArrayList<>();
 
                             for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getAuthor());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getTitle());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getBody());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getComments().get(i).getComment_author());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getComments().get(i).getComment_body());
-                                Log.d("DEBUG", String.valueOf(data.getData().getIdeas().get(i).getUpvoter()));
 
 //                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
 //                                        data.getData().getIdeas().get(i).getBody(),

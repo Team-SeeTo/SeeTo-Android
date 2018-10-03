@@ -41,7 +41,7 @@ public class IdeasDetailModel {
         String category;
 
         @SerializedName("comments")
-        List<CommentItem> comment;
+        Comments comments;
 
         @SerializedName("upvoter")
         String upvoter;
@@ -70,10 +70,27 @@ public class IdeasDetailModel {
             return category;
         }
 
+        public Comments getComments() {
+            return comments;
+        }
+    }
+
+    public static class Comments{
+        @SerializedName("comments")
+        List<CommentItem> comment;
+
+        @SerializedName("commentCount")
+        int commentCount;
+
         public List<CommentItem> getComment() {
             return comment;
         }
+
+        public int getCommentCount() {
+            return commentCount;
+        }
     }
+
 
     public static class CommentItem{
         @SerializedName("author")

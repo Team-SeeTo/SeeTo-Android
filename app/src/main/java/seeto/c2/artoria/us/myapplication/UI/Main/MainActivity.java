@@ -1,5 +1,6 @@
 package seeto.c2.artoria.us.myapplication.UI.Main;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -85,7 +87,29 @@ public class MainActivity extends AppCompatActivity
         todo_fab = findViewById(R.id.todo_fab);
 
 
-        main_option_btn.setOnClickListener(v -> showOptionDialog() );
+        main_option_btn.setOnClickListener(v -> {
+                switch (viewPager.getCurrentItem()){
+                    case 0 :
+                        current_context = "Todo";
+                        showOptionDialog();
+                        break;
+
+                    case 1 :
+                        current_context = "TimeLine";
+                        showSelectDateDialog();
+                        break;
+
+                    case 2 :
+                        current_context = "Ideas";
+                        showOptionDialog();
+                        //Todo Ideas 서벼 연결 코드 필요 (정렬)
+                        break;
+
+                    default:
+                        current_context = "default";
+                }
+                Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
+            });
 
         main_search_btn.setOnClickListener(v -> showSearchDialog() );
 
@@ -240,31 +264,17 @@ public class MainActivity extends AppCompatActivity
     public void showOptionDialog() {
         Dialog dialog = new Dialog(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_options,null);
-        dialog.setContentView(R.layout.dialog_options);
+        dialog.setContentView(view);
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_options_apply_btn);
         TextView cancel_btn = dialog.findViewById(R.id.dialog_options_cancel_btn);
 
         dialog.show();
 
-        apply_btn.setOnClickListener(v -> {
-            switch (viewPager.getCurrentItem()){
-                case 0 :
-                    current_context = "Todo";
-                    //Todo todo 서버 연결 코드 필요 (정렬)
-                    break;
+        apply_btn.setOnClickListener(v ->{
 
-                case 2 :
-                    current_context = "Ideas";
-                    //Todo Ideas 서벼 연결 코드 필요 (정렬)
-                    break;
-
-                default:
-                    current_context = "default";
-            }
-            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
         });
+
 
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
 
@@ -402,6 +412,7 @@ public class MainActivity extends AppCompatActivity
                     current_context = "Ideas";
 //                    IdeasFragment ideasFragment = new IdeasFragment();
 //                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
+                    Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                     ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
                     break;
 
@@ -413,6 +424,44 @@ public class MainActivity extends AppCompatActivity
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
 
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void showSelectDateDialog() {
+        Dialog dialog = new Dialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_timeline_select_date,null);
+        dialog.setContentView(view);
+
+        TextView apply_btn = dialog.findViewById(R.id.dialog_timeline_apply_btn);
+        TextView cancel_btn = dialog.findViewById(R.id.dialog_timeline_cancel_btn);
+        TextView year = dialog.findViewById(R.id.dialog_timeline_select_date_year);
+        TextView month = dialog.findViewById(R.id.dialog_timeline_select_date_month);
+        TextView day = dialog.findViewById(R.id.dialog_timeline_select_date_day);
+        CalendarView cal = dialog.findViewById(R.id.dialog_timeline_select_date_cal);
+
+        dialog.show();
+
+        apply_btn.setOnClickListener(v ->{
+            cal.setOnDateChangeListener((calendarView, cal_year, cal_month, cal_day) -> {
+                year.setText(cal_year);
+                month.setText(cal_month);
+                day.setText(cal_day);
+            });
+
+            String date = year.getText().toString() + "-" + month.getText().toString() + "-" + day.getText().toString();
+
+            Toast.makeText(this, date , Toast.LENGTH_SHORT).show();
+
+            dialog.dismiss();
+        });
+
+
+        cancel_btn.setOnClickListener(v -> dialog.dismiss());
+
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCanceledOnTouchOutside(false);
     }
 
 

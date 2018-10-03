@@ -135,9 +135,6 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
                            IdeasDetailModel data = response.body();
 
                            for (int i = 0; i < data.getData().getIdeas().size(); i++) {
-//                               Log.d("DEBUG", data.getData().getIdeas().get(i).getTitle());
-//                               Log.d("DEBUG", data.getData().getIdeas().get(i).getBody());
-//                               Log.d("DEBUG", data.getData().getIdeas().get(i).getCreatedAt());
 
                                String date = data.getData().getIdeas().get(i).getCreatedAt();
                                String split_date = date.substring(0,10);
@@ -146,11 +143,12 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
                                body.setText(data.getData().getIdeas().get(i).getBody());
                                createdAt.setText(split_date);
 
-                               for (int j = 0; j < data.getData().getIdeas().get(i).getComment().size(); j++){
-                                   if (data.getData().getIdeas().get(i).getComment() != null) {
 
-                                       list_data.add(new CommentItem(data.getData().getIdeas().get(i).getComment().get(j).getAuthor(),
-                                               data.getData().getIdeas().get(i).getComment().get(j).getBody()));
+                               for (int j = 0; j < data.getData().getIdeas().get(i).getComments().getCommentCount(); j++){
+                                   if (data.getData().getIdeas().get(i).getComments().getComment() != null) {
+
+                                       list_data.add(new CommentItem(data.getData().getIdeas().get(i).getComments().getComment().get(j).getAuthor(),
+                                               data.getData().getIdeas().get(i).getComments().getComment().get(j).getBody()));
 
                                    } else {
                                        Log.d("DEBUG","comment_null");

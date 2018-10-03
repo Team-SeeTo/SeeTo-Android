@@ -97,7 +97,7 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
             like_text = itemView.findViewById(R.id.item_ideas_like_text);
             comment = itemView.findViewById(R.id.item_ideas_comment_text);
             item = itemView.findViewById(R.id.item_ideas);
-            like_btn = itemView.findViewById(R.id.item_ideas_like_img);
+            like_btn = item.findViewById(R.id.item_ideas_like_img);
 
         }
     }

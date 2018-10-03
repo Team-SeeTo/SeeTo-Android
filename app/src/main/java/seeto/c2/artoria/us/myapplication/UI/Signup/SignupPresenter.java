@@ -32,16 +32,11 @@ public class SignupPresenter implements SignupContract.Presenter{
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()){
-                            Log.d("DEBUG","success");
-                            Log.d("DEBUG",response.message());
-                            Log.d("DEBUG", String.valueOf(response.code()));
                             Intent intent = new Intent(context, SigninActivity.class);
                             context.startActivity(intent);
                             Toast.makeText(context, "성공적으로 회원가입되었습니다.", Toast.LENGTH_SHORT).show();
                         } else {
-                            Log.d("DEBUG",response.message());
                             Log.d("DEBUG","failed");
-                            Log.d("DEBUG", String.valueOf(response.code()));
                         }
                     }
 

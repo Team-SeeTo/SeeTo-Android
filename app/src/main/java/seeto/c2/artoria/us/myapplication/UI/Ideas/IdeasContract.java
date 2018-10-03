@@ -14,7 +14,7 @@ public interface IdeasContract {
     }
 
     interface Presenter{
-        void SearchRequest(String token, String search_string, String filterBy, int startRank);
+        void SearchRequest(String token, String search_string, int startRank);
         void NewIdeaRequest(String category,String token, String title, String body);
     }
 }

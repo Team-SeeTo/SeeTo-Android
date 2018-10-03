@@ -43,6 +43,7 @@ public class IdeasSelectCategoryActivity extends AppCompatActivity {
                 categoryList
         );
 
+
         MaterialBetterSpinner materialBetterSpinner;
 
         materialBetterSpinner = findViewById(R.id.newidea_category_spinner);

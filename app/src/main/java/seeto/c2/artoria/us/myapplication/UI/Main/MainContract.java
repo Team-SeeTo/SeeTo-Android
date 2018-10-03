@@ -11,6 +11,7 @@ public interface MainContract {
         void anmationinit();
         void main_fabclicked();
         void showSearchDialog();
+        void showSelectDateDialog();
     }
 
     interface Presenter{

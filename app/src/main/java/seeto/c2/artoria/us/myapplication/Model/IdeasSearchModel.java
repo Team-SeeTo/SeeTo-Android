@@ -6,9 +6,9 @@ import java.util.List;
 
 public class IdeasSearchModel {
     @SerializedName("data")
-    private IdeasMainModel.Data data;
+    private Data data;
 
-    public IdeasMainModel.Data getData() {
+    public Data getData() {
         return data;
     }
 
@@ -32,10 +32,19 @@ public class IdeasSearchModel {
         private String body;
 
         @SerializedName("comments")
-        private List<CommentItem> comments;
+        private Comments comments;
 
         @SerializedName("upvoter")
-        private List<String> upvoter;
+        private int upvoter;
+
+        @SerializedName("category")
+        private String category;
+
+        @SerializedName("createdAt")
+        private String createdAt;
+
+        @SerializedName("id")
+        private String id;
 
         public String getAuthor() {
             return author;
@@ -49,12 +58,40 @@ public class IdeasSearchModel {
             return title;
         }
 
+        public Comments getComments() {
+            return comments;
+        }
+
+        public int getUpvoter() {
+            return upvoter;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public String getId() {
+            return id;
+        }
+    }
+
+    public static class Comments{
+        @SerializedName("comments")
+        private List<CommentItem> comments;
+
+        @SerializedName("commentsCount")
+        private int commentsCount;
+
         public List<CommentItem> getComments() {
             return comments;
         }
 
-        public List<String> getUpvoter() {
-            return upvoter;
+        public int getCommentsCount() {
+            return commentsCount;
         }
     }
 
@@ -73,5 +110,4 @@ public class IdeasSearchModel {
             return comment_body;
         }
     }
-
 }

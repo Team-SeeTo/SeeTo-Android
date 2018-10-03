@@ -2,7 +2,6 @@ package seeto.c2.artoria.us.myapplication.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,7 +34,7 @@ public class IdeasMainModel {
         private String body;
 
         @SerializedName("comments")
-        private List<CommentItem> comments;
+        private Comments comments;
 
         @SerializedName("upvoter")
         private int upvoter;
@@ -61,7 +60,7 @@ public class IdeasMainModel {
             return title;
         }
 
-        public List<CommentItem> getComments() {
+        public Comments getComments() {
             return comments;
         }
 
@@ -82,6 +81,22 @@ public class IdeasMainModel {
         }
     }
 
+    public static class Comments{
+        @SerializedName("comments")
+        private List<CommentItem> comments;
+
+        @SerializedName("commentCount")
+        private int commentsCount;
+
+        public List<CommentItem> getComments() {
+            return comments;
+        }
+
+        public int getCommentsCount() {
+            return commentsCount;
+        }
+    }
+
     public static class CommentItem {
         @SerializedName("author")
         private String comment_author;
@@ -97,6 +112,4 @@ public class IdeasMainModel {
             return comment_body;
         }
     }
-
-
 }

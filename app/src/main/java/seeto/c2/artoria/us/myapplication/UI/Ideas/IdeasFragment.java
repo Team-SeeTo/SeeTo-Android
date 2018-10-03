@@ -127,8 +127,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     @Override
     public void IdeasSearchRequest(String search_string) {
-        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string," ",1);
-
+        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string,1);
     }
 
     @Override
@@ -145,19 +144,11 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                             IdeasMainModel data = response.body();
 
                             for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getAuthor());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getTitle());
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getBody());
-                                Log.d("DEBUG", String.valueOf(data.getData().getIdeas().get(i).getUpvoter()));
-                                Log.d("DEBUG", data.getData().getIdeas().get(i).getCategory());
-                                Log.d("DEBUG",data.getData().getIdeas().get(i).getCreatedAt());
-                                Log.d("DEBUG",data.getData().getIdeas().get(i).getId());
-
                                 listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
                                         data.getData().getIdeas().get(i).getCategory(),
                                         "#" + (i+1),
                                         String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
-                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId()));
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
