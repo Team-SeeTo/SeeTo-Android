@@ -1,28 +1,22 @@
 package seeto.c2.artoria.us.myapplication.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import seeto.c2.artoria.us.myapplication.Item.QMItem;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.QM.ViewMemoActivity;
-
-import static android.media.CamcorderProfile.get;
 
 public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.ViewHolder> {
 
@@ -63,10 +57,6 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
             });
             popupMenu.show();
         });
-        holder.container.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), ViewMemoActivity.class);
-            v.getContext().startActivity(intent);
-        });
     }
 
     @Override
@@ -86,6 +76,4 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
             container = itemView.findViewById(R.id.cardViewMemo_container);
         }
     }
-
-
 }

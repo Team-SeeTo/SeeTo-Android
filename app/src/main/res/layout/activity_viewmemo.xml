@@ -6,24 +6,18 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/viewMemo"
+        android:id="@+id/qm_search_et"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="aaaaaaa"
+        android:text="Hello, my name is minjicha. What's your name?"
+        android:inputType="textNoSuggestions|textMultiLine"
         android:textColor="#2C007B"
         android:textSize="25dp"
         android:focusableInTouchMode="false"
-        android:background="@null"/>
+        android:background="@null" />
 
     <View
         android:layout_width="match_parent"
@@ -55,7 +49,7 @@
         app:layout_constraintLeft_toLeftOf="@id/viewMemo_editFab"/>
 
     <ImageButton
-        android:id="@+id/search_btn"
+        android:id="@+id/qm_search_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="right"
