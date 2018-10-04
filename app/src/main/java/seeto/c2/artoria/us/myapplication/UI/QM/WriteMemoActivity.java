@@ -68,6 +68,5 @@ public class WriteMemoActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-
     }
 }
