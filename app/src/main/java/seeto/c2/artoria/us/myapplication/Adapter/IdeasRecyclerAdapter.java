@@ -1,5 +1,6 @@
 package seeto.c2.artoria.us.myapplication.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -53,19 +54,33 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
             context.startActivity(intent);
         });
         holder.like_btn.setOnClickListener(v -> {
-                if(!like_flag){
-                    like_flag = true;
+            if (!items.get(position).isVote()){
+                    items.get(position).setVote(true);
                     holder.like_btn.setImageResource(R.drawable.ic_fill_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#ff0000"));
                     holder.like_text.setText("1");
                     Toast.makeText(context, "이 게시물에 좋아요를 표시했습니다.", Toast.LENGTH_SHORT).show();
-                } else {
-                    like_flag = false;
+            } else{
+                    items.get(position).setVote(false);
                     holder.like_btn.setImageResource(R.drawable.ic_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#757575"));
                     holder.like_text.setText("0");
                     Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
-                }
+            }
+
+//                if(!like_flag){
+//                    like_flag = true;
+//                    holder.like_btn.setImageResource(R.drawable.ic_fill_favorite);
+//                    holder.like_text.setTextColor(Color.parseColor("#ff0000"));
+//                    holder.like_text.setText("1");
+//                    Toast.makeText(context, "이 게시물에 좋아요를 표시했습니다.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    like_flag = false;
+//                    holder.like_btn.setImageResource(R.drawable.ic_favorite);
+//                    holder.like_text.setTextColor(Color.parseColor("#757575"));
+//                    holder.like_text.setText("0");
+//                    Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
+//                }
         });
     }
 

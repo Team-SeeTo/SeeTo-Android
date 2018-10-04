@@ -115,7 +115,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
             end = startrank + 30;
 
             for (int i = startrank + 1; i <= end; i++){
-                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411","id"));
+                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411","id",false));
             }
 
             adapter.addItemMore(listdata);
@@ -149,7 +149,8 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                         "#" + (i+1),
                                         String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
-                                        data.getData().getIdeas().get(i).getId()));
+                                        data.getData().getIdeas().get(i).getId(),
+                                        false));
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
                                 ideaslist.setAdapter(adapter);

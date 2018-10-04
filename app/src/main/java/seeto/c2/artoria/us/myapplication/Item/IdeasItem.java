@@ -7,14 +7,16 @@ public class IdeasItem {
     private String like;
     private String comment;
     private String id;
+    private boolean vote;
 
-    public IdeasItem(String title, String category, String rank, String like, String comment,String id){
+    public IdeasItem(String title, String category, String rank, String like, String comment,String id, boolean vote){
         this.title = title;
         this.category = category;
         this.rank = rank;
         this.like = like;
         this.comment = comment;
         this.id = id;
+        this.vote = vote;
     }
 
     public String getTitle() {
@@ -39,5 +41,13 @@ public class IdeasItem {
 
     public String getId() {
         return id;
+    }
+
+    public boolean isVote() {
+        return vote;
+    }
+
+    public void setVote(boolean vote) {
+        this.vote = vote;
     }
 }

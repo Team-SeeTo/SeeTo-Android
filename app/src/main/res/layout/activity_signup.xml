@@ -6,6 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.constraint.ConstraintLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -14,7 +22,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
         android:textColor="#C3A4FA"
@@ -23,36 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/signup_profile_image"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/signup_circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageView
-        android:id="@+id/signup_plus"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/signup_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/signup_profile_image"
-        app:layout_constraintEnd_toEndOf="@+id/signup_profile_image"
-        app:layout_constraintStart_toStartOf="@+id/signup_profile_image"
-        app:layout_constraintTop_toTopOf="@+id/signup_profile_image" />
 
     <EditText
         android:id="@+id/signup_email_input"
@@ -66,7 +43,7 @@
         android:hint="email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_profile_image" />
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <EditText
         android:id="@+id/signup_username_input"
@@ -113,5 +90,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_password_input" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,7 @@
 package seeto.c2.artoria.us.myapplication.Connect;
 
+import android.widget.CalendarView;
+
 import com.ramkishorevs.graphqlconverter.converter.GraphQuery;
 import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
@@ -67,5 +69,9 @@ public interface API {
     @POST("/graphql")
     @GraphQuery("new_comment")
     Call<NewCommentModel> NewComment(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("ideas_vote")
+    Call<Void> Vote(@Body QueryContainerBuilder queryContainerBuilder);
 
 }

@@ -41,6 +41,7 @@ import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.UI.QM.WriteMemoActivity;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.Setting.SettingActivity;
+import seeto.c2.artoria.us.myapplication.UI.Signin.SigninActivity;
 import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoActivity;
@@ -176,9 +177,10 @@ public class MainActivity extends AppCompatActivity
                 break;
 //                finish();
 
-            case R.id.navigation_settings_btn:
-                intent = new Intent(MainActivity.this, SettingActivity.class);
+            case R.id.navigation_Logout_btn:
+                intent = new Intent(MainActivity.this, SigninActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.navigation_mirror_btn :
