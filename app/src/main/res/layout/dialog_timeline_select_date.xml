@@ -9,7 +9,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="330dp"
-        android:layout_height="400dp">
+        android:layout_height="500dp">
 
         <TextView
             android:id="@+id/dialog_timeline_select_date_title"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content" />
 
 
-        <CalendarView
+        <DatePicker
             android:layout_marginTop="10dp"
             android:id="@+id/dialog_timeline_select_date_cal"
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toTopOf="@id/dialog_timeline_apply_btn"
             app:layout_constraintTop_toBottomOf="@id/dialog_timeline_select_date_title">
 
-        </CalendarView>
+        </DatePicker>
 
 
         <TextView
@@ -62,23 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/dialog_timeline_select_date_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/dialog_timeline_select_date_month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/dialog_timeline_select_date_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
     </android.support.constraint.ConstraintLayout>
 

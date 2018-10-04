@@ -9,7 +9,6 @@ query timelineMain($token:String, $date : Date){
           milestoneComplete
         }
       }
-
         ideas{
         ...on IdeasReviewField{
           newVote

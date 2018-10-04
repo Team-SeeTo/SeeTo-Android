@@ -1,8 +1,10 @@
 package seeto.c2.artoria.us.myapplication.UI.Main;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -21,6 +23,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,7 +32,14 @@ import android.widget.Toast;
 
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
+import seeto.c2.artoria.us.myapplication.Model.TimeLineModel;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
 
 
@@ -428,6 +438,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     @Override
     public void showSelectDateDialog() {
@@ -437,26 +448,27 @@ public class MainActivity extends AppCompatActivity
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_timeline_apply_btn);
         TextView cancel_btn = dialog.findViewById(R.id.dialog_timeline_cancel_btn);
-        TextView year = dialog.findViewById(R.id.dialog_timeline_select_date_year);
-        TextView month = dialog.findViewById(R.id.dialog_timeline_select_date_month);
-        TextView day = dialog.findViewById(R.id.dialog_timeline_select_date_day);
-        CalendarView cal = dialog.findViewById(R.id.dialog_timeline_select_date_cal);
+        DatePicker cal = dialog.findViewById(R.id.dialog_timeline_select_date_cal);
+
 
         dialog.show();
 
+
+
         apply_btn.setOnClickListener(v ->{
-            cal.setOnDateChangeListener((calendarView, cal_year, cal_month, cal_day) -> {
-                year.setText(cal_year);
-                month.setText(cal_month);
-                day.setText(cal_day);
-            });
 
-            String date = year.getText().toString() + "-" + month.getText().toString() + "-" + day.getText().toString();
+            String date;
 
-            Toast.makeText(this, date , Toast.LENGTH_SHORT).show();
+            date = String.valueOf(cal.getYear()) + "-" + String.valueOf(cal.getMonth()+1) + "-" + String.valueOf(cal.getDayOfMonth());
+            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
+
+            getTimelineData(SharedPreferenceKt.getToken(this,true),date);
 
             dialog.dismiss();
+
         });
+
+
 
 
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
@@ -464,6 +476,25 @@ public class MainActivity extends AppCompatActivity
         Window window = dialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCanceledOnTouchOutside(false);
+    }
+
+    public void getTimelineData(String token, String date) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("date",date);
+
+        new Connector(this).getClient().TimelineMain(queryContainerBuilder)
+                .enqueue(new Callback<TimeLineModel>() {
+                    @Override
+                    public void onResponse(Call<TimeLineModel> call, Response<TimeLineModel> response) {
+                        TimeLineModel data = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<TimeLineModel> call, Throwable t) {
+
+                    }
+                });
     }
 
 
