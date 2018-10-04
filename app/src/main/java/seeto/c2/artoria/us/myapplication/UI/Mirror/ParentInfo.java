@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ParentInfo {
     public String title;
-
     public ArrayList<ChildInfo> List = new ArrayList<ChildInfo>();
+
     public String getTitle() {
         return title;
     }

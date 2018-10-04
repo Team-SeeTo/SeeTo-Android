@@ -42,6 +42,10 @@ public class ViewMemoActivity extends AppCompatActivity {
         ImageButton qm_search_btn = findViewById(R.id.qm_search_btn);
         ImageView memo_search_btn = findViewById(R.id.memo_search_btn);
 
+        Intent intent2 = getIntent();
+        String memo = intent2.getStringExtra("memo");
+        viewmemo.setText(memo);
+
         qm_search_btn.setOnClickListener(v -> {
                     showQMSearchDialog();
                 }
@@ -63,6 +67,7 @@ public class ViewMemoActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void showQMSearchDialog() {
         DialogPlus QMdialogPlus = DialogPlus.newDialog(this)
@@ -104,7 +109,6 @@ public class ViewMemoActivity extends AppCompatActivity {
                     Toast.makeText(ViewMemoActivity.this, "해당 단어를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
         memo_search_et.setFocusableInTouchMode(true);
         memo_search_et.requestFocus();

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -55,10 +56,6 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
                 }
             });
             popupMenu.show();
-        });
-        holder.container.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), ViewMemoActivity.class);
-            v.getContext().startActivity(intent);
         });
     }
 
