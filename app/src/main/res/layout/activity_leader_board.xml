@@ -36,6 +36,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <View
+                            android:visibility="invisible"
                             android:id="@+id/second_grade_profile"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
@@ -43,6 +44,7 @@
                             app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"/>
 
                         <TextView
+                            android:visibility="invisible"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:background="@drawable/leader_board_rank"
@@ -53,6 +55,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/second_grade_profile" />
 
                         <View
+                            android:visibility="invisible"
                             android:id="@+id/third_grade_profile"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
@@ -61,6 +64,7 @@
                             app:layout_constraintRight_toRightOf="parent" />
 
                         <TextView
+                            android:visibility="invisible"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:background="@drawable/leader_board_rank"
@@ -97,6 +101,7 @@
                             app:layout_constraintGuide_begin="96dp" />
 
                         <TextView
+                            android:visibility="invisible"
                             android:id="@+id/second_grade_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -121,6 +126,7 @@
                             app:layout_constraintRight_toRightOf="@id/first_grade_profile"/>
 
                         <TextView
+                            android:visibility="invisible"
                             android:id="@+id/third_grade_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

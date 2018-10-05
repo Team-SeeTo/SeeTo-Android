@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull CustomViewholder holder, int position) {
+        if(holder==null) Log.d("TODO detail holder is", (holder==null)+"");
         holder.todoText.setText(todoItems.get(holder.getAdapterPosition()).getText());
         holder.todoCheckBox.setChecked(todoItems.get(holder.getAdapterPosition()).getChecked());
 
@@ -59,9 +61,12 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
             switch (type) {
                 case "normal":
                     holder.todoText.setTextColor(R.color.stdComplete);
+                    Log.d("TODO normal checked",""+holder.todoCheckBox.isChecked());
                     break;
                 case "hard":
                     holder.todoText.setTextColor(R.color.hardComplete);
+                    Log.d("TODO hard checked",""+holder.todoCheckBox.isChecked());
+                    break;
             }
             todoItems.get(holder.getAdapterPosition()).setChecked(true);
         }else {
@@ -77,13 +82,16 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
                     switch (type) {
                         case "normal":
                             holder.todoText.setTextColor(R.color.stdComplete);
+                            Log.d("TODO normal checked",""+isChecked);
                             break;
                         case "hard":
                             holder.todoText.setTextColor(R.color.hardComplete);
+                            Log.d("TODO hard checked",""+isChecked);
+                            break;
                     }
                     todoItems.get(holder.getAdapterPosition()).setChecked(true);
                 }else {
-                    holder.todoText.setTextColor(Color.BLACK);
+                    holder.todoText.setTextColor(R.color.colorPrimary);
                     todoItems.get(holder.getAdapterPosition()).setChecked(false);
                 }
             }
@@ -122,12 +130,15 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
                 case "normal":
                     todoText = itemView.findViewById(R.id.todo_detail_normal_text);
                     todoCheckBox = itemView.findViewById(R.id.todo_detail_normal_check_box);
+                    break;
                 case "hard":
-                    todoText = itemView.findViewById(R.id.todo_detail_normal_text);
-                    todoCheckBox = itemView.findViewById(R.id.todo_detail_normal_check_box);
+                    todoText = itemView.findViewById(R.id.todo_detail_hard_text);
+                    todoCheckBox = itemView.findViewById(R.id.todo_detail_hard_check_box);
+                    break;
                 default:
                     todoText = itemView.findViewById(R.id.todo_detail_normal_text);
                     todoCheckBox = itemView.findViewById(R.id.todo_detail_normal_check_box);
+                    break;
             }
         }
     }

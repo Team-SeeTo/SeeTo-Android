@@ -16,17 +16,39 @@ import seeto.c2.artoria.us.myapplication.Item.TodoItem;
 import seeto.c2.artoria.us.myapplication.R;
 
 public class TodoDetailActivity extends Activity {
-    String title;
+    String title, expiration;
     ArrayList<TodoItem> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        items = getIntent().getExtras().getParcelableArrayList("milestones");
-        String type = "normal";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_detail);
 
+        items = getIntent().getExtras().getParcelableArrayList("milestones");
+        expiration = getIntent().getExtras().getString("expiration");
+        String gotType = getIntent().getExtras().getString("type");
+        if(gotType==null) gotType = "STANDARD";
+        String title = getIntent().getExtras().getString("title");
+        Log.d("TODO detail expiration: ", expiration);
+        String type;
+        switch(gotType) {
+            case "HARD":
+                type = "hard";
+                break;
+            case "STANDARD":
+            case "INFINITY":
+                type = "normal";
+                break;
+            default:
+                type = "normal";
+        }
+
         RecyclerView TodoDetailRecyclerView;
+        TextView expirationText = findViewById(R.id.todo_detail_expiration);
+        expirationText.setText(expiration);
+
+        TextView titleText = findViewById(R.id.todo_detail_title);
+        titleText.setText(title);
 
         TodoDetailRecyclerView = findViewById(R.id.todo_detail_recycler);
         TodoDetailRecyclerView.setLayoutManager(new LinearLayoutManager(this));

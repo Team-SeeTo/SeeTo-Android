@@ -14,7 +14,7 @@
         android:id="@+id/todo_detail_hard_check_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/normal_todo_check_box"
+        android:background="@drawable/hard_todo_check_box"
         android:button="@null"
         android:layout_marginLeft="8dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="something to do"
+        android:textColor="@color/colorPrimary"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toRightOf="@+id/todo_detail_hard_check_box"
         app:layout_constraintBaseline_toBaselineOf="@+id/todo_detail_hard_check_box"/>

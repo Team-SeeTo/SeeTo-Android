@@ -10,7 +10,8 @@
         android:id="@+id/todo_detail_top"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/todo_detail_background">
+        android:background="@drawable/todo_detail_background"
+        android:paddingTop="30dp">
 
         <TextView
             android:id="@+id/todo_detail_title"

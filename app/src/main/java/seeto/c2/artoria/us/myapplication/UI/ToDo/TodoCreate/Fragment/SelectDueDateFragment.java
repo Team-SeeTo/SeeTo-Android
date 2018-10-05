@@ -40,7 +40,7 @@ public class SelectDueDateFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_select_due_date, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
         todoType = getArguments().getString("todoType");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         CalendarView calendarView = view.findViewById(R.id.due_calendar);
         calendarView.setOnDayClickListener(new OnDayClickListener() {

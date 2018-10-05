@@ -56,4 +56,7 @@ public interface API {
     @GraphQuery("new_idea")
     Call<Void> NewIdea(@Body QueryContainerBuilder queryContainerBuilder);
 
+    @POST("/graphql")
+    @GraphQuery("new_todo")
+    Call<Void> NewTODO(@Body QueryContainerBuilder queryContainerBuilder);
 }

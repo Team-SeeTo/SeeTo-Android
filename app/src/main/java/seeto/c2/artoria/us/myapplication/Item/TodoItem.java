@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
+import seeto.c2.artoria.us.myapplication.Model.TodoMainModel;
+
 public class TodoItem implements Parcelable{
     private String text;
     private Boolean isChecked;

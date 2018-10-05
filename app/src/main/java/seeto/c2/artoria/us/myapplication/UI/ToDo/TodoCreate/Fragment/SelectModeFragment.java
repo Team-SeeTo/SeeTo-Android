@@ -36,7 +36,7 @@ public class SelectModeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_select_mode, container, false);
         String[] modeList = {
-                "Standard", "Hard", "Unlimited"
+                "STANDARD", "HARD", "INFINITY"
         };
 
         ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(

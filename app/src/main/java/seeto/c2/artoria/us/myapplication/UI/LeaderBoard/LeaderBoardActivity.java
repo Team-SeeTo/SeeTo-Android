@@ -40,7 +40,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     }
 
     public void addData() {
-        for(int i=0; i<20; i++) {
+        for(int i=0; i<1; i++) {
             data.add(new LeaderBoardItem(i+1,"Lewis"));
         }
     }

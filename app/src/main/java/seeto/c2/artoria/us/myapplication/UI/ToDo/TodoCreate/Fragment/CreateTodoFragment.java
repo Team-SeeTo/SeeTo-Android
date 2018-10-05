@@ -3,6 +3,7 @@ package seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.Fragment;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,12 +17,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
+
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.CreateNewTodoListAdapter;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
 import seeto.c2.artoria.us.myapplication.R;
-import seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter.CreatedTodoListAdapter;
-import seeto.c2.artoria.us.myapplication.Item.TodoItem;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.SibalLom;
 
 /**
@@ -36,6 +42,7 @@ public class CreateTodoFragment extends Fragment {
     ArrayList<String> items = new ArrayList<>();
     CreateNewTodoListAdapter todoListAdapter;
     RecyclerView createdTodoRecyclerView;
+    String[] stringfiedItems;
 
     public CreateTodoFragment() {
     }
@@ -58,6 +65,7 @@ public class CreateTodoFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_create_todo, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
+        sibalLom.setMilestone(items);
         todoType = getArguments().getString("todoType");
 
         createdTodoRecyclerView = view.findViewById(R.id.todo_create_recycler_view);
@@ -88,7 +96,13 @@ public class CreateTodoFragment extends Fragment {
                 if(todoListAdapter.getItemCount()<1) {
                     Toast.makeText(view.getContext(), "마일스톤을 추가해주세요", Toast.LENGTH_SHORT).show();
                 }else {
-                    getActivity().finish();
+                    stringfiedItems = new String[sibalLom.getMilestone().getValue().size()];
+                    int index = 0;
+                    for(String app: sibalLom.getMilestone().getValue()) {
+                        stringfiedItems[index] = app;
+                        index++;
+                    }
+                    createTodoRequest(sibalLom);
                 }
             }
         });
@@ -109,4 +123,30 @@ public class CreateTodoFragment extends Fragment {
     void addMilestone(String text) {
         items.add(text);
     }
+
+    void createTodoRequest(SibalLom sibalLom) {
+        Log.d("string", stringfiedItems[0]);
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("title", sibalLom.getTitle().getValue())
+                .putVariable("milestones", stringfiedItems)
+                .putVariable("type", sibalLom.getMode().getValue())
+                .putVariable("expiration", sibalLom.getExpiration().getValue())
+                .putVariable("token", SharedPreferenceKt.getToken(getActivity(),true));
+        Log.d("TODO stones", stringfiedItems[0]);
+        new Connector(getActivity()).getClient().NewTODO(queryContainerBuilder)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.d("TODO-create", "Request-successed");
+                        Log.d("TODO-response", response.message());
+                        getActivity().finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("TODO-create", "Request-failed");
+                    }
+                });
+    }
+
 }
