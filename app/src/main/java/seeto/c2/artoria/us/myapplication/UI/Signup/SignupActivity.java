@@ -33,7 +33,7 @@ public class SignupActivity extends AppCompatActivity implements SignupContract.
                     username_et.getText().toString(),
                     password_et.getText().toString());
 
-            SharedPreferenceKt.saveUserName(this,username_et.getText().toString());
+//            SharedPreferenceKt.saveInfo(this,"username",username_et.getText().toString());
         });
     }
 

@@ -24,10 +24,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +40,13 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
+import org.w3c.dom.Text;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import seeto.c2.artoria.us.myapplication.Connect.Connector;
+import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
 import seeto.c2.artoria.us.myapplication.Model.TimeLineModel;
 import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
@@ -70,7 +77,7 @@ public class MainActivity extends AppCompatActivity
     ViewPager viewPager;
     ImageView main_option_btn, main_search_btn;
     FloatingActionButton main_fab, memo_fab, ideas_fab, todo_fab;
-
+    String orderBy;
     String current_context;
 
     Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
@@ -104,7 +111,7 @@ public class MainActivity extends AppCompatActivity
                 switch (viewPager.getCurrentItem()){
                     case 0 :
                         current_context = "Todo";
-                        showOptionDialog();
+                        showOptionDialog(current_context);
                         break;
 
                     case 1 :
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity
 
                     case 2 :
                         current_context = "Ideas";
-                        showOptionDialog();
+                        showOptionDialog(current_context);
                         //Todo Ideas 서벼 연결 코드 필요 (정렬)
                         break;
 
@@ -163,6 +170,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+
         navigationinit();
 
        // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
@@ -171,6 +179,7 @@ public class MainActivity extends AppCompatActivity
 
         fabinit();
 
+        getuserinfo();
     }
 
     @Override
@@ -278,18 +287,74 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void showOptionDialog() {
+    public void getuserinfo() {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",SharedPreferenceKt.getToken(this,true));
+
+        new Connector(this).getClient().SimpleProfile(queryContainerBuilder)
+            .enqueue(new Callback<SimpleProfileModel>() {
+                @Override
+                public void onResponse(Call<SimpleProfileModel> call, Response<SimpleProfileModel> response) {
+                    SimpleProfileModel data = response.body();
+                    SharedPreferenceKt.saveInfo(getBaseContext(),"username",data.getData().getProfile().getUsername());
+                    SharedPreferenceKt.saveInfo(getBaseContext(),"email",data.getData().getProfile().getEmail());
+                    SharedPreferenceKt.saveInfo(getBaseContext(),"rank", String.valueOf(data.getData().getProfile().getRank()));
+                    SharedPreferenceKt.saveInfo(getBaseContext(),"point", String.valueOf(data.getData().getProfile().getPoint()));
+                    SharedPreferenceKt.saveInfo(getBaseContext(),"registerOn",data.getData().getProfile().getRegisterOn());
+                }
+
+                @Override
+                public void onFailure(Call<SimpleProfileModel> call, Throwable t) {
+
+                }
+            });
+    }
+
+    @Override
+    public void showOptionDialog(String context) {
         Dialog dialog = new Dialog(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_options,null);
         dialog.setContentView(view);
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_options_apply_btn);
         TextView cancel_btn = dialog.findViewById(R.id.dialog_options_cancel_btn);
+        TextView sct = dialog.findViewById(R.id.dialog_options_sct);
+        Switch sct_switch = dialog.findViewById(R.id.dialog_options_sct_switch);
+
+        RadioGroup radioGroup = dialog.findViewById(R.id.dialog_options_radiogroup);
+
+        sct.setVisibility(View.INVISIBLE);
+        sct_switch.setVisibility(View.INVISIBLE);
 
         dialog.show();
 
         apply_btn.setOnClickListener(v ->{
 
+            if(context == "Ideas"){
+                switch (radioGroup.getCheckedRadioButtonId()){
+                    case R.id.dialog_options_radio_ascending :
+                        orderBy = "Ascending";
+                        break;
+
+                    case R.id.dialog_options_radio_descending :
+                        orderBy = "Descending";
+                        break;
+
+                    case R.id.dialog_options_radio_lefttime :
+                        orderBy = "LeftTime";
+                        break;
+
+                    case R.id.dialog_options_radio_type :
+                        orderBy = "Type";
+                        break;
+                }
+
+//                ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment())
+//                        .IdeasOrderByRequest();
+
+            } else {
+
+            }
         });
 
 
@@ -431,6 +496,9 @@ public class MainActivity extends AppCompatActivity
 //                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
                     Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                     ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(search_et.getWindowToken(),0);
+                    dialogPlus.dismiss();
                     break;
 
                 default:
@@ -443,8 +511,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
-    @SuppressLint("ResourceType")
     @Override
     public void showSelectDateDialog() {
         Dialog dialog = new Dialog(this);

@@ -43,14 +43,12 @@ public class TimeLineFragment extends Fragment implements TImeLineContract.View 
 
     @Override
     public void setData() {
-        datas.add(new TimeLineItem("Todo","12","7","2","milestones completed",
-                "Todos completed", "Todos created","230P"));
+        datas.add(new TimeLineItem("Todo","0","0","0","milestones completed",
+                "Todos completed", "Todos created","  0P"));
 
-        datas.add(new TimeLineItem("Ideas","0","1","2","Ideas voted",
-                "Ideas commented", "Ideas created","100P"));
+        datas.add(new TimeLineItem("Ideas","0","0","0","Ideas voted",
+                "Ideas commented", "Ideas created","  0P"));
 
-        datas.add(new TimeLineItem("Memo","3","2","0","Memos created",
-                "Memos modified", "Memos deleted","120P"));
     }
 
 }

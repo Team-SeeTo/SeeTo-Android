@@ -63,17 +63,17 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("Debug","bbbbbbbbbbbbbbb");
-        if(i>=1) {
-            if(!(SharedPreferenceKt.getQM(getActivity()).equals(qmItem.get(i - 1).getPreviewText()))) {
-                qmItem.add(new QMItem(SharedPreferenceKt.getQM(getActivity())));
-                QMRecyclerAdapter.notifyDataSetChanged();
-                Log.d("Debug","아이 : "+i);
-                i++;
-            }
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Log.d("Debug","bbbbbbbbbbbbbbb");
+//        if(i>=1) {
+//            if(!(SharedPreferenceKt.getQM(getActivity()).equals(qmItem.get(i - 1).getPreviewText()))) {
+//                qmItem.add(new QMItem(SharedPreferenceKt.getQM(getActivity())));
+//                QMRecyclerAdapter.notifyDataSetChanged();
+//                Log.d("Debug","아이 : "+i);
+//                i++;
+//            }
+//        }
+//    }
 }

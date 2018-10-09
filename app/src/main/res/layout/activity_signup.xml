@@ -24,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
-        android:textColor="#C3A4FA"
+        android:textColor="@color/colorPrimary"
         android:textSize="30dp"
         android:fontFamily="@font/hoodson_free_font"
         app:layout_constraintEnd_toEndOf="parent"

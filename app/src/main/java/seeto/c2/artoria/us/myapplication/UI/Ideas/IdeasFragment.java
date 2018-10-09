@@ -45,14 +45,14 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     ArrayList<IdeasItem> listdata = new ArrayList<>();
     IdeasPresenter ideasPresenter;
     ViewPager viewPager;
-    MainActivity context;
+    Context context = this.getActivity();
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ideas, container, false);
 
-        context = new MainActivity();
+        context = this.getActivity();
         ideaslist = rootView.findViewById(R.id.ideas_recycler);
         ideasPresenter = new IdeasPresenter(getActivity());
         viewPager = getActivity().findViewById(R.id.main_viewpager);
@@ -127,8 +127,92 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     @Override
     public void IdeasSearchRequest(String search_string) {
-        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string,1);
+        getSearchList(SharedPreferenceKt.getToken(context,true),search_string,1);
+//        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(context,true),search_string,1);
     }
+
+    public void IdeasOrderByRequest(String token, String orderBy, int startRank){
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("filterBy",orderBy)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        false));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
+
+    }
+
+    public void getSearchList(String token, String search_string, int startRank) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("searchString",search_string)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        false));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
+
+    }
+
 
     @Override
     public void getListDataRequest(String token, int startRank) {

@@ -27,14 +27,14 @@ fun saveQM(context: Context,text : String){
     editor.apply()
 }
 
-fun saveUserName(context: Context, text: String){
+fun saveInfo(context: Context, key: String, value: String){
     val editor = getPref(context).edit()
-    editor.putString("username",text)
+    editor.putString(key,value)
     editor.apply()
 }
 
-fun getUserName(context: Context) : String{
-    return getPref(context).getString("username","")
+fun getInfo(context: Context,key: String) : String{
+    return getPref(context).getString(key,"")
 }
 
 fun getQM(context: Context) : String{

@@ -7,7 +7,8 @@ public interface MainContract {
         void viewpagerinit();
         void navigationinit();
         void fabinit();
-        void showOptionDialog();
+        void getuserinfo();
+        void showOptionDialog(String context);
         void anmationinit();
         void main_fabclicked();
         void showSearchDialog();

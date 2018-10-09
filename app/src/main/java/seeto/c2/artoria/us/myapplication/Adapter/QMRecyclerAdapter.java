@@ -44,16 +44,13 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
         holder.settingButton.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(context, v);
             popupMenu.inflate(R.menu.qm_recycler_menu);
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    if(item.getItemId() == R.id.qm_menu) {
-                        QMItem.remove(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, QMItem.size());
-                    }
-                    return false;
-                }
+            popupMenu.setOnMenuItemClickListener(item -> {
+//                if(item.getItemId() == R.id.qm_menu) {
+                    QMItem.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, QMItem.size());
+//                }
+                return false;
             });
             popupMenu.show();
         });
