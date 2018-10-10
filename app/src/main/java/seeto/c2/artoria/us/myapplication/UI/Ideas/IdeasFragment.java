@@ -226,6 +226,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                     public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
                         if (response.isSuccessful()){
                             IdeasMainModel data = response.body();
+                            listdata.clear();
 
                             for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
                                 listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
@@ -238,6 +239,8 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
                                 ideaslist.setAdapter(adapter);
+
+
 
                             }
                         } else {

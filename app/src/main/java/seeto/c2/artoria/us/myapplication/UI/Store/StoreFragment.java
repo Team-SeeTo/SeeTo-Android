@@ -8,17 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import seeto.c2.artoria.us.myapplication.Adapter.StoreRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.Item.StoreItem;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 
 public class StoreFragment extends Fragment implements StoreContract.View{
     ArrayList<StoreItem> data = new ArrayList<>();
     RecyclerView store_item_list;
     StoreRecyclerAdapter adapter;
+    TextView point;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

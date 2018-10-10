@@ -5,18 +5,25 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import seeto.c2.artoria.us.myapplication.Adapter.MainViewPagerAdapter.CustomViewPagerAdapter;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Inventory.InventoryFragment;
 
 public class StoreActivity extends AppCompatActivity implements StoreContract.View{
+    TextView point;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
         tabsinit();
+
+        point = findViewById(R.id.store_point);
+        point.setText(SharedPreferenceKt.getInfo(this,"point")+"p");
 
     }
 

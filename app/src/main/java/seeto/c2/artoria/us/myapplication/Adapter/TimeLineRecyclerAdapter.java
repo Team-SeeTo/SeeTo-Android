@@ -32,13 +32,13 @@ public class TimeLineRecyclerAdapter extends RecyclerView.Adapter<TimeLineRecycl
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.category.setText(datas.get(position).getCategory());
-        holder.firstline_int.setText(datas.get(position).getFirstline_int());
-        holder.secondline_int.setText(datas.get(position).getSecondline_int());
-        holder.thirdline_int.setText(datas.get(position).getThirdline_int());
+        holder.firstline_int.setText(String.valueOf(datas.get(position).getFirstline_int()));
+        holder.secondline_int.setText(String.valueOf(datas.get(position).getSecondline_int()));
+        holder.thirdline_int.setText(String.valueOf(datas.get(position).getThirdline_int()));
         holder.firstline_explain.setText(datas.get(position).getFirstline_explain());
         holder.secondline_explain.setText(datas.get(position).getSecondline_explain());
         holder.thirdline_explain.setText(datas.get(position).getThirdline_explain());
-        holder.total_point.setText(datas.get(position).getTotal_point());
+        holder.total_point.setText("  " + String.valueOf(datas.get(position).getTotal_point()) + "p");
     }
 
     @Override

@@ -52,7 +52,8 @@ public class SigninPresenter implements SigninContract.Presenter {
 
                     @Override
                     public void onFailure(Call<TokenModel> call, Throwable t) {
-                        Log.d("DEBUG", "network_failed");
+                        Log.d("login", "network_failed");
+                        Log.d("login", String.valueOf(t));
                     }
                 });
     }

@@ -9,6 +9,7 @@ public interface MainContract {
         void fabinit();
         void getuserinfo();
         void showOptionDialog(String context);
+        void showIdeasDialog(String context);
         void anmationinit();
         void main_fabclicked();
         void showSearchDialog();

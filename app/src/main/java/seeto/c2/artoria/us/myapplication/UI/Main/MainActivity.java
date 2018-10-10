@@ -80,8 +80,7 @@ public class MainActivity extends AppCompatActivity
     String orderBy;
     String current_context;
 
-    Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
-            , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
+    Animation mainfab_animation1, mainfab_animation2, memofab_animation1, memofab_animation2, ideasfab_animaition1, ideasfab_animaition2, todofab_animation1, todofab_animation2;
 
     MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -108,36 +107,37 @@ public class MainActivity extends AppCompatActivity
 
 
         main_option_btn.setOnClickListener(v -> {
-                switch (viewPager.getCurrentItem()){
-                    case 0 :
-                        current_context = "Todo";
-                        showOptionDialog(current_context);
-                        break;
+            switch (viewPager.getCurrentItem()) {
+                case 0:
+                    current_context = "Todo";
+                    showOptionDialog(current_context);
+                    break;
 
-                    case 1 :
-                        current_context = "TimeLine";
-                        showSelectDateDialog();
-                        break;
+                case 1:
+                    current_context = "TimeLine";
+                    showSelectDateDialog();
+                    break;
 
-                    case 2 :
-                        current_context = "Ideas";
-                        showOptionDialog(current_context);
-                        //Todo Ideas 서벼 연결 코드 필요 (정렬)
-                        break;
+                case 2:
+                    current_context = "Ideas";
+                    showIdeasDialog(current_context);
+                    //Todo Ideas 서벼 연결 코드 필요 (정렬)
+                    break;
 
-                    default:
-                        current_context = "default";
-                }
-                Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
-            });
+                default:
+                    current_context = "default";
+            }
+            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
+        });
 
-        main_search_btn.setOnClickListener(v -> showSearchDialog() );
+        main_search_btn.setOnClickListener(v -> showSearchDialog());
 
         viewpagerinit();
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             int vp_current;
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -147,12 +147,12 @@ public class MainActivity extends AppCompatActivity
             public void onPageSelected(int position) {
                 vp_current = position;
                 Log.d("POSITION", String.valueOf(vp_current));
-                switch (vp_current){
-                    case 1 :
+                switch (vp_current) {
+                    case 1:
                         main_search_btn.setVisibility(View.GONE);
                         break;
 
-                    case 3 :
+                    case 3:
                         main_search_btn.setVisibility(View.GONE);
                         main_option_btn.setVisibility(View.GONE);
                         break;
@@ -170,16 +170,16 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+        getuserinfo();
 
         navigationinit();
 
-       // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
+
+        // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
 
         anmationinit();
 
         fabinit();
-
-        getuserinfo();
     }
 
     @Override
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity
                 finish();
                 break;
 
-            case R.id.navigation_mirror_btn :
+            case R.id.navigation_mirror_btn:
                 Intent intent1 = new Intent(MainActivity.this, MirrorActivity.class);
                 startActivity(intent1);
                 break;
@@ -229,29 +229,40 @@ public class MainActivity extends AppCompatActivity
 
 
         Intent intent = new Intent();
-        if(intent.getBooleanExtra("Memo",false)){
+        if (intent.getBooleanExtra("Memo", false)) {
             customViewPagerAdapter.getFragmentInfo(3);
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void navigationinit() {
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-//        username.setText(SharedPreferenceKt.getUserName(this));
-//
-//        Toast.makeText(this, SharedPreferenceKt.getUserName(this), Toast.LENGTH_SHORT).show();
+        NavigationView navi_view = findViewById(R.id.navigation_view);
+        navi_view.setNavigationItemSelectedListener(this);
+
+
+        View view = navi_view.getHeaderView(0);
+        TextView username = view.findViewById(R.id.navigation_header_user_name);
+        TextView rank = view.findViewById(R.id.navigation_header_rank);
+        TextView point = view.findViewById(R.id.navigation_header_point);
+
+        username.setText(SharedPreferenceKt.getInfo(getBaseContext(), "username"));
+        rank.setText("#" + SharedPreferenceKt.getInfo(getBaseContext(), "rank"));
+        point.setText(SharedPreferenceKt.getInfo(getBaseContext(), "point") + "p");
+
 
         ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
         main_drawer_btn.setOnClickListener(v -> {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
+
             } else {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
 
-        NavigationView navi_view = findViewById(R.id.navigation_view);
-        navi_view.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -260,7 +271,7 @@ public class MainActivity extends AppCompatActivity
         main_fab.bringToFront();
 
         main_fab.setOnClickListener(v -> {
-           main_fabclicked();
+            main_fabclicked();
         });
 
         memo_write_btn.setOnClickListener(v -> {
@@ -289,31 +300,31 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void getuserinfo() {
         QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("token",SharedPreferenceKt.getToken(this,true));
+                .putVariable("token", SharedPreferenceKt.getToken(this, true));
 
         new Connector(this).getClient().SimpleProfile(queryContainerBuilder)
-            .enqueue(new Callback<SimpleProfileModel>() {
-                @Override
-                public void onResponse(Call<SimpleProfileModel> call, Response<SimpleProfileModel> response) {
-                    SimpleProfileModel data = response.body();
-                    SharedPreferenceKt.saveInfo(getBaseContext(),"username",data.getData().getProfile().getUsername());
-                    SharedPreferenceKt.saveInfo(getBaseContext(),"email",data.getData().getProfile().getEmail());
-                    SharedPreferenceKt.saveInfo(getBaseContext(),"rank", String.valueOf(data.getData().getProfile().getRank()));
-                    SharedPreferenceKt.saveInfo(getBaseContext(),"point", String.valueOf(data.getData().getProfile().getPoint()));
-                    SharedPreferenceKt.saveInfo(getBaseContext(),"registerOn",data.getData().getProfile().getRegisterOn());
-                }
+                .enqueue(new Callback<SimpleProfileModel>() {
+                    @Override
+                    public void onResponse(Call<SimpleProfileModel> call, Response<SimpleProfileModel> response) {
+                        SimpleProfileModel data = response.body();
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "username", data.getData().getProfile().getUsername());
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "email", data.getData().getProfile().getEmail());
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "rank", String.valueOf(data.getData().getProfile().getRank()));
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "point", String.valueOf(data.getData().getProfile().getPoint()));
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "registerOn", data.getData().getProfile().getRegisterOn());
+                    }
 
-                @Override
-                public void onFailure(Call<SimpleProfileModel> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<SimpleProfileModel> call, Throwable t) {
 
-                }
-            });
+                    }
+                });
     }
 
     @Override
     public void showOptionDialog(String context) {
         Dialog dialog = new Dialog(this);
-        View view = getLayoutInflater().inflate(R.layout.dialog_options,null);
+        View view = getLayoutInflater().inflate(R.layout.dialog_options, null);
         dialog.setContentView(view);
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_options_apply_btn);
@@ -328,33 +339,9 @@ public class MainActivity extends AppCompatActivity
 
         dialog.show();
 
-        apply_btn.setOnClickListener(v ->{
+        apply_btn.setOnClickListener(v -> {
 
-            if(context == "Ideas"){
-                switch (radioGroup.getCheckedRadioButtonId()){
-                    case R.id.dialog_options_radio_ascending :
-                        orderBy = "Ascending";
-                        break;
 
-                    case R.id.dialog_options_radio_descending :
-                        orderBy = "Descending";
-                        break;
-
-                    case R.id.dialog_options_radio_lefttime :
-                        orderBy = "LeftTime";
-                        break;
-
-                    case R.id.dialog_options_radio_type :
-                        orderBy = "Type";
-                        break;
-                }
-
-//                ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment())
-//                        .IdeasOrderByRequest();
-
-            } else {
-
-            }
         });
 
 
@@ -362,8 +349,43 @@ public class MainActivity extends AppCompatActivity
 
 
         Window window = dialog.getWindow();
-        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCanceledOnTouchOutside(false);
+    }
+
+    @Override
+    public void showIdeasDialog(String context) {
+        Dialog dialog = new Dialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_ideas, null);
+        dialog.setContentView(view);
+
+        TextView apply_btn = dialog.findViewById(R.id.dialog_ideas_apply_btn);
+        TextView cancel_btn = dialog.findViewById(R.id.dialog_ideas_cancel_btn);
+
+        RadioGroup radioGroup = dialog.findViewById(R.id.dialog_ideas_radiogroup);
+
+        dialog.show();
+
+        apply_btn.setOnClickListener(v -> {
+            switch (radioGroup.getCheckedRadioButtonId()) {
+                case R.id.dialog_ideas_radio_it:
+                    orderBy = "IT";
+                    break;
+
+                case R.id.dialog_ideas_radio_life:
+                    orderBy = "LIFE";
+                    break;
+
+                case R.id.dialog_ideas_radio_food:
+                    orderBy = "FOOD";
+                    break;
+
+            }
+            ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment())
+                    .IdeasOrderByRequest(SharedPreferenceKt.getToken(this, true), orderBy, 1);
+
+            dialog.dismiss();
+        });
     }
 
     @Override
@@ -484,20 +506,19 @@ public class MainActivity extends AppCompatActivity
 
 
         search_btn.setOnClickListener(v -> {
-            switch (viewPager.getCurrentItem()){
-                case 0 :
+            switch (viewPager.getCurrentItem()) {
+                case 0:
                     current_context = "Todo";
                     //Todo todo 서버 연결 코드 필요 (검색)
                     break;
 
-                case 2 :
+                case 2:
                     current_context = "Ideas";
 //                    IdeasFragment ideasFragment = new IdeasFragment();
 //                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
-                    Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                     ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(search_et.getWindowToken(),0);
+                    inputMethodManager.hideSoftInputFromWindow(search_et.getWindowToken(), 0);
                     dialogPlus.dismiss();
                     break;
 
@@ -514,7 +535,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void showSelectDateDialog() {
         Dialog dialog = new Dialog(this);
-        View view = getLayoutInflater().inflate(R.layout.dialog_timeline_select_date,null);
+        View view = getLayoutInflater().inflate(R.layout.dialog_timeline_select_date, null);
         dialog.setContentView(view);
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_timeline_apply_btn);
@@ -525,47 +546,24 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
 
 
-
-        apply_btn.setOnClickListener(v ->{
+        apply_btn.setOnClickListener(v -> {
 
             String date;
 
-            date = String.valueOf(cal.getYear()) + "-" + String.valueOf(cal.getMonth()+1) + "-" + String.valueOf(cal.getDayOfMonth());
-            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
-
-            getTimelineData(SharedPreferenceKt.getToken(this,true),date);
+            date = String.valueOf(cal.getYear()) + "-" + String.valueOf(cal.getMonth() + 1) + "-" + String.valueOf(cal.getDayOfMonth());
+            Log.d("day",date);
+            ((TimeLineFragment) customViewPagerAdapter.getmFragmentInfoList().get(1).getFragment()).getTimelineData(SharedPreferenceKt.getToken(this, true), date);
 
             dialog.dismiss();
 
         });
 
 
-
-
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
 
         Window window = dialog.getWindow();
-        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCanceledOnTouchOutside(false);
-    }
-
-    public void getTimelineData(String token, String date) {
-        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("token",token)
-                .putVariable("date",date);
-
-        new Connector(this).getClient().TimelineMain(queryContainerBuilder)
-                .enqueue(new Callback<TimeLineModel>() {
-                    @Override
-                    public void onResponse(Call<TimeLineModel> call, Response<TimeLineModel> response) {
-                        TimeLineModel data = response.body();
-                    }
-
-                    @Override
-                    public void onFailure(Call<TimeLineModel> call, Throwable t) {
-
-                    }
-                });
     }
 
 
