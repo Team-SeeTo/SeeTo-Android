@@ -124,6 +124,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 intent.putExtra("expiration", todoList.getExpriation());
                 intent.putExtra("type", todoList.getType());
                 intent.putExtra("title", todoList.getTitle());
+                intent.putExtra("id", todoList.getId());
                 context.startActivity(intent);
             }
         });
@@ -180,7 +181,6 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         try {
             expirationDate = getSdf.parse(expiration);
             diffDays = (TimeUnit.DAYS.convert(expirationDate.getTime() - curDate.getTime(), TimeUnit.MILLISECONDS));
-            Log.d("TODO get date:",expiration+" curDate: "+curDate.toString());
         } catch (ParseException e) {
             e.printStackTrace();
             diffDays = 1234;//TODO: 에러 처리 어케하지?

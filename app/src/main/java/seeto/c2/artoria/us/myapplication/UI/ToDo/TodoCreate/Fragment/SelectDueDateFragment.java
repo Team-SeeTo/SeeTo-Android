@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +30,7 @@ import static seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoAct
  * A simple {@link Fragment} subclass.
  */
 public class SelectDueDateFragment extends Fragment {
-    String todoType;
+    String editTodoExpiration;
     public SelectDueDateFragment() {
         // Required empty public constructor
     }
@@ -39,10 +41,28 @@ public class SelectDueDateFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_select_due_date, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
-        todoType = getArguments().getString("todoType");
+        editTodoExpiration = getArguments().getString("editTodoExpiration");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat editTodoSdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
         CalendarView calendarView = view.findViewById(R.id.due_calendar);
+        if(editTodoExpiration == null) {
+            try {
+                calendarView.setDate(Calendar.getInstance().getTime());
+            } catch (OutOfDateRangeException e) {
+                e.printStackTrace();
+            }
+        }else {
+            try {
+                calendarView.setDate(editTodoSdf.parse(editTodoExpiration));
+            } catch (OutOfDateRangeException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
@@ -67,10 +87,20 @@ public class SelectDueDateFragment extends Fragment {
         return viewPager.getCurrentItem() + i;
     }
 
-    public static SelectDueDateFragment newInstance(String todoType) {
+    public static SelectDueDateFragment newInstance() {
+
+        Bundle args = new Bundle();
+        args.putString("editTodoExpiration", null);
+
+        SelectDueDateFragment fragment = new SelectDueDateFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static SelectDueDateFragment newInstance(String editTodoExpiration) {
         
         Bundle args = new Bundle();
-        args.putString("todoType", todoType);
+        args.putString("editTodoExpiration", editTodoExpiration);
 
         SelectDueDateFragment fragment = new SelectDueDateFragment();
         fragment.setArguments(args);

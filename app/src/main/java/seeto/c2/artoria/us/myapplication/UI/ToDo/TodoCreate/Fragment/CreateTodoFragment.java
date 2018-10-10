@@ -66,11 +66,8 @@ public class CreateTodoFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_create_todo, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
         sibalLom.setMilestone(items);
-        todoType = getArguments().getString("todoType");
 
         createdTodoRecyclerView = view.findViewById(R.id.todo_create_recycler_view);
-
-
 
         final EditText inputText = (EditText) CreateTodoFragment.this.view.findViewById(R.id.new_text);
 
@@ -110,10 +107,9 @@ public class CreateTodoFragment extends Fragment {
         return view;
     }
 
-    public static CreateTodoFragment newInstance(String todoType) {
+    public static CreateTodoFragment newInstance() {
 
         Bundle args = new Bundle();
-        args.putString("todoType", todoType);
 
         CreateTodoFragment fragment = new CreateTodoFragment();
         fragment.setArguments(args);

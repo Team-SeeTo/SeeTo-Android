@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 
 class SibalLom : ViewModel() {
+    val id = MutableLiveData<String>().apply { value = "" }
     val title = MutableLiveData<String>().apply { value = "" }
     val category = MutableLiveData<String>().apply { value = "" }
     val mode = MutableLiveData<String>().apply { value = "" }

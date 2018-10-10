@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.util.Arrays;
+
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.SibalLom;
 
@@ -22,7 +24,7 @@ import static seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoAct
  * A simple {@link Fragment} subclass.
  */
 public class SelectModeFragment extends Fragment {
-    String todoType;
+    String editTodoMode;
 
     public SelectModeFragment() {
         // Required empty public constructor
@@ -32,7 +34,7 @@ public class SelectModeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
-        todoType = getArguments().getString("todoType");
+        editTodoMode = getArguments().getString("editTodoMode");
 
         View view = inflater.inflate(R.layout.fragment_select_mode, container, false);
         String[] modeList = {
@@ -49,7 +51,11 @@ public class SelectModeFragment extends Fragment {
 
         materialBetterSpinner = view.findViewById(R.id.mode_spinner);
         materialBetterSpinner.setAdapter(modeAdapter);
-        materialBetterSpinner.setText(modeAdapter.getItem(0).toString());
+        if(editTodoMode == null)
+            materialBetterSpinner.setText(modeAdapter.getItem(0).toString());
+        else {
+            materialBetterSpinner.setText(editTodoMode);
+        }
 
         TextView nextText = (TextView) view.findViewById(R.id.mode_next);
         nextText.setOnClickListener(new View.OnClickListener() {
@@ -69,10 +75,20 @@ public class SelectModeFragment extends Fragment {
         return viewPager.getCurrentItem() + i;
     }
 
-    public static SelectModeFragment newInstance(String todoType) {
+    public static SelectModeFragment newInstance() {
 
         Bundle args = new Bundle();
-        args.putString("todoType", todoType);
+        args.putString("editTodoMode", null);
+
+        SelectModeFragment fragment = new SelectModeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static SelectModeFragment newInstance(String editTodoMode) {
+
+        Bundle args = new Bundle();
+        args.putString("editTodoMode", editTodoMode);
 
         SelectModeFragment fragment = new SelectModeFragment();
         fragment.setArguments(args);

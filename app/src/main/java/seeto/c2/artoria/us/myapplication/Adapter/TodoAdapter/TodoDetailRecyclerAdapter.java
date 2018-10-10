@@ -25,11 +25,12 @@ import seeto.c2.artoria.us.myapplication.R;
 
 public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRecyclerAdapter.CustomViewholder>{
     ArrayList<TodoItem> todoItems;
-    String type;
+    String type, id;
 
-    public TodoDetailRecyclerAdapter(ArrayList<TodoItem> todoItems, String type){
+    public TodoDetailRecyclerAdapter(ArrayList<TodoItem> todoItems, String type, String id){
         this.todoItems = todoItems;
         this.type = type;
+        this.id = id;
     }
 
 

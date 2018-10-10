@@ -48,6 +48,7 @@
             android:layout_marginTop="10dp"/>
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/todo_detail_modify_btn"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:backgroundTint="#fff"

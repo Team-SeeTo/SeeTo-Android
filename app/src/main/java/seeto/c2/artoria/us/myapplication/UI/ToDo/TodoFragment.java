@@ -39,10 +39,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
-
         todoRecyclerView = view.findViewById(R.id.TodoList);
-        getTodoList("created_at");
-
         return view;
     }
 

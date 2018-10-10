@@ -227,6 +227,7 @@ public class MainActivity extends AppCompatActivity
 
         todo_write_btn.setOnClickListener(v -> {
             Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
+            todoCreateIntent.putExtra("editTodoType", "create");
             startActivity(todoCreateIntent);
             main_fabclicked();
 

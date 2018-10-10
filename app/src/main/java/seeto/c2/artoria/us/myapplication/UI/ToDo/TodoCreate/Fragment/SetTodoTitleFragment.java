@@ -27,7 +27,7 @@ import static seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoAct
  */
 public class SetTodoTitleFragment extends Fragment {
     static String title;
-    String todoType;
+    String editTodoTitle;
     Context context = getActivity();
     SibalLom sibalLom;
     public SetTodoTitleFragment() {
@@ -39,9 +39,15 @@ public class SetTodoTitleFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_set_todo_title, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
-        todoType = getArguments().getString("todoType");
+        editTodoTitle = getArguments().getString("title");
 
         EditText editTitle = view.findViewById(R.id.set_todo_title_edit);
+        if(!(editTodoTitle == null))
+        {
+            editTitle.setText(editTodoTitle);
+            Log.d("TODO settitle: title:", editTodoTitle);
+            //TODO: 널포인터 고쳐시발
+        }
         editTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -83,9 +89,18 @@ public class SetTodoTitleFragment extends Fragment {
         return viewPager.getCurrentItem() + i;
     }
 
-    public static SetTodoTitleFragment newInstance(String todoType) {
+    public static SetTodoTitleFragment newInstance() {
         Bundle args = new Bundle();
-        args.putString("todoType", todoType);
+        args.putString("title", null);
+
+        SetTodoTitleFragment fragment = new SetTodoTitleFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static SetTodoTitleFragment newInstance(String title) {
+        Bundle args = new Bundle();
+        args.putString("title", title);
 
         SetTodoTitleFragment fragment = new SetTodoTitleFragment();
         fragment.setArguments(args);
