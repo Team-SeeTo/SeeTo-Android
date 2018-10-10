@@ -7,6 +7,7 @@ query ideasMain($token:String, $page:Int){
       body
       createdAt
       category
+      voteChecked
       comments{
         commentCount
         comments{

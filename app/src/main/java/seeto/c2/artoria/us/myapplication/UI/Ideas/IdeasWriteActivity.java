@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
+import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 
 public class IdeasWriteActivity extends AppCompatActivity{
 
@@ -18,6 +19,7 @@ public class IdeasWriteActivity extends AppCompatActivity{
     TextView ideas_write_finish_btn;
     String title, content, category;
     IdeasPresenter ideasPresenter;
+    MainActivity mainActivity = new MainActivity();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class IdeasWriteActivity extends AppCompatActivity{
                 title = ideas_write_title_et.getText().toString();
                 content = ideas_write_content_et.getText().toString();
                 ideasPresenter.NewIdeaRequest(category, SharedPreferenceKt.getToken(this,true),title,content);
+                mainActivity.getuserinfo();
             }
         });
 

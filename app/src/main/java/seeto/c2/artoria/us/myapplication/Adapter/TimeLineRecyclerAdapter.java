@@ -38,7 +38,7 @@ public class TimeLineRecyclerAdapter extends RecyclerView.Adapter<TimeLineRecycl
         holder.firstline_explain.setText(datas.get(position).getFirstline_explain());
         holder.secondline_explain.setText(datas.get(position).getSecondline_explain());
         holder.thirdline_explain.setText(datas.get(position).getThirdline_explain());
-        holder.total_point.setText("  " + String.valueOf(datas.get(position).getTotal_point()) + "p");
+        holder.total_point.setText(String.valueOf(datas.get(position).getTotal_point()) + "p");
     }
 
     @Override

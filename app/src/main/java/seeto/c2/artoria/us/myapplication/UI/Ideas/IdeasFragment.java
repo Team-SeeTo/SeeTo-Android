@@ -153,7 +153,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                         String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId(),
-                                        false));
+                                        data.getData().getIdeas().get(i).getVotechecked()));
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
                                 ideaslist.setAdapter(adapter);
@@ -194,7 +194,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                         String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId(),
-                                        false));
+                                        data.getData().getIdeas().get(i).getVotechecked()));
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
                                 ideaslist.setAdapter(adapter);
@@ -235,7 +235,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                         String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId(),
-                                        false));
+                                        data.getData().getIdeas().get(i).getVotechecked()));
 
                                 adapter = new IdeasRecyclerAdapter(listdata, getActivity());
                                 ideaslist.setAdapter(adapter);

@@ -46,6 +46,9 @@ public class IdeasDetailModel {
         @SerializedName("upvoter")
         String upvoter;
 
+        @SerializedName("voteChecked")
+        Boolean voteChecked;
+
         public String getId() {
             return id;
         }
@@ -72,6 +75,10 @@ public class IdeasDetailModel {
 
         public Comments getComments() {
             return comments;
+        }
+
+        public Boolean getVoteChecked() {
+            return voteChecked;
         }
     }
 

@@ -41,6 +41,7 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
     ArrayList<CommentItem> list_data = new ArrayList<>();
     EditText comment_input;
     ImageView comment_send;
+    ImageView like_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,17 +56,24 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
         comment_send = findViewById(R.id.ideas_detail_comment_sendbtn);
 
         getIdeasDetail(getIntent().getStringExtra("id"), SharedPreferenceKt.getToken(this,true));
+        like_btn = findViewById(R.id.ideas_detail_like);
 
-        ImageView like_btn = findViewById(R.id.ideas_detail_like);
+        if(!like_flag){
+            like_flag = true;
+            like_btn.setImageResource(R.drawable.outline_favorite_check_border_24px);
+        } else {
+            like_flag = false;
+            like_btn.setImageResource(R.drawable.outline_favorite_border_24px);
+        }
+
         like_btn.setOnClickListener(v -> {
             if(!like_flag){
                 like_flag = true;
                 like_btn.setImageResource(R.drawable.outline_favorite_check_border_24px);
-                Toast.makeText(this, "이 게시물에 좋아요를 표시했습니다.", Toast.LENGTH_SHORT).show();
+
             } else {
                 like_flag = false;
                 like_btn.setImageResource(R.drawable.outline_favorite_border_24px);
-                Toast.makeText(this, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -142,6 +150,9 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
                                title.setText(data.getData().getIdeas().get(i).getTitle());
                                body.setText(data.getData().getIdeas().get(i).getBody());
                                createdAt.setText(split_date);
+
+                               like_flag = data.getData().getIdeas().get(i).getVoteChecked();
+
 
 
                                for (int j = 0; j < data.getData().getIdeas().get(i).getComments().getCommentCount(); j++){

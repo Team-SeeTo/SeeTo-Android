@@ -42,10 +42,10 @@ public class StoreFragment extends Fragment implements StoreContract.View{
 
     @Override
     public void listinit() {
-        data.add(new StoreItem("Streak Freeze","You can rest today!","3000xp"));
-        data.add(new StoreItem("ToDo Bonus","double today's\ntodo point","1000xp"));
-        data.add(new StoreItem("Ideas Bonus","double today's\nIdeas point","1000xp"));
-        data.add(new StoreItem("Double 24","double today's\ntotal point","2000xp"));
+        data.add(new StoreItem("Streak Freeze","You can rest today!","3000p"));
+        data.add(new StoreItem("ToDo Bonus","double today's\ntodo point","1000p"));
+        data.add(new StoreItem("Ideas Bonus","double today's\nIdeas point","1000p"));
+        data.add(new StoreItem("Double 24","double today's\ntotal point","2000p"));
 
         adapter = new StoreRecyclerAdapter(data,getActivity());
         store_item_list.setAdapter(adapter);

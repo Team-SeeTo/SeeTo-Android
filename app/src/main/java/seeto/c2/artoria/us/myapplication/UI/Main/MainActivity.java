@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void getuserinfo() {
         QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("token", SharedPreferenceKt.getToken(this, true));
+                .putVariable("token", SharedPreferenceKt.getToken(getBaseContext(), true));
 
         new Connector(this).getClient().SimpleProfile(queryContainerBuilder)
                 .enqueue(new Callback<SimpleProfileModel>() {
