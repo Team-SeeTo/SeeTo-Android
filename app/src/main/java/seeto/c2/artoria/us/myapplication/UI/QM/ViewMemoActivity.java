@@ -26,6 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 
 public class ViewMemoActivity extends AppCompatActivity {
@@ -37,13 +38,16 @@ public class ViewMemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewmemo);
 
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+
+        String id = getIntent().getStringExtra("id");
+        String memo = getIntent().getStringExtra("memo");
+
         final FloatingActionButton editfab = (FloatingActionButton) findViewById(R.id.viewMemo_editFab);
         viewmemo = findViewById(R.id.qm_search_et);
         ImageButton qm_search_btn = findViewById(R.id.qm_search_btn);
         ImageView memo_search_btn = findViewById(R.id.memo_search_btn);
 
-        Intent intent2 = getIntent();
-        String memo = intent2.getStringExtra("memo");
         viewmemo.setText(memo);
 
         qm_search_btn.setOnClickListener(v -> {
@@ -60,8 +64,9 @@ public class ViewMemoActivity extends AppCompatActivity {
             } else if (count == 1) {
                 --count;
                 Toast.makeText(ViewMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ViewMemoActivity.this, MainActivity.class)
-                        .putExtra("Memo", true);
+                databaseHelper.updateRow(viewmemo.getText().toString(), memo);
+                finish();
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 viewmemo.setFocusableInTouchMode(false);
             }
@@ -94,15 +99,15 @@ public class ViewMemoActivity extends AppCompatActivity {
                         int findedIndex = memoText.indexOf(searchText, i);
                         if(findedIndex < 0 || findedIndex > memoText.length() )
                             break;
-                        Log.d("Index", "i: "+i+" finded: "+findedIndex);
-                        Log.d("text", "message: "+memoText.substring(findedIndex, findedIndex+searchText.length()));
-                        i += findedIndex;
-                        ssb.setSpan(
+                            Log.d("Index", "i: "+i+" finded: "+findedIndex);
+                            Log.d("text", "message: "+memoText.substring(findedIndex, findedIndex+searchText.length()));
+                            i += findedIndex;
+                            ssb.setSpan(
                                 new ForegroundColorSpan(Color.RED),
                                 findedIndex,
                                 findedIndex+searchText.length(),
                                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                        );
+                            );
                     }
                     viewmemo.setText(ssb);
                 } else {

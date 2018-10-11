@@ -80,12 +80,6 @@ public class MirrorActivity extends AppCompatActivity {
         addData("Last Year","0%");
         addData("Last Year","Total activity increase");
         addData("Last Year","0%");
-
-//        for(int i = 0; i<deptList.size(); i++){
-//           if(deptList.indexOf(i) % 2 == 0){
-//
-//           }
-//        }
     }
 
     private int addData(String department, String increase){

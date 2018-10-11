@@ -1,0 +1,54 @@
+query Mirror($token: String, $date_week_ago: Date, $date_month_ago:Date, $date_year_ago:Date){
+
+    today: timeline(token:$token){
+    ... on TimeLineField{
+      date
+      todo{
+        newCreate
+      }
+      ideas{
+        newCreate
+      }
+      totalPoint
+    }
+	}
+
+  week_ago: timeline(token:$token, date:$date_week_ago){
+    ... on TimeLineField{
+      date
+      todo{
+        newCreate
+      }
+      ideas{
+        newCreate
+      }
+      totalPoint
+    }
+	}
+
+  month_ago: timeline(token:$token, date:$date_month_ago){
+    ... on TimeLineField{
+      date
+      todo{
+        newCreate
+      }
+      ideas{
+        newCreate
+      }
+      totalPoint
+    }
+	}
+
+  year_ago: timeline(token:$token, date:$date_year_ago){
+    ... on TimeLineField{
+      date
+      todo{
+        newCreate
+      }
+      ideas{
+        newCreate
+      }
+      totalPoint
+    }
+  }
+}

@@ -12,4 +12,7 @@ public class QMItem {
         return previewText;
     }
 
+    public void setPreviewText(String previewText) {
+        this.previewText = previewText;
+    }
 }

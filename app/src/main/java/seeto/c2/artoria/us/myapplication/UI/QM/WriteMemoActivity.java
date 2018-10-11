@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +21,13 @@ import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
 
 public class WriteMemoActivity extends AppCompatActivity {
-
     EditText contentEditText;
-    String sContent;
     @Override
     protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.activity_writememo);
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
 
         contentEditText = (EditText) findViewById(R.id.contentEditText);
         Button btn_finish = (Button)findViewById(R.id.finishButton);
@@ -35,12 +36,15 @@ public class WriteMemoActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(contentEditText.getText().toString().isEmpty()){
+                String memo = contentEditText.getText().toString();
+                if(memo.isEmpty()){
                     Toast.makeText(WriteMemoActivity.this,"내용을 입력하세요",Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(WriteMemoActivity.this, "작성을 완료합니다.", Toast.LENGTH_SHORT).show();
-                    SharedPreferenceKt.saveQM(WriteMemoActivity.this,contentEditText.getText().toString());
+                    databaseHelper.add(memo);
                     finish();
+                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -51,11 +55,10 @@ public class WriteMemoActivity extends AppCompatActivity {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(WriteMemoActivity.this);
                 alert_confirm.setMessage("작성을 취소하시겠습니까?").setCancelable(false).setPositiveButton("확인",
                         (dialog, which) -> {
-                            Intent intent = new Intent(WriteMemoActivity.this, ViewMemoActivity.class);
+                            Intent intent = new Intent(WriteMemoActivity.this, MainActivity.class);
                             startActivity(intent);
                         }).setNegativeButton("취소",
                         (dialog, which) -> {
-                            // 'No'
                             return;
                         });
                 AlertDialog alert = alert_confirm.create();
