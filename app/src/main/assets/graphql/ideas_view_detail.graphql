@@ -1,0 +1,21 @@
+query ideasMain($token:String, $view : String){
+  ideas(token:$token, view : $view){
+    ... on IdeasField{
+      id
+      author
+      title
+      body
+      createdAt
+      category
+      voteChecked
+      comments{
+        commentCount
+        comments{
+        author
+        body
+        }
+      }
+      upvoter
+    }
+  }
+}

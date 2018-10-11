@@ -1,0 +1,10 @@
+mutation VoteIdea($id : String, $token : String){
+  voteIdea(id : $id, token : $token){
+    result{
+      ...on ResponseMessageField{
+        isSuccess
+        message
+      }
+    }
+  }
+}

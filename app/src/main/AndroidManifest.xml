@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.Signin.SigninActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
@@ -36,11 +32,23 @@
         <activity android:name=".UI.Setting.SettingActivity"/>
 
         <activity android:name=".UI.QM.ViewMemoActivity" />
-        <activity android:name=".UI.QM.WriteMemoActivity" />
-        <activity
-            android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.ToDo.TodoDetailActivity"></activity>
+
+        <activity android:name=".UI.QM.WriteMemoActivity"/>
+
+        <activity android:name=".UI.ToDo.TodoDetailActivity"/>
+
+        <activity android:name=".UI.ToDo.TodoCreate.CreateTodoActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".UI.Splash.Splash"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

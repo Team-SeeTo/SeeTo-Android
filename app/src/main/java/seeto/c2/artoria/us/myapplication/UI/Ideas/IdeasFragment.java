@@ -18,12 +18,19 @@ import android.view.ViewParent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import seeto.c2.artoria.us.myapplication.Adapter.IdeasRecyclerAdapter;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
+import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Main.MainActivity;
@@ -38,14 +45,14 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     ArrayList<IdeasItem> listdata = new ArrayList<>();
     IdeasPresenter ideasPresenter;
     ViewPager viewPager;
-    MainActivity context;
+    Context context = this.getActivity();
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ideas, container, false);
 
-        context = new MainActivity();
+        context = this.getActivity();
         ideaslist = rootView.findViewById(R.id.ideas_recycler);
         ideasPresenter = new IdeasPresenter(getActivity());
         viewPager = getActivity().findViewById(R.id.main_viewpager);
@@ -58,10 +65,12 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
         if (startflag) {
 //            startflag = false;
-            recyclerdatainit();
+//            recyclerdatainit();
 
-            adapter = new IdeasRecyclerAdapter(listdata, getActivity());
-            ideaslist.setAdapter(adapter);
+            getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank);
+
+
+
         } else {
 //            adapter = new IdeasRecyclerAdapter(listdata, getActivity());
 //            ideaslist.setAdapter(adapter);
@@ -70,11 +79,13 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
         ideaslist.setOnScrollChangeListener((view, i, i1, i2, i3) -> {
             if (!ideaslist.canScrollVertically(1)) {
 
-                Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
+                if(adapter.getItemCount() == 30) {
 
-                loadMore();
+                    Toast.makeText(getActivity(), "Loading ...", Toast.LENGTH_SHORT).show();
 
+                    loadMore();
 
+                }
             }
         });
 
@@ -86,13 +97,8 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     public void recyclerdatainit() {
 
         if (viewPager.getCurrentItem() == 2) {
-            ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), "filterBy", startrank);
 
-            listdata.clear();
-
-            for (int i = 1; i <= 30; i++) {
-                listdata.add(new IdeasItem("Title", "Body", "#" + i, "23.1K", "411"));
-            }
+            getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank);
 
         }
 
@@ -101,7 +107,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     @Override
     public void loadMore() {
 
-        ideasPresenter.getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true),"filterBy", startrank + 30);
+        getListDataRequest(SharedPreferenceKt.getToken(Objects.requireNonNull(getActivity()),true), startrank + 30);
 
         new Handler().postDelayed(() -> {
 
@@ -109,7 +115,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
             end = startrank + 30;
 
             for (int i = startrank + 1; i <= end; i++){
-                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411"));
+                listdata.add(new IdeasItem("Title","Body","#"+i,23,"411","id",false));
             }
 
             adapter.addItemMore(listdata);
@@ -121,7 +127,131 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     @Override
     public void IdeasSearchRequest(String search_string) {
-        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(getActivity(),true),search_string," ",1);
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",SharedPreferenceKt.getToken(context,true))
+                .putVariable("search",search_string)
+                .putVariable("page",1);
+
+        new Connector(getActivity()).getClient().IdeasSearch(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        data.getData().getIdeas().get(i).getVotechecked()));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    public void IdeasOrderByRequest(String token, String orderBy, int startRank){
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("filterBy",orderBy)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasFilter(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        data.getData().getIdeas().get(i).getVotechecked()));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
+
+    }
+
+    public void getSearchList(String token, String search_string, int startRank) {
+
+
+    }
+
+
+    @Override
+    public void getListDataRequest(String token, int startRank) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        data.getData().getIdeas().get(i).getVotechecked()));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
 
     }
 

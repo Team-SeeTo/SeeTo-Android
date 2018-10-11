@@ -1,8 +1,12 @@
 query simpleProfile($token: String){
   profile(token: $token){
-   	imgPath
-    username
-    rank
-    point
+   	... on ProfileField{
+      imgPath
+      email
+      username
+      rank
+      point
+      registerOn
+    }
   }
 }

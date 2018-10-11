@@ -1,17 +1,25 @@
-query timelineMain($token:String, $date:DateTime){
+query timelineMain($token:String, $date : Date){
   timeline(token:$token, date:$date){
-    ideas {
-      newVote
-      newComment
-      newCreate
+    ...on TimeLineField{
+      todo{
+        ...on ToDoReviewField{
+          newCreate
+          todoComplete
+          totalPoint
+          milestoneComplete
+        }
+      }
+        ideas{
+        ...on IdeasReviewField{
+          newVote
+          newComment
+          newCreate
+          totalPoint
+        }
+      }
+
+      date
       totalPoint
     }
-    todo {
-      newCreate
-      milestoneComplete
-      todoComplete
-      totalPoint
-    }
-    totalPoint
   }
 }

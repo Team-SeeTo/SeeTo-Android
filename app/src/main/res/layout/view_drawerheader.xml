@@ -10,27 +10,16 @@
         android:layout_height="270dp"
         android:background="@drawable/view_diagonal_cut">
 
-        <ImageView
-            android:id="@+id/navigation_header_profile"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/circle_img_shape"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/navigation_header_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Artoria Pendragon"
+            android:layout_marginTop="60dp"
             android:textColor="#fff"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/navigation_header_profile" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/navigation_header_rank"
@@ -48,7 +37,7 @@
             android:id="@+id/navigation_header_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="9999P"
+            android:text="0P"
             android:textColor="#fff"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

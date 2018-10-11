@@ -2,7 +2,6 @@ package seeto.c2.artoria.us.myapplication.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,10 +34,22 @@ public class IdeasMainModel {
         private String body;
 
         @SerializedName("comments")
-        private List<CommentItem> comments;
+        private Comments comments;
+
+        @SerializedName("voteChecked")
+        private Boolean votechecked;
 
         @SerializedName("upvoter")
         private int upvoter;
+
+        @SerializedName("category")
+        private String category;
+
+        @SerializedName("createdAt")
+        private String createdAt;
+
+        @SerializedName("id")
+        private String id;
 
         public String getAuthor() {
             return author;
@@ -52,12 +63,44 @@ public class IdeasMainModel {
             return title;
         }
 
-        public List<CommentItem> getComments() {
+        public Comments getComments() {
             return comments;
         }
 
         public int getUpvoter() {
             return upvoter;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public Boolean getVotechecked() {
+            return votechecked;
+        }
+    }
+
+    public static class Comments{
+        @SerializedName("comments")
+        private List<CommentItem> comments;
+
+        @SerializedName("commentCount")
+        private int commentsCount;
+
+        public List<CommentItem> getComments() {
+            return comments;
+        }
+
+        public int getCommentsCount() {
+            return commentsCount;
         }
     }
 
@@ -76,6 +119,4 @@ public class IdeasMainModel {
             return comment_body;
         }
     }
-
-
 }

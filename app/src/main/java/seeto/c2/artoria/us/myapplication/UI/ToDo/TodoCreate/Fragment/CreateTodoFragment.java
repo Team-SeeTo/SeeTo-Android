@@ -3,6 +3,7 @@ package seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.Fragment;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -1,8 +1,11 @@
 package seeto.c2.artoria.us.myapplication.UI.Mirror;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -57,26 +60,32 @@ public class MirrorActivity extends AppCompatActivity {
 
     private void Loaddata(){
 
-        addData("LastWeek","Todo activity increase");
-        addData("LastWeek","120%");
-        addData("LastWeek","Ideas activity increase");
-        addData("LastWeek","85%");
-        addData("LastWeek","Total activity increase");
-        addData("LastWeek","102%");
+        addData("Last Week","Todo activity increase");
+        addData("Last Week","0%");
+        addData("Last Week","Ideas activity increase");
+        addData("Last Week","0%");
+        addData("Last Week","Total activity increase");
+        addData("Last Week","0%");
 
-        addData("LastMonth","Todo activity increase");
-        addData("LastMonth","120%");
-        addData("LastMonth","Ideas activity increase");
-        addData("LastMonth","85%");
-        addData("LastMonth","Total activity increase");
-        addData("LastMonth","102%");
+        addData("Last Month","Todo activity increase");
+        addData("Last Month","0%");
+        addData("Last Month","Ideas activity increase");
+        addData("Last Month","0%");
+        addData("Last Month","Total activity increase");
+        addData("Last Month","0%");
 
-        addData("LastYear","Todo activity increase");
-        addData("LastYear","120%");
-        addData("LastYear","Ideas activity increase");
-        addData("LastYear","85%");
-        addData("LastYear","Total activity increase");
-        addData("LastYear","102%");
+        addData("Last Year","Todo activity increase");
+        addData("Last Year","0%");
+        addData("Last Year","Ideas activity increase");
+        addData("Last Year","0%");
+        addData("Last Year","Total activity increase");
+        addData("Last Year","0%");
+
+//        for(int i = 0; i<deptList.size(); i++){
+//           if(deptList.indexOf(i) % 2 == 0){
+//
+//           }
+//        }
     }
 
     private int addData(String department, String increase){
@@ -99,13 +108,10 @@ public class MirrorActivity extends AppCompatActivity {
 
         ChildInfo DetailInfo = new ChildInfo();
         DetailInfo.setTitle(increase);
-//        DetailInfo.setSequence(String.valueOf(listsize));
         increaseList.add(DetailInfo);
-        headerInfo.setTitle("Last week");
 
         groupPosition = deptList.indexOf(headerInfo);
 
         return groupPosition;
     }
-
 }

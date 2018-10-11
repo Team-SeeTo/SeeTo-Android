@@ -113,10 +113,12 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 hardItem.milestones = milestoneTemp;
         }
+        Log.d("TODO", (holder.itemView==null)+"");
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
+            public void onClick(View view) {
+                Context context = view.getContext();
                 Intent intent = new Intent(context, TodoDetailActivity.class);
                 intent.putParcelableArrayListExtra("milestones", milestoneTemp);
                 intent.putExtra("expiration", todoList.getExpriation());

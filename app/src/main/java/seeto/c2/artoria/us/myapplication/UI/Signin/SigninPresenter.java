@@ -39,27 +39,21 @@ public class SigninPresenter implements SigninContract.Presenter {
                                 SharedPreferenceKt.saveToken(context,data.getData().getAuth().getResult().getAccessToken(),true);
                                 SharedPreferenceKt.saveToken(context,data.getData().getAuth().getResult().getRefreshToken(),false);
 
-                                Log.d("DEBUG", "success");
-                                Log.d("DEBUG", String.valueOf(response.code()));
-                                Log.d("DEBUG",SharedPreferenceKt.getToken(context,true));
-
                                 Intent intent = new Intent(context, MainActivity.class);
                                 context.startActivity(intent);
                             } else {
-                                Log.d("DEBUG", String.valueOf(response.code()));
-                                Log.d("DEBUG",response.message());
                                 Log.d("DEBUG","token_null");
                             }
                         } else {
                             Log.d("DEBUG",response.message());
                             Log.d("DEBUG", "failed");
-                            Log.d("DEBUG", String.valueOf(response.code()));
                         }
                     }
 
                     @Override
                     public void onFailure(Call<TokenModel> call, Throwable t) {
-                        Log.d("DEBUG", "network_failed");
+                        Log.d("login", "network_failed");
+                        Log.d("login", String.valueOf(t));
                     }
                 });
     }

@@ -76,6 +76,7 @@
                             app:layout_constraintBottom_toBottomOf="@id/third_grade_profile"
                             app:layout_constraintEnd_toEndOf="@+id/third_grade_profile" />
 
+
                         <View
                             android:id="@+id/first_grade_profile"
                             android:layout_width="96dp"
@@ -86,8 +87,8 @@
                             app:layout_constraintRight_toRightOf="parent"/>
 
                         <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
                             android:background="@drawable/leader_board_rank"
                             android:gravity="center"
                             android:text="1"
@@ -115,11 +116,12 @@
                             app:layout_constraintLeft_toLeftOf="@+id/second_grade_profile"
                             app:layout_constraintRight_toRightOf="@id/second_grade_profile" />
 
+
                         <TextView
                             android:id="@+id/first_grade_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="lewis"
+                            android:text="woopa"
                             android:textSize="20dp"
                             android:textColor="@color/colorPrimaryDark"
                             android:layout_marginTop="10dp"
@@ -139,6 +141,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/third_grade_profile"
                             app:layout_constraintLeft_toLeftOf="@+id/third_grade_profile"
                             app:layout_constraintRight_toRightOf="@id/third_grade_profile"/>
+
 
                     </android.support.constraint.ConstraintLayout>
 
@@ -194,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="50dp"
-                            android:text="#23"
+                            android:text="#1"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/my_rank_rank_title"/>
 
@@ -203,7 +206,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="50dp"
-                            android:text="1260p"
+                            android:text="0p"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/my_rank_total_title"/>
@@ -213,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="50dp"
-                            android:text="8%"
+                            android:text="0%"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/my_rank_top_title"/>
 

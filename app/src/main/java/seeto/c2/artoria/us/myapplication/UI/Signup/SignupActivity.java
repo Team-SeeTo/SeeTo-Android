@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Signin.SigninPresenter;
 
 public class SignupActivity extends AppCompatActivity implements SignupContract.View {
@@ -31,6 +32,8 @@ public class SignupActivity extends AppCompatActivity implements SignupContract.
             signupPresenter.SignupRequest(email_et.getText().toString(),
                     username_et.getText().toString(),
                     password_et.getText().toString());
+
+//            SharedPreferenceKt.saveInfo(this,"username",username_et.getText().toString());
         });
     }
 

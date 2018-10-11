@@ -2,17 +2,17 @@ package seeto.c2.artoria.us.myapplication.Item;
 
 public class TimeLineItem {
     private String category;
-    private String firstline_int;
-    private String secondline_int;
-    private String thirdline_int;
+    private int firstline_int;
+    private int secondline_int;
+    private int thirdline_int;
     private String firstline_explain;
     private String secondline_explain;
     private String thirdline_explain;
-    private String total_point;
+    private int total_point;
 
-    public TimeLineItem(String category, String firstline_int, String secondline_int, String thirdline_int
-                        ,String firstline_explain, String secondline_explain, String thirdline_explain
-                        ,String total_point)
+    public TimeLineItem(String category, int firstline_int, int secondline_int, int thirdline_int
+                        , String firstline_explain, String secondline_explain, String thirdline_explain
+                        , int total_point)
     {
         this.category = category;
         this.firstline_int = firstline_int;
@@ -28,15 +28,15 @@ public class TimeLineItem {
         return category;
     }
 
-    public String getFirstline_int() {
+    public int getFirstline_int() {
         return firstline_int;
     }
 
-    public String getSecondline_int() {
+    public int getSecondline_int() {
         return secondline_int;
     }
 
-    public String getThirdline_int() {
+    public int getThirdline_int() {
         return thirdline_int;
     }
 
@@ -52,7 +52,7 @@ public class TimeLineItem {
         return thirdline_explain;
     }
 
-    public String getTotal_point() {
+    public int getTotal_point() {
         return total_point;
     }
 }

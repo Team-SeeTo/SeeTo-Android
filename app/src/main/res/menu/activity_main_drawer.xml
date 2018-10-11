@@ -17,9 +17,9 @@
             android:icon="@drawable/baseline_insert_chart_outlined_white_24dp"
             android:title="Mirror" />
         <item
-            android:id="@+id/navigation_settings_btn"
-            android:icon="@drawable/baseline_settings_white_24dp"
-            android:title="Settings" />
+            android:id="@+id/navigation_Logout_btn"
+            android:icon="@drawable/baseline_exit_to_app_black_48dp"
+            android:title="Logout" />
     </group>
 
 </menu>

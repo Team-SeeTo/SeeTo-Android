@@ -98,6 +98,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
                     @Override
                     public void onFailure(Call<TodoMainModel> call, Throwable t) {
                         Log.d("TODO get request failed", ""+t);
+                        getTodoList(orderBy);
                     }
                 });
     }
