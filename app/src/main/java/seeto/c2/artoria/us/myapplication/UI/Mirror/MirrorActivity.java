@@ -52,26 +52,10 @@ public class MirrorActivity extends AppCompatActivity {
         String monthago = year + "-0" + month_date + "-" + day;
         String yearago = year_date + "-" + month + "-" + day;
 
-
-
         getdata(SharedPreferenceKt.getToken(this, true),weekago, monthago, yearago);
 
         explist = (ExpandableListView)findViewById(R.id.mirror_listview);
-        listAdapter = new MirrorAdapter(MirrorActivity.this, deptList);
-        explist.setAdapter(listAdapter);
 
-        explist.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
-            ParentInfo headerInfo = deptList.get(groupPosition);
-            ChildInfo DetailInfo = headerInfo.getList().get(childPosition);
-
-            return false;
-        });
-
-        explist.setOnGroupClickListener((parent, v, groupPosition, id) -> {
-            ParentInfo headerInfo = deptList.get(groupPosition);
-
-            return false;
-        });
     }
 
     public void getdata(String token, String weekago, String monthago, String yearago) {
@@ -129,49 +113,52 @@ public class MirrorActivity extends AppCompatActivity {
         }
     }
 
+    String buho (int val) {
+        if(val>0) {
+            return "+"+val;
+        }else {
+            return ""+val;
+        }
+    }
+
     private void Loaddata(){
 
         addData("Last Week","Todo activity increase");
-        addData("Last Week","0%");
+        addData("Last Week", buho(t_t_newcreate-w_t_newcrete));
         addData("Last Week","Ideas activity increase");
-        addData("Last Week","0%");
+        addData("Last Week",buho(t_i_newcreate-w_i_newcreate));
         addData("Last Week","Total activity increase");
-        addData("Last Week","0%");
+        addData("Last Week",buho(t_t_newcreate-w_t_newcrete+t_i_newcreate-w_i_newcreate));
 
         addData("Last Month","Todo activity increase");
-        addData("Last Month","0%");
+        addData("Last Month",buho(t_t_newcreate-m_t_newcreate));
         addData("Last Month","Ideas activity increase");
-        addData("Last Month","0%");
+        addData("Last Month",buho(t_t_newcreate-m_i_newcreate));
         addData("Last Month","Total activity increase");
-        addData("Last Month","0%");
+        addData("Last Month",buho(t_t_newcreate-m_t_newcreate+t_t_newcreate-m_i_newcreate));
 
         addData("Last Year","Todo activity increase");
-        addData("Last Year","0%");
+        addData("Last Year",buho(t_t_newcreate-y_t_newcreate));
         addData("Last Year","Ideas activity increase");
-        addData("Last Year","0%");
+        addData("Last Year",buho(t_t_newcreate-y_i_newcreate));
         addData("Last Year","Total activity increase");
-        addData("Last Year","0%");
+        addData("Last Year",buho(t_t_newcreate-y_t_newcreate+t_t_newcreate-y_i_newcreate));
 
-//        addData("Last Week","Todo activity increase");
-//        addData("Last Week",t_t_newcreate-w_t_newcrete+"");
-//        addData("Last Week","Ideas activity increase");
-//        addData("Last Week",t_i_newcreate-w_i_newcreate+"");
-//        addData("Last Week","Total activity increase");
-//        addData("Last Week",t_t_newcreate-w_t_newcrete+t_i_newcreate-w_i_newcreate+"");
-//
-//        addData("Last Month","Todo activity increase");
-//        addData("Last Month",t_t_newcreate-m_t_newcreate+"");
-//        addData("Last Month","Ideas activity increase");
-//        addData("Last Month",t_t_newcreate-m_i_newcreate+"");
-//        addData("Last Month","Total activity increase");
-//        addData("Last Month",t_t_newcreate-m_t_newcreate+t_t_newcreate-m_i_newcreate+"");
-//
-//        addData("Last Year","Todo activity increase");
-//        addData("Last Year",t_t_newcreate-y_t_newcreate+"");
-//        addData("Last Year","Ideas activity increase");
-//        addData("Last Year",t_t_newcreate-y_i_newcreate+"");
-//        addData("Last Year","Total activity increase");
-//        addData("Last Year",t_t_newcreate-y_t_newcreate+t_t_newcreate-y_i_newcreate+"");
+        listAdapter = new MirrorAdapter(MirrorActivity.this, deptList);
+        explist.setAdapter(listAdapter);
+
+        explist.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
+            ParentInfo headerInfo = deptList.get(groupPosition);
+            ChildInfo DetailInfo = headerInfo.getList().get(childPosition);
+
+            return false;
+        });
+
+        explist.setOnGroupClickListener((parent, v, groupPosition, id) -> {
+            ParentInfo headerInfo = deptList.get(groupPosition);
+
+            return false;
+        });
     }
 
     private int addData(String department, String increase){
