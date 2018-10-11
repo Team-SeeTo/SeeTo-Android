@@ -11,6 +11,7 @@ import retrofit2.http.POST;
 import seeto.c2.artoria.us.myapplication.Adapter.QMRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasSearchModel;
+import seeto.c2.artoria.us.myapplication.Model.LeaderBoardModel;
 import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
 import seeto.c2.artoria.us.myapplication.Model.TimeLineModel;
 import seeto.c2.artoria.us.myapplication.Model.TodoMainModel;
@@ -59,4 +60,16 @@ public interface API {
     @POST("/graphql")
     @GraphQuery("new_todo")
     Call<Void> NewTODO(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("complete_milestone")
+    Call<Void> CompleteMilestone(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("todo_edit")
+    Call<Void> TodoEdit(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("leaderboard_main")
+    Call<LeaderBoardModel> LeaderBoardMain(@Body QueryContainerBuilder queryContainerBuilder);
 }

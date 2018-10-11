@@ -1,0 +1,10 @@
+mutation CompleteMilestone($token: String $todoId:String $milestoneId:String){
+  completeMilestone(token:$token, todoId:$todoId, milestoneId:$milestoneId){
+    result{
+      ... on ResponseMessageField{
+        message
+        isSuccess
+      }
+    }
+  }
+}

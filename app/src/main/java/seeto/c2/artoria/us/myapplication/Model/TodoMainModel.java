@@ -72,6 +72,12 @@ public class TodoMainModel {
         String name;
         @SerializedName("isCompleted")
         Boolean isCompleted;
+        @SerializedName("id")
+        String id;
+
+        public String getId() {
+            return id;
+        }
 
         public String getName() {
             return name;

@@ -37,6 +37,7 @@ public class CreateTodoActivity extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
             String id = bundle.getString("id");
             sibalLom.getId().setValue(id);
+            Log.d("create todo", id);
             String title = bundle.getString("title");
             String expiration = bundle.getString("expiration");
             String mode = bundle.getString("mode");

@@ -53,13 +53,7 @@ public class TodoViewPagerAdapter extends FragmentStatePagerAdapter {
         }else {
             switch (position){
                 case 0:
-                    return SetTodoTitleFragment.newInstance(title);
-                case 1:
-                    return SelectModeFragment.newInstance(mode);
-                case 2:
-                    return SelectDueDateFragment.newInstance(expiration);
-                case 3:
-                    return ModifyTodoFragment.newInstance(items);
+                    return ModifyTodoFragment.newInstance(title);
             }
         }
         return SetTodoTitleFragment.newInstance(todoType);
@@ -69,6 +63,10 @@ public class TodoViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        if (todoType.equals("create")) {
+            return 4;
+        }else {
+            return 1;
+        }
     }
 }

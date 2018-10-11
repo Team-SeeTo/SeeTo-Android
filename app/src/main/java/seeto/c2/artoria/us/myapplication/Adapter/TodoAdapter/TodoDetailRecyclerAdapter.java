@@ -1,6 +1,7 @@
 package seeto.c2.artoria.us.myapplication.Adapter.TodoAdapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,17 +16,26 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
 import seeto.c2.artoria.us.myapplication.Item.TodoItem;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 
 public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRecyclerAdapter.CustomViewholder>{
     ArrayList<TodoItem> todoItems;
     String type, id;
+    Context context;
 
     public TodoDetailRecyclerAdapter(ArrayList<TodoItem> todoItems, String type, String id){
         this.todoItems = todoItems;
@@ -37,6 +47,7 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
     @Override
     public CustomViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int res;
+        context = parent.getContext();
         switch (type) {
             case "normal":
                 res = R.layout.item_deail_normal_todo;
@@ -91,9 +102,10 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
                             break;
                     }
                     todoItems.get(holder.getAdapterPosition()).setChecked(true);
+                    Log.d("TODO mile id", todoItems.get(position).getMilestoneId());
+                    setMilestoneState(todoItems.get(position).getMilestoneId(), context);
                 }else {
-                    holder.todoText.setTextColor(R.color.colorPrimary);
-                    todoItems.get(holder.getAdapterPosition()).setChecked(false);
+                    holder.todoCheckBox.setChecked(true);
                 }
             }
         });
@@ -114,6 +126,26 @@ public class TodoDetailRecyclerAdapter extends RecyclerView.Adapter<TodoDetailRe
             public void afterTextChanged(Editable s) {
             }
         });
+    }
+
+    void setMilestoneState(String milestoneId, Context context) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("todoId", id)
+                .putVariable("milestoneId", milestoneId)
+                .putVariable("token", SharedPreferenceKt.getToken(context,true));
+        new Connector(context).getClient().CompleteMilestone(queryContainerBuilder)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.d("TODO-milestone", "Request-successed");
+                        Log.d("TODO-milestone-response", response.message());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("TODO-milestone", "Request-failed");
+                    }
+                });
     }
 
     @Override

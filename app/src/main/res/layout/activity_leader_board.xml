@@ -44,6 +44,7 @@
                             app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"/>
 
                         <TextView
+                            android:id="@+id/second_grade_rank"
                             android:visibility="invisible"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -64,6 +65,7 @@
                             app:layout_constraintRight_toRightOf="parent" />
 
                         <TextView
+                            android:id="@+id/third_grade_rank"
                             android:visibility="invisible"
                             android:layout_width="30dp"
                             android:layout_height="30dp"

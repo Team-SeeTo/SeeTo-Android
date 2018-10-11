@@ -1,0 +1,10 @@
+mutation CompleteTodo($token: String $id: String) {
+    completeTodo(token: $token, id:$id) {
+        result{
+            ...on ResponseMessageField {
+              message
+              isSuccess
+            }
+        }
+    }
+}

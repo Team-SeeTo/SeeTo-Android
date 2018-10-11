@@ -27,14 +27,16 @@ public class TodoDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_detail);
 
-        items = getIntent().getExtras().getParcelableArrayList("milestones");
+        items = getIntent().getParcelableArrayListExtra("milestones");
         expiration = getIntent().getExtras().getString("expiration");
         gotType = getIntent().getExtras().getString("type");
         title = getIntent().getExtras().getString("title");
         id = getIntent().getExtras().getString("id");
-        if(gotType==null) gotType = "STANDARD";
-
-        Log.d("TODO detail expiration: ", expiration);
+        Log.d("TODOid", id);
+        if(gotType==null) {
+            gotType = "STANDARD";
+            Log.d("TODO detail gottype: null", (gotType==null)+"");
+        }
         String type;
         switch(gotType) {
             case "HARD":
@@ -50,7 +52,7 @@ public class TodoDetailActivity extends Activity {
 
         RecyclerView TodoDetailRecyclerView;
         TextView expirationText = findViewById(R.id.todo_detail_expiration);
-        expirationText.setText(expiration);
+        expirationText.setText(expiration.substring(0, expiration.indexOf('T')));
 
         FloatingActionButton modifyBtn = findViewById(R.id.todo_detail_modify_btn);
         modifyBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +62,8 @@ public class TodoDetailActivity extends Activity {
                 intent.putExtra("editTodoType", "modify");
                 intent.putExtra("id", id);
                 intent.putExtra("title", title);
-                intent.putExtra("mode", gotType);
-                intent.putExtra("expiration", expiration);
-                intent.putExtra("items", items);
                 startActivity(intent);
+                onBackPressed();
             }
         });
 

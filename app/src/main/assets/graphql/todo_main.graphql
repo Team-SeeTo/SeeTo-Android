@@ -1,10 +1,12 @@
 query TodoMain($token : String, $orderBy : String){
    todo(token : $token, orderBy : $orderBy){
      ...on ToDoField{
+       id
        title
        type
        createdAt
        milestones{
+         id
          name
          isCompleted
        }

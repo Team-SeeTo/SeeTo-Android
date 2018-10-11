@@ -1,0 +1,9 @@
+query LeaderBoards($token : String){
+   leaderboards(token : $token){
+     ...on LeaderboardsField{
+        rank
+        name
+        point
+     }
+   }
+ }

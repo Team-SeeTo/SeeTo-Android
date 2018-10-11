@@ -60,10 +60,12 @@ public class TodoFragment extends Fragment implements TodoContract.View {
     public void todolistinit() {
         ArrayList<TodoMainModel.Todo> data = new ArrayList<>(Arrays.asList(todoList));
         Log.d("TODO data size: ", ""+(data.size()));
-
         TodoRecyclerAdapter todoRecyclerAdapter = new TodoRecyclerAdapter(data);
-
         todoRecyclerView.setAdapter(todoRecyclerAdapter);
+    }
+
+    void completeTodo() {
+
     }
 
     void getTodoList(String orderBy) {
@@ -78,6 +80,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
                         TodoMainModel.Todo[] todos = data.getData().getTodos();
                         if(todos != null) {
                             todoList = todos;
+                            Log.d("TODO main", todos[0].getId());
                             Log.d("TODO get request message", response.message());
                             if(todoList == null || todoList.length == 0) {
                                 todoRecyclerView.setVisibility(View.GONE);

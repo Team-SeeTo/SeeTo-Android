@@ -35,12 +35,8 @@ import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.SibalLom;
 public class ModifyTodoFragment extends Fragment {
 
     View view;
+    String type, title;
     SibalLom sibalLom;
-    String type;
-    ArrayList<TodoItem> items;
-    CreatedTodoListAdapter todoListAdapter;
-    RecyclerView createdTodoRecyclerView;
-    String[] stringfiedItems;
 
     public ModifyTodoFragment() {
     }
@@ -48,14 +44,6 @@ public class ModifyTodoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(sibalLom.getMode().getValue().equals("Hard")) {
-            type = "hard";
-        } else {
-            type = "normal";
-        }
-        Log.d("TODO type", type);
-        todoListAdapter = new CreatedTodoListAdapter(items, type);
-        createdTodoRecyclerView.setAdapter(todoListAdapter);
     }
 
     @Override
@@ -63,39 +51,21 @@ public class ModifyTodoFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_modify_todo, container, false);
         sibalLom = ViewModelProviders.of(getActivity()).get(SibalLom.class);
-        items = getArguments().getParcelableArrayList("editTodoList");
-        createdTodoRecyclerView = view.findViewById(R.id.todo_modify_recycler_view);
-        final EditText inputText = view.findViewById(R.id.modify_text);
-        final TextView addModifiedMileStone = view.findViewById(R.id.modify_add_milestone);
-
-        addModifiedMileStone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String newText = inputText.getText().toString();
-                if (!newText.isEmpty()) {
-                    addMilestone(newText);
-                    inputText.setText("");
-                    todoListAdapter.notifyItemInserted(todoListAdapter.getItemCount());
-                } else {
-                    Toast.makeText(view.getContext(), "내용을 입력해주세요", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        title = getArguments().getString("title");
+        sibalLom.getTitle().setValue(title);
+        final EditText inputText = view.findViewById(R.id.modify_todo_title_edit);
+        inputText.setText(title);
 
         TextView finish = view.findViewById(R.id.modify_finish);
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(todoListAdapter.getItemCount()<1) {
-                    Toast.makeText(view.getContext(), "마일스톤을 추가해주세요", Toast.LENGTH_SHORT).show();
-                }else {
-                    stringfiedItems = new String[sibalLom.getMilestone().getValue().size()];
-                    int index = 0;
-                    for(String app: sibalLom.getMilestone().getValue()) {
-                        stringfiedItems[index] = app;
-                        index++;
-                    }
+                if(!inputText.getText().toString().isEmpty()) {
+                    title = inputText.getText().toString();
+                    sibalLom.getTitle().setValue(title);
                     modifyTodoRequest(sibalLom);
+                } else{
+                    Toast.makeText(view.getContext(), "내용을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -103,25 +73,25 @@ public class ModifyTodoFragment extends Fragment {
         return view;
     }
 
-    public static ModifyTodoFragment newInstance(ArrayList<TodoItem> items) {
+    public static ModifyTodoFragment newInstance(String title) {
         Bundle args = new Bundle();
-        args.putParcelableArrayList("editTodoList", items);
+        args.putString("title", title);
 
         ModifyTodoFragment fragment = new ModifyTodoFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    void addMilestone(String text) {
-        items.add(new TodoItem(text, false));
-    }
-
     void modifyTodoRequest(SibalLom sibalLom) {
+        String id = sibalLom.getId().getValue();
+        String title = sibalLom.getTitle().getValue();
+        String token = SharedPreferenceKt.getToken(getActivity(), true);
+        Log.d("modify request", "id: "+id+" title: "+title+" token: "+token);
         QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("id", sibalLom.getId().getValue())
-                .putVariable("title", sibalLom.getTitle().getValue())
-                .putVariable("token", SharedPreferenceKt.getToken(getActivity(),true));
-        new Connector(getActivity()).getClient().NewTODO(queryContainerBuilder)
+                .putVariable("id", id)
+                .putVariable("token", token)
+                .putVariable("newTitle", title);
+        new Connector(getActivity()).getClient().TodoEdit(queryContainerBuilder)
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

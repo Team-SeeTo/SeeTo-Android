@@ -86,13 +86,12 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         TodoMainModel.Todo todoList = data.get(position);
         ArrayList<TodoMainModel.milestone> milestones = todoList.getMilestones();
         ArrayList<TodoItem> milestoneTemp = new ArrayList<>();
-        //TODO: 통신시 datetime check하고 텍스트뷰 색깔 변경
         switch (getItemViewType(position)) {
             case 0:
                 NoLimitItemViewHolder item = (NoLimitItemViewHolder) holder;
                 item.header.setText(todoList.getTitle());
                 for(int i=0; i<milestones.size(); i++) {
-                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted()));
+                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted(), milestones.get(i).getId()));
                 }
                 item.milestones = milestoneTemp;
                 break;
@@ -101,7 +100,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 commonItem.header.setText(todoList.getTitle());
                 commonItem.listInfo.setText(getDiffDays(todoList.getExpriation())+"");
                 for(int i=0; i<milestones.size(); i++) {
-                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted()));
+                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted(), milestones.get(i).getId()));
                 }
                 commonItem.milestones = milestoneTemp;
                 break;
@@ -110,14 +109,13 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 hardItem.header.setText(todoList.getTitle());
                 hardItem.listInfo.setText(getDiffDays(todoList.getExpriation())+"");
                 for(int i=0; i<milestones.size(); i++) {
-                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted()));
+                    milestoneTemp.add(new TodoItem(milestones.get(i).getName(), milestones.get(i).getCompleted(), milestones.get(i).getId()));
                 }
                 hardItem.milestones = milestoneTemp;
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Context context = v.getContext();
                 Intent intent = new Intent(context, TodoDetailActivity.class);
                 intent.putParcelableArrayListExtra("milestones", milestoneTemp);
@@ -137,6 +135,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
     public class NoLimitItemViewHolder extends RecyclerView.ViewHolder {
+        Boolean isCompleted;
         TextView header;
         public MyRadioButton radioButton;
         ArrayList<TodoItem> milestones;
@@ -144,13 +143,13 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         NoLimitItemViewHolder(View itemView) {
             super(itemView);
             header = (TextView) itemView.findViewById(R.id.no_limit_header);
-
             radioButton = (MyRadioButton) itemView.findViewById(R.id.no_limit_radioButton);
         }
     }
 
 
     public class CommonLimitItemViewHolder extends RecyclerView.ViewHolder {
+        Boolean isCompleted;
         TextView header, listInfo;
         ArrayList<TodoItem> milestones;
 
@@ -162,6 +161,7 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class HardLimitItemViewHolder extends RecyclerView.ViewHolder {
+        Boolean isCompleted;
         TextView header, listInfo;
         ArrayList<TodoItem> milestones;
 
