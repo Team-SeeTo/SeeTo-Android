@@ -15,10 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
 import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.Ideas.IdeasViewDetailActivity;
 import seeto.c2.artoria.us.myapplication.Item.IdeasItem;
 import seeto.c2.artoria.us.myapplication.R;
@@ -44,7 +51,7 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
         holder.title.setText(items.get(position).getTitle());
         holder.category.setText(items.get(position).getCategory());
         holder.rank.setText(items.get(position).getRank());
-        holder.like_text.setText(items.get(position).getLike());
+        holder.like_text.setText(String.valueOf(items.get(position).getLike()));
         holder.comment.setText(items.get(position).getComment());
         holder.item.setOnClickListener(v -> {
             String id = items.get(position).getId();
@@ -58,13 +65,14 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
                     items.get(position).setVote(true);
                     holder.like_btn.setImageResource(R.drawable.ic_fill_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#ff0000"));
-                    holder.like_text.setText("1");
+                    holder.like_text.setText(String.valueOf(items.get(position).getLike() + 1));
                     Toast.makeText(context, "이 게시물에 좋아요를 표시했습니다.", Toast.LENGTH_SHORT).show();
+                    setvote(SharedPreferenceKt.getToken(context,true),items.get(position).getId());
             } else{
                     items.get(position).setVote(false);
                     holder.like_btn.setImageResource(R.drawable.ic_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#757575"));
-                    holder.like_text.setText("0");
+                    holder.like_text.setText(String.valueOf(items.get(position).getLike() - 1));
                     Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
             }
 
@@ -82,6 +90,25 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
 //                    Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
 //                }
         });
+    }
+
+    public void setvote(String token, String id) {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("id",id);
+
+        new Connector(context).getClient().Vote(queryContainerBuilder)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
     }
 
     @Override

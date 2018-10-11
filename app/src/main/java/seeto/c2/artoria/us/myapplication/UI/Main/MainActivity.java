@@ -373,11 +373,11 @@ public class MainActivity extends AppCompatActivity
                     break;
 
                 case R.id.dialog_ideas_radio_life:
-                    orderBy = "LIFE";
+                    orderBy = "Life";
                     break;
 
                 case R.id.dialog_ideas_radio_food:
-                    orderBy = "FOOD";
+                    orderBy = "Food";
                     break;
 
             }

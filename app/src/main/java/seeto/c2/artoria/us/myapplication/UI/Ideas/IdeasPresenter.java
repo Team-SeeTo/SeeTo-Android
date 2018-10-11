@@ -36,11 +36,11 @@ public class IdeasPresenter implements IdeasContract.Presenter {
                 .putVariable("startRank",startRank);
 
         new Connector(context).getClient().IdeasSearch(queryContainerBuilder)
-                .enqueue(new Callback<IdeasSearchModel>() {
+                .enqueue(new Callback<IdeasMainModel>() {
                     @Override
-                    public void onResponse(Call<IdeasSearchModel> call, Response<IdeasSearchModel> response) {
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
                         if (response.isSuccessful()){
-                            IdeasSearchModel data = response.body();
+                            IdeasMainModel data = response.body();
 
                             ArrayList<IdeasItem> listdata = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class IdeasPresenter implements IdeasContract.Presenter {
                     }
 
                     @Override
-                    public void onFailure(Call<IdeasSearchModel> call, Throwable t) {
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
 
                     }
                 });

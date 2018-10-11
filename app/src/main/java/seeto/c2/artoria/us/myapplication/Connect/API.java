@@ -48,7 +48,11 @@ public interface API {
 
     @POST("/graphql")
     @GraphQuery("ideas_search")
-    Call<IdeasSearchModel> IdeasSearch(@Body QueryContainerBuilder queryContainerBuilder);
+    Call<IdeasMainModel> IdeasSearch(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("ideas_filter")
+    Call<IdeasMainModel> IdeasFilter(@Body QueryContainerBuilder queryContainerBuilder);
 
     @POST("/graphql")
     @GraphQuery("todo_search")

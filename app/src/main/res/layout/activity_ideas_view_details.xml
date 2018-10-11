@@ -33,6 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/ideas_detail_like"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

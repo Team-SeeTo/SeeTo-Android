@@ -40,7 +40,7 @@ public class IdeasWriteActivity extends AppCompatActivity{
                 title = ideas_write_title_et.getText().toString();
                 content = ideas_write_content_et.getText().toString();
                 ideasPresenter.NewIdeaRequest(category, SharedPreferenceKt.getToken(this,true),title,content);
-                mainActivity.getuserinfo();
+                finish();
             }
         });
 

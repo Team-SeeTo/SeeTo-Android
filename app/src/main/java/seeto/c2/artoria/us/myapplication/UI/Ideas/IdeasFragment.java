@@ -115,7 +115,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
             end = startrank + 30;
 
             for (int i = startrank + 1; i <= end; i++){
-                listdata.add(new IdeasItem("Title","Body","#"+i,"23.1K","411","id",false));
+                listdata.add(new IdeasItem("Title","Body","#"+i,23,"411","id",false));
             }
 
             adapter.addItemMore(listdata);
@@ -127,17 +127,12 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
 
     @Override
     public void IdeasSearchRequest(String search_string) {
-        getSearchList(SharedPreferenceKt.getToken(context,true),search_string,1);
-//        ideasPresenter.SearchRequest(SharedPreferenceKt.getToken(context,true),search_string,1);
-    }
-
-    public void IdeasOrderByRequest(String token, String orderBy, int startRank){
         QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("token",token)
-                .putVariable("filterBy",orderBy)
-                .putVariable("startRank",startRank);
+                .putVariable("token",SharedPreferenceKt.getToken(context,true))
+                .putVariable("search",search_string)
+                .putVariable("page",1);
 
-        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
+        new Connector(getActivity()).getClient().IdeasSearch(queryContainerBuilder)
                 .enqueue(new Callback<IdeasMainModel>() {
                     @Override
                     public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
@@ -150,7 +145,47 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                 listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
                                         data.getData().getIdeas().get(i).getCategory(),
                                         "#" + (i+1),
-                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
+                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
+                                        data.getData().getIdeas().get(i).getId(),
+                                        data.getData().getIdeas().get(i).getVotechecked()));
+
+                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
+                                ideaslist.setAdapter(adapter);
+
+                            }
+                        } else {
+                            Log.d("DEBUG","failed");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    public void IdeasOrderByRequest(String token, String orderBy, int startRank){
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token",token)
+                .putVariable("filterBy",orderBy)
+                .putVariable("startRank",startRank);
+
+        new Connector(getActivity()).getClient().IdeasFilter(queryContainerBuilder)
+                .enqueue(new Callback<IdeasMainModel>() {
+                    @Override
+                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
+                        if (response.isSuccessful()){
+                            IdeasMainModel data = response.body();
+
+                            listdata.clear();
+
+                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
+                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
+                                        data.getData().getIdeas().get(i).getCategory(),
+                                        "#" + (i+1),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId(),
                                         data.getData().getIdeas().get(i).getVotechecked()));
@@ -173,43 +208,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
     }
 
     public void getSearchList(String token, String search_string, int startRank) {
-        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
-                .putVariable("token",token)
-                .putVariable("searchString",search_string)
-                .putVariable("startRank",startRank);
 
-        new Connector(getActivity()).getClient().IdeasMain(queryContainerBuilder)
-                .enqueue(new Callback<IdeasMainModel>() {
-                    @Override
-                    public void onResponse(Call<IdeasMainModel> call, Response<IdeasMainModel> response) {
-                        if (response.isSuccessful()){
-                            IdeasMainModel data = response.body();
-
-                            listdata.clear();
-
-                            for (int i = 0; i < response.body().getData().getIdeas().size(); i++) {
-                                listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
-                                        data.getData().getIdeas().get(i).getCategory(),
-                                        "#" + (i+1),
-                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
-                                        String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
-                                        data.getData().getIdeas().get(i).getId(),
-                                        data.getData().getIdeas().get(i).getVotechecked()));
-
-                                adapter = new IdeasRecyclerAdapter(listdata, getActivity());
-                                ideaslist.setAdapter(adapter);
-
-                            }
-                        } else {
-                            Log.d("DEBUG","failed");
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<IdeasMainModel> call, Throwable t) {
-
-                    }
-                });
 
     }
 
@@ -232,7 +231,7 @@ public class IdeasFragment extends Fragment implements IdeasContract.View {
                                 listdata.add(new IdeasItem(data.getData().getIdeas().get(i).getTitle(),
                                         data.getData().getIdeas().get(i).getCategory(),
                                         "#" + (i+1),
-                                        String.valueOf(data.getData().getIdeas().get(i).getUpvoter()),
+                                        data.getData().getIdeas().get(i).getUpvoter(),
                                         String.valueOf(data.getData().getIdeas().get(i).getComments().getCommentsCount()),
                                         data.getData().getIdeas().get(i).getId(),
                                         data.getData().getIdeas().get(i).getVotechecked()));

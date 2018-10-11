@@ -7,10 +7,14 @@ query ideasMain($token:String, $search:String , $page:Int){
       category
       createdAt
       comments{
+      	commentCount
+        comments{
         author
         body
+        }
       }
       upvoter
+      voteChecked
     }
   }
 }

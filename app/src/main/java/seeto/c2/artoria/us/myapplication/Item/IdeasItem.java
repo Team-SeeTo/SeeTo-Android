@@ -4,12 +4,12 @@ public class IdeasItem {
     private String title;
     private String category;
     private String rank;
-    private String like;
+    private int like;
     private String comment;
     private String id;
     private boolean vote;
 
-    public IdeasItem(String title, String category, String rank, String like, String comment,String id, boolean vote){
+    public IdeasItem(String title, String category, String rank, int like, String comment,String id, boolean vote){
         this.title = title;
         this.category = category;
         this.rank = rank;
@@ -31,7 +31,7 @@ public class IdeasItem {
         return rank;
     }
 
-    public String getLike() {
+    public int getLike() {
         return like;
     }
 

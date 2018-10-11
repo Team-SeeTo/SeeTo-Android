@@ -58,11 +58,9 @@ public class IdeasViewDetailActivity extends AppCompatActivity{
         getIdeasDetail(getIntent().getStringExtra("id"), SharedPreferenceKt.getToken(this,true));
         like_btn = findViewById(R.id.ideas_detail_like);
 
-        if(!like_flag){
-            like_flag = true;
+        if(like_flag){
             like_btn.setImageResource(R.drawable.outline_favorite_check_border_24px);
         } else {
-            like_flag = false;
             like_btn.setImageResource(R.drawable.outline_favorite_border_24px);
         }
 
