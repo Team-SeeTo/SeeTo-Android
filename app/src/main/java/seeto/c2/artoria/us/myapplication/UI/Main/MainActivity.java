@@ -140,15 +140,43 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                vp_current = position;
+                Log.d("POSITION", String.valueOf(vp_current));
+                switch (vp_current) {
+                    case 0 :
+                        main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
+                        break;
 
+                    case 1:
+                        main_option_btn.setVisibility(View.VISIBLE);
+                        main_search_btn.setVisibility(View.GONE);
+                        break;
+
+                    case 3:
+                        main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
+                        break;
+
+                    default:
+                        main_search_btn.setVisibility(View.VISIBLE);
+                        main_option_btn.setVisibility(View.VISIBLE);
+                }
             }
+
 
             @Override
             public void onPageSelected(int position) {
                 vp_current = position;
                 Log.d("POSITION", String.valueOf(vp_current));
                 switch (vp_current) {
+                    case 0 :
+                        main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
+                        break;
+
                     case 1:
+                        main_option_btn.setVisibility(View.VISIBLE);
                         main_search_btn.setVisibility(View.GONE);
                         break;
 

@@ -15,6 +15,7 @@ import seeto.c2.artoria.us.myapplication.Adapter.QMRecyclerAdapter;
 import seeto.c2.artoria.us.myapplication.Model.IdeasDetailModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasSearchModel;
+import seeto.c2.artoria.us.myapplication.Model.LeaderBoardModel;
 import seeto.c2.artoria.us.myapplication.Model.NewCommentModel;
 import seeto.c2.artoria.us.myapplication.Model.NewIdeasModel;
 import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
@@ -78,4 +79,19 @@ public interface API {
     @GraphQuery("ideas_vote")
     Call<Void> Vote(@Body QueryContainerBuilder queryContainerBuilder);
 
+    @POST("/graphql")
+    @GraphQuery("new_todo")
+    Call<Void> NewTODO(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("leaderboard_main")
+    Call<LeaderBoardModel> LeaderBoardMain(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("complete_milestone")
+    Call<Void> CompleteMilestone(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("todo_edit")
+    Call<Void> TodoEdit(@Body QueryContainerBuilder queryContainerBuilder);
 }

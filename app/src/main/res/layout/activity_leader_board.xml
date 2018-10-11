@@ -35,40 +35,46 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <!--<View-->
-                            <!--android:id="@+id/second_grade_profile"-->
-                            <!--android:layout_width="70dp"-->
-                            <!--android:layout_height="70dp"-->
-                            <!--android:background="@drawable/user_profile"-->
-                            <!--app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"/>-->
+                        <View
+                            android:visibility="invisible"
+                            android:id="@+id/second_grade_profile"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/user_profile"
+                            app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"/>
 
-                        <!--<TextView-->
-                            <!--android:layout_width="30dp"-->
-                            <!--android:layout_height="30dp"-->
-                            <!--android:background="@drawable/leader_board_rank"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="2"-->
-                            <!--android:textColor="#fff"-->
-                            <!--app:layout_constraintBottom_toBottomOf="@id/second_grade_profile"-->
-                            <!--app:layout_constraintEnd_toEndOf="@+id/second_grade_profile" />-->
+                        <TextView
+                            android:id="@+id/second_grade_rank"
+                            android:visibility="invisible"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/leader_board_rank"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@id/second_grade_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/second_grade_profile" />
 
-                        <!--<View-->
-                            <!--android:id="@+id/third_grade_profile"-->
-                            <!--android:layout_width="70dp"-->
-                            <!--android:layout_height="70dp"-->
-                            <!--android:background="@drawable/user_profile"-->
-                            <!--app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"-->
-                            <!--app:layout_constraintRight_toRightOf="parent" />-->
+                        <View
+                            android:visibility="invisible"
+                            android:id="@+id/third_grade_profile"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/user_profile"
+                            app:layout_constraintBottom_toTopOf="@+id/ranker_guideline"
+                            app:layout_constraintRight_toRightOf="parent" />
 
-                        <!--<TextView-->
-                            <!--android:layout_width="30dp"-->
-                            <!--android:layout_height="30dp"-->
-                            <!--android:background="@drawable/leader_board_rank"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="3"-->
-                            <!--android:textColor="#fff"-->
-                            <!--app:layout_constraintBottom_toBottomOf="@id/third_grade_profile"-->
-                            <!--app:layout_constraintEnd_toEndOf="@+id/third_grade_profile" />-->
+                        <TextView
+                            android:id="@+id/third_grade_rank"
+                            android:visibility="invisible"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/leader_board_rank"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@id/third_grade_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/third_grade_profile" />
 
                         <View
                             android:id="@+id/first_grade_profile"
@@ -80,6 +86,7 @@
                             app:layout_constraintRight_toRightOf="parent"/>
 
                         <TextView
+                            android:textSize="30sp"
                             android:layout_width="96dp"
                             android:layout_height="96dp"
                             android:background="@drawable/leader_board_rank"
@@ -96,17 +103,19 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_begin="96dp" />
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/second_grade_user"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="lewis"-->
-                            <!--android:textSize="20dp"-->
-                            <!--android:textColor="@color/colorPrimaryDark"-->
-                            <!--android:layout_marginTop="10dp"-->
-                            <!--app:layout_constraintTop_toBottomOf="@+id/second_grade_profile"-->
-                            <!--app:layout_constraintLeft_toLeftOf="@+id/second_grade_profile"-->
-                            <!--app:layout_constraintRight_toRightOf="@id/second_grade_profile" />-->
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:id="@+id/second_grade_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lewis"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@+id/second_grade_profile"
+                            app:layout_constraintLeft_toLeftOf="@+id/second_grade_profile"
+                            app:layout_constraintRight_toRightOf="@id/second_grade_profile" />
 
                         <TextView
                             android:id="@+id/first_grade_user"
@@ -120,17 +129,19 @@
                             app:layout_constraintLeft_toLeftOf="@+id/first_grade_profile"
                             app:layout_constraintRight_toRightOf="@id/first_grade_profile"/>
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/third_grade_user"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="lewis"-->
-                            <!--android:textSize="20dp"-->
-                            <!--android:textColor="@color/colorPrimaryDark"-->
-                            <!--android:layout_marginTop="10dp"-->
-                            <!--app:layout_constraintTop_toBottomOf="@+id/third_grade_profile"-->
-                            <!--app:layout_constraintLeft_toLeftOf="@+id/third_grade_profile"-->
-                            <!--app:layout_constraintRight_toRightOf="@id/third_grade_profile"/>-->
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:id="@+id/third_grade_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lewis"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@+id/third_grade_profile"
+                            app:layout_constraintLeft_toLeftOf="@+id/third_grade_profile"
+                            app:layout_constraintRight_toRightOf="@id/third_grade_profile"/>
 
                     </android.support.constraint.ConstraintLayout>
 

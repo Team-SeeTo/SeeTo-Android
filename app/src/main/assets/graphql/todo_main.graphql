@@ -4,7 +4,9 @@ query TodoMain($token : String, $orderBy : String){
       title
       type
       createdAt
+      id
       milestones{
+        id
         name
         isCompleted
       }

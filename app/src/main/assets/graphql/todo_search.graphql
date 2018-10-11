@@ -1,15 +1,17 @@
 query TodoSearch($token : String, $orderBy : String, $searchString : String){
-  todo(token : $token, orderBy : $orderBy, searchString : $searchString){
-    ...on ToDoField{
-      title
-      type
-      createdAt
-      milestones{
-        name
-        isCompleted
-      }
-    	expiration
-      isCompleted
-    }
-  }
-}
+   todo(token : $token, orderBy : $orderBy, searchString : $searchString){
+     ...on ToDoField{
+       title
+       type
+       createdAt
+       id
+       milestones{
+         id
+         name
+         isCompleted
+       }
+     	expiration
+       isCompleted
+     }
+   }
+ }

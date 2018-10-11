@@ -6,34 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingBottom="8dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <CheckBox
-        android:id="@+id/todo_check_box"
+        android:id="@+id/todo_detail_normal_check_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_todo_check_box"
+        android:background="@drawable/normal_todo_check_box"
         android:button="@null"
         android:layout_marginLeft="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <EditText
-        android:id="@+id/todo_text"
+    <TextView
+        android:id="@+id/todo_detail_normal_text"
+        android:inputType="textNoSuggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
         android:text="something to do"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/todo_check_box"
-        app:layout_constraintBaseline_toBaselineOf="@+id/todo_check_box"/>
-
-    <ImageView
-        android:id="@+id/deleteTodo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_clear_24"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="8dp"/>
+        app:layout_constraintLeft_toRightOf="@+id/todo_detail_normal_check_box"
+        app:layout_constraintBaseline_toBaselineOf="@+id/todo_detail_normal_check_box"/>
 
 </android.support.constraint.ConstraintLayout>

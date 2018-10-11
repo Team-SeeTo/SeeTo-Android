@@ -6,14 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".UI.ToDo.TodoCreate.Fragment.CreateTodoFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="Edit"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
     <EditText
         android:id="@+id/new_text"
+        android:inputType="textNoSuggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
         android:hint="Input Text"
-        android:textColor="#C3A4FA"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="100dp"/>
@@ -23,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintTop_toBottomOf="@+id/new_text"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
@@ -33,6 +49,8 @@
         android:layout_height="20dp"
         android:drawableLeft="@drawable/baseline_add_black_24"
         android:text="Add Milestone"
+        android:textSize="16dp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/todo_create_recycler_view"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
@@ -44,7 +62,7 @@
         android:layout_height="wrap_content"
         android:text="Finish"
         android:textSize="24dp"
-        android:textColor="#C3A4FA"
+        android:textColor="@color/colorPrimary"
         android:layout_marginBottom="16dp"
         app:layout_constraintTop_toBottomOf="@id/add_milestone"
         app:layout_constraintBottom_toBottomOf="parent"

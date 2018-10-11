@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.ToDo.TodoDetailActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/todo_detail_top"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/todo_detail_background"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:id="@+id/todo_detail_title"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit,"
+            android:textColor="#fff"
+            android:textSize="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/todo_detail_option"/>
+
+        <TextView
+            android:id="@+id/todo_detail_expiration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="April 22th, 2018"
+            android:textColor="#fff"
+            android:drawableLeft="@drawable/baseline_timer_24"
+            app:layout_constraintLeft_toLeftOf="@id/todo_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/todo_detail_title"
+            android:layout_marginTop="20dp"/>
+
+        <View
+            android:id="@+id/todo_detail_option"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/baseline_more_vert_24"
+            app:layout_constraintLeft_toRightOf="@+id/todo_detail_title"
+            app:layout_constraintTop_toTopOf="@+id/todo_detail_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_marginTop="10dp"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/todo_detail_modify_btn"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:backgroundTint="#fff"
+            android:src="@drawable/baseline_create_24"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="35dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/todo_detail_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/todo_detail_top">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>

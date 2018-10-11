@@ -1,0 +1,10 @@
+mutation EditTodo($token: String $id:String $newTitle:String){
+  editTodo(token:$token id:$id, newTitle:$newTitle){
+    result{
+      ... on ResponseMessageField{
+        message
+        isSuccess
+      }
+		}
+  }
+}

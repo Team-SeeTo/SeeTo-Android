@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--체크 상태 아이템-->
+    <item android:drawable="@drawable/clicked_check_icon" android:state_checked="true"/>
+    <!--체크 해제 상태 아이템-->
+    <item android:drawable="@drawable/unclicked_check_icon" android:state_checked="false"/>
+    <!--default 상태-->
+    <item android:drawable="@drawable/unclicked_check_icon"/>
+</selector>
