@@ -1,9 +1,21 @@
-query ideasMain($token:String, $search:String, $filter:String, $page:Int){
-  ideas(token:$token, filterBy:$filter, startRank: $page){
-    title
-    category
-    rank
-    upvoter
-    comments
+query ideasMain($token:String, $page:Int){
+  ideas(token:$token, startRank: $page){
+    ... on IdeasField{
+      id
+      author
+      title
+      body
+      createdAt
+      category
+      voteChecked
+      comments{
+        commentCount
+        comments{
+          author
+          body
+        }
+      }
+      upvoter
+    }
   }
 }

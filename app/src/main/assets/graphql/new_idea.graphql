@@ -1,0 +1,12 @@
+mutation NewIdea($category : String , $token : String, $body : String, $title : String){
+  newIdea(category : $category, token : $token, body : $body, title : $title){
+    ...on NewIdeaMutation{
+      result{
+        ...on ResponseMessageField{
+          isSuccess
+          message
+        }
+      }
+    }
+  }
+}

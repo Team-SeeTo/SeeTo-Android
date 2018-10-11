@@ -1,8 +1,12 @@
 package seeto.c2.artoria.us.myapplication.UI.Main;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,22 +15,40 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
+import com.ramkishorevs.graphqlconverter.converter.QueryContainerBuilder;
 
+import org.w3c.dom.Text;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import seeto.c2.artoria.us.myapplication.Connect.Connector;
+import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
+import seeto.c2.artoria.us.myapplication.Model.TimeLineModel;
+import seeto.c2.artoria.us.myapplication.SharedPreferenceKt;
 import seeto.c2.artoria.us.myapplication.UI.LeaderBoard.LeaderBoardActivity;
 
 
@@ -38,6 +60,7 @@ import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoFragment;
 import seeto.c2.artoria.us.myapplication.UI.QM.WriteMemoActivity;
 import seeto.c2.artoria.us.myapplication.R;
 import seeto.c2.artoria.us.myapplication.UI.Setting.SettingActivity;
+import seeto.c2.artoria.us.myapplication.UI.Signin.SigninActivity;
 import seeto.c2.artoria.us.myapplication.UI.Store.StoreActivity;
 import seeto.c2.artoria.us.myapplication.UI.TimeLine.TimeLineFragment;
 import seeto.c2.artoria.us.myapplication.UI.ToDo.TodoCreate.CreateTodoActivity;
@@ -54,9 +77,10 @@ public class MainActivity extends AppCompatActivity
     ViewPager viewPager;
     ImageView main_option_btn, main_search_btn;
     FloatingActionButton main_fab, memo_fab, ideas_fab, todo_fab;
+    String orderBy;
+    String current_context;
 
-    Animation mainfab_animation1 , mainfab_animation2 , memofab_animation1, memofab_animation2
-            , ideasfab_animaition1 , ideasfab_animaition2 , todofab_animation1, todofab_animation2;
+    Animation mainfab_animation1, mainfab_animation2, memofab_animation1, memofab_animation2, ideasfab_animaition1, ideasfab_animaition2, todofab_animation1, todofab_animation2;
 
     MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -82,20 +106,80 @@ public class MainActivity extends AppCompatActivity
         todo_fab = findViewById(R.id.todo_fab);
 
 
-        main_option_btn.setOnClickListener(v -> showOptionDialog() );
+        main_option_btn.setOnClickListener(v -> {
+            switch (viewPager.getCurrentItem()) {
+                case 0:
+                    current_context = "Todo";
+                    showOptionDialog(current_context);
+                    break;
 
-        main_search_btn.setOnClickListener(v -> showSearchDialog() );
+                case 1:
+                    current_context = "TimeLine";
+                    showSelectDateDialog();
+                    break;
+
+                case 2:
+                    current_context = "Ideas";
+                    showIdeasDialog(current_context);
+                    //Todo Ideas 서벼 연결 코드 필요 (정렬)
+                    break;
+
+                default:
+                    current_context = "default";
+            }
+            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
+        });
+
+        main_search_btn.setOnClickListener(v -> showSearchDialog());
 
         viewpagerinit();
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            int vp_current;
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                vp_current = position;
+                Log.d("POSITION", String.valueOf(vp_current));
+                switch (vp_current) {
+                    case 1:
+                        main_search_btn.setVisibility(View.GONE);
+                        break;
+
+                    case 3:
+                        main_search_btn.setVisibility(View.GONE);
+                        main_option_btn.setVisibility(View.GONE);
+                        break;
+
+                    default:
+                        main_search_btn.setVisibility(View.VISIBLE);
+                        main_option_btn.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+        getuserinfo();
+
         navigationinit();
 
-       // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
+
+        // mainPresenter.SimpleProfileRequest(SharedPreferenceKt.getToken(this,true));
 
         anmationinit();
 
         fabinit();
-
     }
 
     @Override
@@ -114,12 +198,13 @@ public class MainActivity extends AppCompatActivity
                 break;
 //                finish();
 
-            case R.id.navigation_settings_btn:
-                intent = new Intent(MainActivity.this, SettingActivity.class);
+            case R.id.navigation_Logout_btn:
+                intent = new Intent(MainActivity.this, SigninActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
-            case R.id.navigation_mirror_btn :
+            case R.id.navigation_mirror_btn:
                 Intent intent1 = new Intent(MainActivity.this, MirrorActivity.class);
                 startActivity(intent1);
                 break;
@@ -142,27 +227,42 @@ public class MainActivity extends AppCompatActivity
             tabs.getTabAt(i).setIcon(customViewPagerAdapter.getFragmentInfo(i).getIconResid());
         }
 
+
         Intent intent = new Intent();
-        if(intent.getBooleanExtra("Memo",false)){
+        if (intent.getBooleanExtra("Memo", false)) {
             customViewPagerAdapter.getFragmentInfo(3);
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void navigationinit() {
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navi_view = findViewById(R.id.navigation_view);
+        navi_view.setNavigationItemSelectedListener(this);
+
+
+        View view = navi_view.getHeaderView(0);
+        TextView username = view.findViewById(R.id.navigation_header_user_name);
+        TextView rank = view.findViewById(R.id.navigation_header_rank);
+        TextView point = view.findViewById(R.id.navigation_header_point);
+
+        username.setText(SharedPreferenceKt.getInfo(getBaseContext(), "username"));
+        rank.setText("#" + SharedPreferenceKt.getInfo(getBaseContext(), "rank"));
+        point.setText(SharedPreferenceKt.getInfo(getBaseContext(), "point") + "p");
+
 
         ImageView main_drawer_btn = findViewById(R.id.main_navidraw);
         main_drawer_btn.setOnClickListener(v -> {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
+
             } else {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
 
-        NavigationView navi_view = findViewById(R.id.navigation_view);
-        navi_view.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -171,7 +271,7 @@ public class MainActivity extends AppCompatActivity
         main_fab.bringToFront();
 
         main_fab.setOnClickListener(v -> {
-           main_fabclicked();
+            main_fabclicked();
         });
 
         memo_write_btn.setOnClickListener(v -> {
@@ -198,27 +298,94 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void showOptionDialog() {
+    public void getuserinfo() {
+        QueryContainerBuilder queryContainerBuilder = new QueryContainerBuilder()
+                .putVariable("token", SharedPreferenceKt.getToken(getBaseContext(), true));
+
+        new Connector(this).getClient().SimpleProfile(queryContainerBuilder)
+                .enqueue(new Callback<SimpleProfileModel>() {
+                    @Override
+                    public void onResponse(Call<SimpleProfileModel> call, Response<SimpleProfileModel> response) {
+                        SimpleProfileModel data = response.body();
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "username", data.getData().getProfile().getUsername());
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "email", data.getData().getProfile().getEmail());
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "rank", String.valueOf(data.getData().getProfile().getRank()));
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "point", String.valueOf(data.getData().getProfile().getPoint()));
+                        SharedPreferenceKt.saveInfo(getBaseContext(), "registerOn", data.getData().getProfile().getRegisterOn());
+                    }
+
+                    @Override
+                    public void onFailure(Call<SimpleProfileModel> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void showOptionDialog(String context) {
         Dialog dialog = new Dialog(this);
-        View view = getLayoutInflater().inflate(R.layout.dialog_options,null);
-        dialog.setContentView(R.layout.dialog_options);
+        View view = getLayoutInflater().inflate(R.layout.dialog_options, null);
+        dialog.setContentView(view);
 
         TextView apply_btn = dialog.findViewById(R.id.dialog_options_apply_btn);
         TextView cancel_btn = dialog.findViewById(R.id.dialog_options_cancel_btn);
+        TextView sct = dialog.findViewById(R.id.dialog_options_sct);
+        Switch sct_switch = dialog.findViewById(R.id.dialog_options_sct_switch);
+
+        RadioGroup radioGroup = dialog.findViewById(R.id.dialog_options_radiogroup);
+
+        sct.setVisibility(View.INVISIBLE);
+        sct_switch.setVisibility(View.INVISIBLE);
 
         dialog.show();
 
         apply_btn.setOnClickListener(v -> {
-            Toast.makeText(this, "apply clicked", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
+
+
         });
+
 
         cancel_btn.setOnClickListener(v -> dialog.dismiss());
 
 
         Window window = dialog.getWindow();
-        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCanceledOnTouchOutside(false);
+    }
+
+    @Override
+    public void showIdeasDialog(String context) {
+        Dialog dialog = new Dialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_ideas, null);
+        dialog.setContentView(view);
+
+        TextView apply_btn = dialog.findViewById(R.id.dialog_ideas_apply_btn);
+        TextView cancel_btn = dialog.findViewById(R.id.dialog_ideas_cancel_btn);
+
+        RadioGroup radioGroup = dialog.findViewById(R.id.dialog_ideas_radiogroup);
+
+        dialog.show();
+
+        apply_btn.setOnClickListener(v -> {
+            switch (radioGroup.getCheckedRadioButtonId()) {
+                case R.id.dialog_ideas_radio_it:
+                    orderBy = "IT";
+                    break;
+
+                case R.id.dialog_ideas_radio_life:
+                    orderBy = "Life";
+                    break;
+
+                case R.id.dialog_ideas_radio_food:
+                    orderBy = "Food";
+                    break;
+
+            }
+            ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment())
+                    .IdeasOrderByRequest(SharedPreferenceKt.getToken(this, true), orderBy, 1);
+
+            dialog.dismiss();
+        });
     }
 
     @Override
@@ -332,24 +499,72 @@ public class MainActivity extends AppCompatActivity
                 .setCancelable(true)
                 .create();
 
+        dialogPlus.show();
+
         EditText search_et = (EditText) dialogPlus.findViewById(R.id.dialog_search_et);
         ImageView search_btn = (ImageView) dialogPlus.findViewById(R.id.dialog_search_btn);
 
+
         search_btn.setOnClickListener(v -> {
-            viewPager.getCurrentItem();
+            switch (viewPager.getCurrentItem()) {
+                case 0:
+                    current_context = "Todo";
+                    //Todo todo 서버 연결 코드 필요 (검색)
+                    break;
 
+                case 2:
+                    current_context = "Ideas";
+//                    IdeasFragment ideasFragment = new IdeasFragment();
+//                    ideasFragment.IdeasSearchRequest(search_et.getText().toString());
+                    ((IdeasFragment) customViewPagerAdapter.getmFragmentInfoList().get(2).getFragment()).IdeasSearchRequest(search_et.getText().toString());
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(search_et.getWindowToken(), 0);
+                    dialogPlus.dismiss();
+                    break;
+
+                default:
+                    current_context = "default";
+            }
         });
-
-        dialogPlus.show();
 
         search_et.setFocusableInTouchMode(true);
         search_et.requestFocus();
 
-
     }
 
     @Override
-    public void showToast(String text) {
+    public void showSelectDateDialog() {
+        Dialog dialog = new Dialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_timeline_select_date, null);
+        dialog.setContentView(view);
 
+        TextView apply_btn = dialog.findViewById(R.id.dialog_timeline_apply_btn);
+        TextView cancel_btn = dialog.findViewById(R.id.dialog_timeline_cancel_btn);
+        DatePicker cal = dialog.findViewById(R.id.dialog_timeline_select_date_cal);
+
+
+        dialog.show();
+
+
+        apply_btn.setOnClickListener(v -> {
+
+            String date;
+
+            date = String.valueOf(cal.getYear()) + "-" + String.valueOf(cal.getMonth() + 1) + "-" + String.valueOf(cal.getDayOfMonth());
+            Log.d("day",date);
+            ((TimeLineFragment) customViewPagerAdapter.getmFragmentInfoList().get(1).getFragment()).getTimelineData(SharedPreferenceKt.getToken(this, true), date);
+
+            dialog.dismiss();
+
+        });
+
+
+        cancel_btn.setOnClickListener(v -> dialog.dismiss());
+
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCanceledOnTouchOutside(false);
     }
+
+
 }

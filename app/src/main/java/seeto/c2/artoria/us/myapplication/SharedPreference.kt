@@ -26,11 +26,14 @@ fun saveQM(context: Context,text : String){
     editor.apply()
 }
 
-fun saveModifiedQM(context: Context,text : String, index: Int){
+fun saveInfo(context: Context, key: String, value: String){
     val editor = getPref(context).edit()
-    editor.putString("ModifiedQM",text)
-    editor.putInt("ModifiedIndex", index)
+    editor.putString(key,value)
     editor.apply()
+}
+
+fun getInfo(context: Context,key: String) : String{
+    return getPref(context).getString(key,"")
 }
 
 fun getQM(context: Context) : String{
@@ -38,7 +41,7 @@ fun getQM(context: Context) : String{
 }
 
 fun getToken(context: Context, isAccess: Boolean = true): String{
-    return "JWT " + getPref(context).getString(getKey(isAccess), "")
+    return getPref(context).getString(getKey(isAccess), "")
 }
 
 private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"

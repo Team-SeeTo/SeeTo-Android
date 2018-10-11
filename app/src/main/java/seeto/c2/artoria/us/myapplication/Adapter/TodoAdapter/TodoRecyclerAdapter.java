@@ -33,7 +33,6 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item;
-        Log.e("xxx", viewType + "");
         switch (viewType) {
             case 0:
                 item = LayoutInflater.from(parent.getContext()).inflate(

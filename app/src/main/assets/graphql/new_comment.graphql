@@ -1,0 +1,10 @@
+mutation NewComment($comment : String , $id : String, $token : String){
+  newComment(comment : $comment, id : $id, token : $token){
+    result{
+      ...on ResponseMessageField{
+        isSuccess
+        message
+      }
+    }
+  }
+}

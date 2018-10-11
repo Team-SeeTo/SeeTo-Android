@@ -35,7 +35,9 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
         return mFragmentInfoList.size();
     }
 
-
+    public List<FragmentInfo> getmFragmentInfoList() {
+        return mFragmentInfoList;
+    }
 }
 
 

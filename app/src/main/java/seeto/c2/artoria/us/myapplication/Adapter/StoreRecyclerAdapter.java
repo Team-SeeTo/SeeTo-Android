@@ -50,7 +50,7 @@ public class StoreRecyclerAdapter extends RecyclerView.Adapter<StoreRecyclerAdap
             cancel.setOnClickListener(v1 -> dialog.dismiss());
 
             purchase.setOnClickListener(v1 ->{
-                Toast.makeText(context, "purchase button clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "포인트가 부족합니다.", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             });
 

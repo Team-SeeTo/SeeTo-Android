@@ -1,9 +1,15 @@
-query ToDoSearch($token: String, $order: String, $search:String){
-  todo(token:$token, orderBy: $order, searchString: $search){
-    title
-    type
-    expiration
-    isCompleted
-    # 진행률 항목 추가 예정
+query TodoSearch($token : String, $orderBy : String, $searchString : String){
+  todo(token : $token, orderBy : $orderBy, searchString : $searchString){
+    ...on ToDoField{
+      title
+      type
+      createdAt
+      milestones{
+        name
+        isCompleted
+      }
+    	expiration
+      isCompleted
+    }
   }
 }

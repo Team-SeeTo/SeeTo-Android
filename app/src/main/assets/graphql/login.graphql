@@ -1,7 +1,13 @@
-mutation Auth($email : String, $password : String){
-   auth(email : $email, password : $password){
-     accessToken
-     refreshToken
-     message
-   }
- }
+mutation Auth($password : String , $email : String){
+  auth(password : $password, email : $email){
+    ...on AuthMutation{
+    	 result{
+        ...on AuthField{
+          accessToken
+          refreshToken
+          message
+        }
+      }
+    }
+  }
+}

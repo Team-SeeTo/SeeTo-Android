@@ -99,11 +99,12 @@ public class ViewMemoActivity extends AppCompatActivity {
                         int findedIndex = memoText.indexOf(searchText, i);
                         if(findedIndex < 0 || findedIndex > memoText.length() )
                             break;
-                            Log.d("Index", "i: "+i+" finded: "+findedIndex);
-                            Log.d("text", "message: "+memoText.substring(findedIndex, findedIndex+searchText.length()));
-                            i += findedIndex;
-                            ssb.setSpan(
-                                new ForegroundColorSpan(Color.RED),
+
+                        Log.d("Index", "i: "+i+" finded: "+findedIndex);
+                        Log.d("text", "message: "+memoText.substring(findedIndex, findedIndex+searchText.length()));
+                        i += findedIndex;
+                        ssb.setSpan(
+                                new ForegroundColorSpan(Color.BLUE),
                                 findedIndex,
                                 findedIndex+searchText.length(),
                                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -114,8 +115,11 @@ public class ViewMemoActivity extends AppCompatActivity {
                     Toast.makeText(ViewMemoActivity.this, "해당 단어를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            QMdialogPlus.dismiss();
         });
         memo_search_et.setFocusableInTouchMode(true);
         memo_search_et.requestFocus();
+
     }
 }

@@ -35,11 +35,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/store_point"
                 android:layout_marginEnd="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquare"
-                android:text="14210xp"
+                android:text="0xp"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="20sp"

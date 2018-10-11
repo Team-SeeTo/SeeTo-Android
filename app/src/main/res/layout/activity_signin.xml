@@ -5,6 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="230dp"
@@ -49,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/login_text" />
 
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/signin_password_input"
         android:layout_width="300dp"
         android:layout_height="wrap_content"

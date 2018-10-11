@@ -52,11 +52,6 @@ public class QuickMemoFragment extends Fragment implements QuickMemoContract.Vie
     }
 
     @Override
-    public void showToast(String text) {
-
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         qmItem = db.getAll();

@@ -33,16 +33,13 @@ public class InventoryFragment extends Fragment implements InventoryContract.Vie
     @Override
     public void itemlistinit() {
 
-        data.add(new InventoryItem("Streak Freeze","You can rest today!"));
-        data.add(new InventoryItem("Ideas Bonus","double today's\nIdea point"));
+//        data.add(new InventoryItem("Streak Freeze","You can rest today!"));
+//        data.add(new InventoryItem("Ideas Bonus","double today's\nIdea point"));
 
         adapter = new InventoryRecyclerAdapter(data,getActivity());
         inventory_list.setAdapter(adapter);
 
     }
 
-    @Override
-    public void showToast(String text) {
 
-    }
 }

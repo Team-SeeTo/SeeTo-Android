@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="330dp"
+        android:layout_height="500dp">
+
+        <TextView
+            android:id="@+id/dialog_timeline_select_date_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="23sp"
+            android:text="SELECT DATE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <DatePicker
+            android:layout_marginTop="10dp"
+            android:id="@+id/dialog_timeline_select_date_cal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/dialog_timeline_apply_btn"
+            app:layout_constraintTop_toBottomOf="@id/dialog_timeline_select_date_title">
+
+        </DatePicker>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/dialog_timeline_cancel_btn"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_timeline_apply_btn"
+            android:text="CANCEL"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/dialog_timeline_apply_btn"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            android:text="APPLY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
