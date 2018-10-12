@@ -60,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/signup_email_input" />
 
     <EditText
+        android:inputType="textPassword"
         android:layout_marginTop="20dp"
         android:id="@+id/signup_password_input"
         android:layout_width="350dp"

@@ -37,6 +37,7 @@
             android:layout_marginTop="20dp"/>
 
         <View
+            android:visibility="invisible"
             android:id="@+id/todo_detail_option"
             android:layout_width="24dp"
             android:layout_height="24dp"

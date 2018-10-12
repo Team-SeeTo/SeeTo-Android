@@ -1,6 +1,7 @@
 query ideasMain($token:String, $search:String , $page:Int){
   ideas(token:$token, searchString:$search, startRank: $page){
     ... on IdeasField{
+      id
       author
       title
       body

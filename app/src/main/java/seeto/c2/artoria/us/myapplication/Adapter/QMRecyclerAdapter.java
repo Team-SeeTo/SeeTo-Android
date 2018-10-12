@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,14 +17,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import seeto.c2.artoria.us.myapplication.Item.QMItem;
 import seeto.c2.artoria.us.myapplication.R;
+import seeto.c2.artoria.us.myapplication.UI.QM.DatabaseHelper;
+import seeto.c2.artoria.us.myapplication.UI.QM.Memo;
+import seeto.c2.artoria.us.myapplication.UI.QM.QuickMemoContract;
 import seeto.c2.artoria.us.myapplication.UI.QM.ViewMemoActivity;
 
 public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.ViewHolder> {
 
-    ArrayList<QMItem> QMItem;
+    ArrayList<Memo> QMItem;
     Context context;
 
-    public QMRecyclerAdapter(ArrayList<QMItem> QMItem, Context context) {
+    public QMRecyclerAdapter(ArrayList<Memo> QMItem, Context context) {
         this.QMItem = QMItem;
         this.context = context;
     }
@@ -39,20 +43,39 @@ public class QMRecyclerAdapter extends RecyclerView.Adapter<QMRecyclerAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        QMItem items = QMItem.get(position);
-        holder.previewText.setText(items.getPreviewText());
-        holder.settingButton.setOnClickListener(v -> {
-            PopupMenu popupMenu = new PopupMenu(context, v);
-            popupMenu.inflate(R.menu.qm_recycler_menu);
-            popupMenu.setOnMenuItemClickListener(item -> {
-//                if(item.getItemId() == R.id.qm_menu) {
-                    QMItem.remove(position);
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, QMItem.size());
-//                }
-                return false;
-            });
-            popupMenu.show();
+        Memo items = QMItem.get(position);
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ViewMemoActivity.class);
+                intent.putExtra("memo", items.getText());
+                intent.putExtra("id", items.getId());
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        holder.previewText.setText(items.getText());
+        holder.settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHelper db = new DatabaseHelper(v.getContext());
+                PopupMenu popupMenu = new PopupMenu(context, v);
+                popupMenu.inflate(R.menu.qm_recycler_menu);
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getItemId() == R.id.qm_menu) {
+                            db.deleteRow(items.getText());
+                            QMItem.remove(position);
+                            notifyItemRemoved(position);
+                            notifyDataSetChanged();
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
         });
     }
 

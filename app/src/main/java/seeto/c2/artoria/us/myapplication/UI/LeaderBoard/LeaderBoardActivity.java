@@ -71,6 +71,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
             data.add(new LeaderBoardItem(item.getRank(), item.getName()));
             Log.d("DEBUG", String.valueOf(item.getRank()));
         }
+        adapter.notifyDataSetChanged();
 //        data.add(new LeaderBoardItem(1,"asdf"));
     }
 

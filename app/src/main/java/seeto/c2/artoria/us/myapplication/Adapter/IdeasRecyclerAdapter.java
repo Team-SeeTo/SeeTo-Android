@@ -72,7 +72,7 @@ public class IdeasRecyclerAdapter extends RecyclerView.Adapter<IdeasRecyclerAdap
                     items.get(position).setVote(false);
                     holder.like_btn.setImageResource(R.drawable.ic_favorite);
                     holder.like_text.setTextColor(Color.parseColor("#757575"));
-                    holder.like_text.setText(String.valueOf(items.get(position).getLike() - 1));
+                    holder.like_text.setText(String.valueOf("0"));
                     Toast.makeText(context, "이 게시물에 좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
             }
 

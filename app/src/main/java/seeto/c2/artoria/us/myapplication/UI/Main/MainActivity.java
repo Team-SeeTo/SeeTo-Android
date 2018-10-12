@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity
                 default:
                     current_context = "default";
             }
-            Toast.makeText(this, current_context, Toast.LENGTH_SHORT).show();
         });
 
         main_search_btn.setOnClickListener(v -> showSearchDialog());
@@ -316,6 +315,7 @@ public class MainActivity extends AppCompatActivity
 
         todo_write_btn.setOnClickListener(v -> {
             Intent todoCreateIntent = new Intent(MainActivity.this, CreateTodoActivity.class);
+            todoCreateIntent.putExtra("editTodoType", "create");
             startActivity(todoCreateIntent);
             main_fabclicked();
 

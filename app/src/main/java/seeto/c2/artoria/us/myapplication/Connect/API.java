@@ -16,6 +16,7 @@ import seeto.c2.artoria.us.myapplication.Model.IdeasDetailModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasMainModel;
 import seeto.c2.artoria.us.myapplication.Model.IdeasSearchModel;
 import seeto.c2.artoria.us.myapplication.Model.LeaderBoardModel;
+import seeto.c2.artoria.us.myapplication.Model.MirrorModel;
 import seeto.c2.artoria.us.myapplication.Model.NewCommentModel;
 import seeto.c2.artoria.us.myapplication.Model.NewIdeasModel;
 import seeto.c2.artoria.us.myapplication.Model.SimpleProfileModel;
@@ -94,4 +95,9 @@ public interface API {
     @POST("/graphql")
     @GraphQuery("todo_edit")
     Call<Void> TodoEdit(@Body QueryContainerBuilder queryContainerBuilder);
+
+    @POST("/graphql")
+    @GraphQuery("mirror")
+    Call<MirrorModel> Mirror(@Body QueryContainerBuilder queryContainerBuilder);
+
 }
